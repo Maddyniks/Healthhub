@@ -208,7 +208,7 @@ public class SaxParserDataStore extends DefaultHandler {
 			}
 			if (element.equals("Pharmacy")) {	  
 				pharmacies.put(pharmacy.getId(),pharmacy);
-				//MySqlDataStoreUtilities.insertProduct("pharmacy", pharmacy.getId(), pharmacy.getName(), pharmacy.getPrice(), pharmacy.getImage(), pharmacy.getRetailer(), pharmacy.getCondition(), pharmacy.getDiscount(), pharmacy.getDescription());
+				MySqlDataStoreUtilities.insertPharmacy(pharmacy.getId(), pharmacy.getName(), pharmacy.getImage(), pharmacy.getDescription(), pharmacy.getCategory(), pharmacy.getPhone(), pharmacy.getEmailId(), pharmacy.getCity(), pharmacy.getZip(), pharmacy.getLat(), pharmacy.getLongi());  
 				return;
 			}
 		}

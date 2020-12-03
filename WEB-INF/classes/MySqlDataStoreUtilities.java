@@ -85,6 +85,35 @@ public class MySqlDataStoreUtilities
         }		
     }
 
+    public static void insertPharmacy(String id, String name, String image, String description, String category, String phoneNumber, String emailId, String city, String zip, String latitude, String longitude )
+    {
+        // System.out.println(type + " | " + ID + " | " + name + " | " + image + " | " + manufactorer + " | " + condition + " | " + discount + " | " + description);
+        try
+        {        
+            getConnection();
+            String insertIntoCustomerOrderQuery = "INSERT INTO pharmacy(id, name, image, description, category, phoneNumber, emailId, city, zip, latitude, longitude )"
+            + "VALUES (?,?,?,?,?,?,?,?,?,?,?);";	
+                
+            PreparedStatement pst = conn.prepareStatement(insertIntoCustomerOrderQuery);
+            pst.setString(1,id);
+            pst.setString(2,name);
+            pst.setString(3,image);
+            pst.setString(4,description);
+            pst.setString(5,category);
+            pst.setString(6,phoneNumber);
+            pst.setString(7,emailId);
+            pst.setString(8,city);
+            pst.setString(9,zip);
+            pst.setString(10,latitude);
+            pst.setString(11,longitude);
+            pst.execute();
+        }
+        catch(Exception e)
+        {
+        
+        }		
+    }
+
     public static void insertProduct(String type, String ID, String name, double price, String image, String manufactorer, String condition, double discount, String description)
     {
         // System.out.println(type + " | " + ID + " | " + name + " | " + price + " | " + image + " | " + manufactorer + " | " + condition + " | " + discount + " | " + description);
