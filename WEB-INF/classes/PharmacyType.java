@@ -1,50 +1,48 @@
-import java.util.*;
-import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-@WebServlet("/DoctorType")
-
+@WebServlet("/PharmacyType")
 
 /* 
-	DoctorType class contains class variables name,price,image,retailer,condition,discount and Accessories Hashmap.
+	PharmacyType class contains class variables name,price,image,retailer,condition,discount.
 
-	DoctorType class constructor with Arguments name,price,image,retailer,condition,discount and Accessories .
+	PharmacyType class has a constructor with Arguments name,price,image,retailer,condition,discount.
+	  
+	PharmacyType class contains getters and setters for name,price,image,retailer,condition,discount.
 
 */
 
-public class DoctorType extends HttpServlet{
+public class PharmacyType extends HttpServlet{
 	private String id;
 	private String name;
-	private double price;
 	private String image;
 	private String description;
 	private String category;
 	private String phone;
+	private String emailid;
 	private String city;
 	private String zip;
 	private String lat;
 	private String longi;
 	
-	public DoctorType(String id, String name, double price, String image, String description, String category, String phone, String city, String zip, String lat, String longi){
+	public PharmacyType(String id, String name, double price, String image, String description, String category, String phone, String emailid, String city, String zip, String lat, String longi){
 		this.id = id;
 		this.name=name;
-		this.price=price;
 		this.image=image;
 		this.description = description;
 		this.category = category;
 		this.phone = phone;
+		this.emailid = emailid;
 		this.city = city;
 		this.zip = zip;
 		this.lat = lat;
 		this.longi = longi;
 	}
 	
-	public DoctorType(){
+	public PharmacyType(){
 		
 	}
 	public String getId() {
@@ -53,30 +51,28 @@ public class DoctorType extends HttpServlet{
 	public void setId(String id) {
 		this.id = id;
 	}
+		
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public double getPrice() {
-		return price;
-	}
-	public void setPrice(double price) {
-		this.price = price;
-	}
+
 	public String getImage() {
 		return image;
 	}
 	public void setImage(String image) {
 		this.image = image;
 	}
+
 	public String getDescription() {
 		return description;
 	}
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	public String getCategory() {
 		return category;
 	}
@@ -90,6 +86,14 @@ public class DoctorType extends HttpServlet{
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public String getEmailId() {
+		return emailid;
+	}
+
+	public void setEmailId(String phone) {
+		this.emailid = emailid;
 	}
 
 	public String getZip() {
@@ -123,4 +127,6 @@ public class DoctorType extends HttpServlet{
 	public void setLongi(String longi) {
 		this.longi = longi;
 	}
+
+	
 }
