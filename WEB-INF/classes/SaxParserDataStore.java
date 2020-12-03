@@ -72,9 +72,9 @@ public class SaxParserDataStore extends DefaultHandler {
 			phone = new PhoneType();
             phone.setId(attributes.getValue("id"));
         }
-        if (elementName.equalsIgnoreCase("pharmacy"))
+        if (elementName.equalsIgnoreCase("Pharmacy"))
 		{
-			currentElement="pharmacy";
+			currentElement="Pharmacy";
 			pharmacy= new PharmacyType();
             pharmacy.setId(attributes.getValue("id"));
 		}
@@ -88,7 +88,7 @@ public class SaxParserDataStore extends DefaultHandler {
         if (element.equalsIgnoreCase("image")) {
 		    if(currentElement.equals("Doctor"))
 				doctor.setImage(elementValueRead);
-        	if(currentElement.equals("pharmacy"))
+        	if(currentElement.equals("Pharmacy"))
 				pharmacy.setImage(elementValueRead);
             if(currentElement.equals("phone"))
 				phone.setImage(elementValueRead);
@@ -97,7 +97,7 @@ public class SaxParserDataStore extends DefaultHandler {
 		if (element.equalsIgnoreCase("description")) {
 		    if(currentElement.equals("Doctor"))
 				doctor.setDescription(elementValueRead);
-        	if(currentElement.equals("pharmacy"))
+        	if(currentElement.equals("Pharmacy"))
 				pharmacy.setDescription(elementValueRead);
             if(currentElement.equals("phone"))
 				phone.setDescription(elementValueRead);    
@@ -121,12 +121,15 @@ public class SaxParserDataStore extends DefaultHandler {
 		if(element.equalsIgnoreCase("category")){
 			if(currentElement.equals("Doctor"))
 				doctor.setCategory(elementValueRead);
+
+			if(currentElement.equals("Pharmacy"))
+				pharmacy.setCategory(elementValueRead);
 			return;
 		}
         if (element.equalsIgnoreCase("name")) {
             if(currentElement.equals("Doctor"))
 				doctor.setName(elementValueRead);
-        	if(currentElement.equals("pharmacy"))
+        	if(currentElement.equals("Pharmacy"))
 				pharmacy.setName(elementValueRead);
             if(currentElement.equals("phone"))
 				phone.setName(elementValueRead); 
@@ -135,13 +138,13 @@ public class SaxParserDataStore extends DefaultHandler {
 		if(element.equalsIgnoreCase("phoneNumber")){
 			if(currentElement.equals("Doctor"))
 				doctor.setPhone(elementValueRead);
-			if(currentElement.equals("pharmacy"))
+			if(currentElement.equals("Pharmacy"))
 				pharmacy.setPhone(elementValueRead);
 			return;
 		}
 
-		if(element.equalsIgnoreCase("emailid")){			
-			if(currentElement.equals("pharmacy"))
+		if(element.equalsIgnoreCase("emailId")){			
+			if(currentElement.equals("Pharmacy"))
 				pharmacy.setEmailId(elementValueRead);
 			return;
 
@@ -150,7 +153,7 @@ public class SaxParserDataStore extends DefaultHandler {
 		if(element.equalsIgnoreCase("city")){
 			if(currentElement.equals("Doctor"))
 				doctor.setCity(elementValueRead);
-			if(currentElement.equals("pharmacy"))
+			if(currentElement.equals("Pharmacy"))
 				pharmacy.setCity(elementValueRead);
 			return;
 
@@ -159,7 +162,7 @@ public class SaxParserDataStore extends DefaultHandler {
 			if(currentElement.equals("Doctor"))
 				doctor.setZip(elementValueRead);
 			
-			if(currentElement.equals("pharmacy"))
+			if(currentElement.equals("Pharmacy"))
 				pharmacy.setZip(elementValueRead);
 			return;
 
@@ -168,7 +171,7 @@ public class SaxParserDataStore extends DefaultHandler {
 			if(currentElement.equals("Doctor"))
 				doctor.setLat(elementValueRead);
 
-			if(currentElement.equals("pharmacy"))
+			if(currentElement.equals("Pharmacy"))
 				pharmacy.setLat(elementValueRead);
 			return;
 		}
@@ -176,7 +179,7 @@ public class SaxParserDataStore extends DefaultHandler {
 			if(currentElement.equals("Doctor"))
 				doctor.setLongi(elementValueRead);
 
-			if(currentElement.equals("pharmacy"))
+			if(currentElement.equals("Pharmacy"))
 				pharmacy.setLongi(elementValueRead);
 			return;
 		}
@@ -203,7 +206,7 @@ public class SaxParserDataStore extends DefaultHandler {
 				//MySqlDataStoreUtilities.insertProduct("phone", phone.getId(), phone.getName(), phone.getPrice(), phone.getImage(), phone.getRetailer(), phone.getCondition(), phone.getDiscount(), phone.getDescription());  
 				return;
 			}
-			if (element.equals("pharmacy")) {	  
+			if (element.equals("Pharmacy")) {	  
 				pharmacies.put(pharmacy.getId(),pharmacy);
 				//MySqlDataStoreUtilities.insertProduct("pharmacy", pharmacy.getId(), pharmacy.getName(), pharmacy.getPrice(), pharmacy.getImage(), pharmacy.getRetailer(), pharmacy.getCondition(), pharmacy.getDiscount(), pharmacy.getDescription());
 				return;

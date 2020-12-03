@@ -24,8 +24,9 @@ public class Pharmacy extends HttpServlet {
 				
 		String name = null;
 		String CategoryName = request.getParameter("maker");
+
 		HashMap<String, PharmacyType> hm = new HashMap<String, PharmacyType>();
-		
+
 		if(CategoryName==null)
 		{
 			System.out.println("SaxParserDataStore.pharmacies.size = " + SaxParserDataStore.pharmacies.size());
@@ -34,7 +35,7 @@ public class Pharmacy extends HttpServlet {
 		}
 		else
 		{
-			if(CategoryName.equals("CVS-Health"))
+			if(CategoryName.trim().equals("CVS-Health"))
 			{
 			  for(Map.Entry<String,PharmacyType> entry : SaxParserDataStore.pharmacies.entrySet())
 			  {
@@ -79,47 +80,48 @@ public class Pharmacy extends HttpServlet {
 		utility.printHtml("Header.html");
 		utility.printHtml("LeftNavigationBar.html");
 		pw.print("<div id='content'><div class='post'><h2 class='title meta'>");
-		pw.print("<a style='font-size: 24px;'>"+name+" Sound Sytems</a>");
+		pw.print("<a style='font-size: 24px;'>"+name+" Pharmacies</a>");
 		pw.print("</h2><div class='entry'><table id='bestseller'>");
 		int i = 1; int size= hm.size();
-		for(Map.Entry<String, PharmacyType> entry : hm.entrySet()){
+		for(Map.Entry<String, PharmacyType> entry : hm.entrySet())
+		{
 			PharmacyType pharmacy = entry.getValue();
+			//System.out.println(pharmacy.getName() + " | " + pharmacy.getCity() + " | " + pharmacy.getZip());
 			if(i%3==1) pw.print("<tr>");
 			pw.print("<td><div id='shop_item'>");
 			pw.print("<h3>"+pharmacy.getName()+"</h3>");
-			pw.print("<strong>"+ "$" + pharmacy.getPrice() + "</strong><ul>");
+			pw.print("<strong>"+pharmacy.getCategory()+"</strong><ul>");
 			pw.print("<li id='item'><img src='images/pharmacies/"+pharmacy.getImage()+"' alt='' /></li>");
-
+			pw.print("<strong>"+pharmacy.getCity()+"</strong><ul>");
 			pw.print("<form name ='ViewItem' action='ViewItem' method='post'>");
 			pw.print("<li><input type='hidden' name='name' value='"+pharmacy.getName()+"'>"+
-					"<input type='hidden' name='type' value='pharmacies'>"+
-					"<input type='hidden' name='maker' value='"+pharmacy.getRetailer()+"'>"+
+					"<input type='hidden' name='type' value='doctors'>"+
+					"<input type='hidden' name='maker' value='"+pharmacy.getCategory()+"'>"+
 					"<input type='hidden' name='access' value=''>"+
 					"<input type='submit' class='btnbuy' value='View Item'></form></li>");
-
+			
 			pw.print("<li><form method='post' action='Cart'>" +
 					"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
-					"<input type='hidden' name='type' value='pharmacies'>"+
+					"<input type='hidden' name='type' value='doctors'>"+
 					"<input type='hidden' name='maker' value='"+CategoryName+"'>"+
 					"<input type='hidden' name='access' value=''>"+
 					"<input type='submit' class='btnbuy' value='Buy Now'></form></li>");
-
+			
 			pw.print("<li><form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='" + pharmacy.getName() + "'>"+
-					"<input type='hidden' name='type' value='pharmacies'>"+
-					"<input type='hidden' name='maker' value='"+pharmacy.getRetailer()+"'>"+
-					"<input type='hidden' name='price' value='"+pharmacy.getPrice()+"'>"+
+					"<input type='hidden' name='type' value='doctors'>"+
+					"<input type='hidden' name='maker' value='"+pharmacy.getCategory()+"'>"+
 					"<input type='submit' value='WriteReview' class='btnreview'></form></li>");
 					
-			pw.print("<li><form method='post' action='ViewReview'>"+"<input type='hidden' name='name' value='" + pharmacy.getName() + "'>"+
-					"<input type='hidden' name='type' value='pharmacies'>"+
-					"<input type='hidden' name='maker' value='"+pharmacy.getRetailer()+"'>"+
-					"<input type='hidden' name='price' value='"+pharmacy.getPrice()+"'>"+
-					"<input type='submit' value='ViewReview' class='btnreview'></form></li>");
+			pw.print("<li><form method='post' action='ViewReview'>"+"<input type='hidden' name='name' value='"+ pharmacy.getName() +"'>"+
+					"<input type='hidden' name='type' value='doctors'>"+
+					"<input type='hidden' name='maker' value='"+pharmacy.getCategory()+"'>"+
+				    "<input type='submit' value='ViewReview' class='btnreview'></form></li>");
 			pw.print("</ul></div></td>");
 			if(i%3==0 || i == size) pw.print("</tr>");
 			i++;
-		}		
-		pw.print("</table></div></div></div>");		
+		}	
+		pw.print("</table></div></div></div>");
+   
 		utility.printHtml("Footer.html");
 		
 	}

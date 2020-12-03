@@ -568,54 +568,606 @@
     </phone>
 </PhoneCatalog>
 
-<SoundSystemCatalog>
-<soundsystem id="ss1">
-        <name>Yamaha Turbi 2500</name>
-        <price>349.99</price>
-        <image>yamaha-turbi.jpg</image>
-        <description>This is a dummy description.</description>
-        <manufacturer>Yamaha</manufacturer>
-        <condition>New</condition>
-        <discount>25.0</discount>
-</soundsystem> 
-
-
-<soundsystem id="ss2">
-        <name>Bose Lifestyle 600</name>
-        <price>550.99</price>
-        <image>bose-lifestyle600.jpg</image>
-        <description>This is a dummy description.</description>
-        <manufacturer>Bose</manufacturer>
-        <condition>Refurbished</condition>
-        <discount>15.0</discount>
-</soundsystem>
-<soundsystem id="ss3">
-        <name>Bose Lifestyle 650</name>
-        <price>650.99</price>
-        <image>bose-lifestyle650.jpg</image>
-        <description>This is a dummy description.</description>
-        <manufacturer>Bose</manufacturer>
-        <condition>New</condition>
-        <discount>15.0</discount>
-</soundsystem>
-<soundsystem id="ss4">
-        <name>Polka Audio Black Tone</name>
-        <price>399.99</price>
-        <image>polkaudio-blackstone.jpg</image>
-        <description>This is a dummy description.</description>
-        <manufacturer>PolkaAudio</manufacturer>
-        <condition>New</condition>
-        <discount>5.0</discount>
-</soundsystem>
-<soundsystem id="ss5">
-        <name>Bose 5.1</name>
-        <price>450.99</price>
-        <image>bose-51.jpg</image>
-        <description>This is a dummy description.</description>
-        <manufacturer>Bose</manufacturer>
-        <condition>New</condition>
-        <discount>15.0</discount>
-</soundsystem>
-
-</SoundSystemCatalog>
+<PharmacyCatalog>
+        <Pharmacy id = "p1">
+        <name>Walgreens pharmacy</name>
+        <image>0001.png</image>
+        <description> This is a dummy description for Pharmacy Walgreens</description>
+        <category>Walgreens</category>
+        <phoneNumber>3046878372</phoneNumber>
+        <emailId>info1@walgreens.com</emailId>
+        <city>Sidney Center</city>
+        <zip>13839</zip>
+        <latitude>42.236762</latitude>
+        <longitude>-75.25901</longitude>
+</Pharmacy>
+<Pharmacy id = "p2">
+        <name>Costco pharmacy</name>
+        <image>0002.png</image>
+        <description> This is a dummy description for Pharmacy Costco-Wholesale-Corp</description>
+        <category>Costco-Wholesale-Corp</category>
+        <phoneNumber>3036076441</phoneNumber>
+        <emailId>info2@costcopharma.com</emailId>
+        <city>Caguas</city>
+        <zip>00626</zip>
+        <latitude>18.235003</latitude>
+        <longitude>-66.037318</longitude>
+</Pharmacy>
+<Pharmacy id = "p3">
+        <name>CVS pharmacy</name>
+        <image>0003.png</image>
+        <description> This is a dummy description for Pharmacy CVS-Health</description>
+        <category>CVS-Health</category>
+        <phoneNumber>3176404385</phoneNumber>
+        <emailId>info3@cvshealth.com</emailId>
+        <city>Big Sioux</city>
+        <zip>57949</zip>
+        <latitude>42.505818</latitude>
+        <longitude>-96.499259</longitude>
+</Pharmacy>
+<Pharmacy id = "p4">
+        <name>Walgreens pharmacy</name>
+        <image>0004.png</image>
+        <description> This is a dummy description for Pharmacy Walgreens</description>
+        <category>Walgreens</category>
+        <phoneNumber>3466378753</phoneNumber>
+        <emailId>info4@walgreens.com</emailId>
+        <city>Lawai</city>
+        <zip>96765</zip>
+        <latitude>21.930922</latitude>
+        <longitude>-159.499342</longitude>
+</Pharmacy>
+<Pharmacy id = "p5">
+        <name>Costco pharmacy</name>
+        <image>0005.png</image>
+        <description> This is a dummy description for Pharmacy Costco-Wholesale-Corp</description>
+        <category>Costco-Wholesale-Corp</category>
+        <phoneNumber>3056192990</phoneNumber>
+        <emailId>info5@costcopharma.com</emailId>
+        <city>Whitefield</city>
+        <zip>74472</zip>
+        <latitude>35.259201</latitude>
+        <longitude>-95.24701</longitude>
+</Pharmacy>
+<Pharmacy id = "p6">
+        <name>CVS pharmacy</name>
+        <image>0006.png</image>
+        <description> This is a dummy description for Pharmacy CVS-Health</description>
+        <category>CVS-Health</category>
+        <phoneNumber>3006163400</phoneNumber>
+        <emailId>info6@cvshealth.com</emailId>
+        <city>Atlanta</city>
+        <zip>30378</zip>
+        <latitude>33.844371</latitude>
+        <longitude>-84.47405</longitude>
+</Pharmacy>
+<Pharmacy id = "p7">
+        <name>Walgreens pharmacy</name>
+        <image>0007.png</image>
+        <description> This is a dummy description for Pharmacy Walgreens</description>
+        <category>Walgreens</category>
+        <phoneNumber>3806853106</phoneNumber>
+        <emailId>info7@walgreens.com</emailId>
+        <city>Jacksonville</city>
+        <zip>32255</zip>
+        <latitude>30.287041</latitude>
+        <longitude>-81.389305</longitude>
+</Pharmacy>
+<Pharmacy id = "p8">
+        <name>Costco pharmacy</name>
+        <image>0008.png</image>
+        <description> This is a dummy description for Pharmacy Costco-Wholesale-Corp</description>
+        <category>Costco-Wholesale-Corp</category>
+        <phoneNumber>3426077034</phoneNumber>
+        <emailId>info8@costcopharma.com</emailId>
+        <city>Winnebago</city>
+        <zip>68071</zip>
+        <latitude>42.232805</latitude>
+        <longitude>-96.48868</longitude>
+</Pharmacy>
+<Pharmacy id = "p9">
+        <name>CVS pharmacy</name>
+        <image>0009.png</image>
+        <description> This is a dummy description for Pharmacy CVS-Health</description>
+        <category>CVS-Health</category>
+        <phoneNumber>3716747380</phoneNumber>
+        <emailId>info9@cvshealth.com</emailId>
+        <city>Bruno</city>
+        <zip>68014</zip>
+        <latitude>41.28216</latitude>
+        <longitude>-96.9594</longitude>
+</Pharmacy>
+<Pharmacy id = "p10">
+        <name>Walgreens pharmacy</name>
+        <image>00010.png</image>
+        <description> This is a dummy description for Pharmacy Walgreens</description>
+        <category>Walgreens</category>
+        <phoneNumber>3006165573</phoneNumber>
+        <emailId>info10@walgreens.com</emailId>
+        <city>Stedman</city>
+        <zip>28391</zip>
+        <latitude>35.016373</latitude>
+        <longitude>-78.6941</longitude>
+</Pharmacy>
+<Pharmacy id = "p11">
+        <name>Costco pharmacy</name>
+        <image>00011.png</image>
+        <description> This is a dummy description for Pharmacy Costco-Wholesale-Corp</description>
+        <category>Costco-Wholesale-Corp</category>
+        <phoneNumber>3326349235</phoneNumber>
+        <emailId>info11@costcopharma.com</emailId>
+        <city>Graham</city>
+        <zip>73437</zip>
+        <latitude>34.363418</latitude>
+        <longitude>-97.43017</longitude>
+</Pharmacy>
+<Pharmacy id = "p12">
+        <name>CVS pharmacy</name>
+        <image>00012.png</image>
+        <description> This is a dummy description for Pharmacy CVS-Health</description>
+        <category>CVS-Health</category>
+        <phoneNumber>3566435270</phoneNumber>
+        <emailId>info12@cvshealth.com</emailId>
+        <city>Red Bluff</city>
+        <zip>96080</zip>
+        <latitude>40.183837</latitude>
+        <longitude>-122.24074</longitude>
+</Pharmacy>
+<Pharmacy id = "p13">
+        <name>Walgreens pharmacy</name>
+        <image>00013.png</image>
+        <description> This is a dummy description for Pharmacy Walgreens</description>
+        <category>Walgreens</category>
+        <phoneNumber>3766397763</phoneNumber>
+        <emailId>info13@walgreens.com</emailId>
+        <city>Big Sioux</city>
+        <zip>57949</zip>
+        <latitude>42.505818</latitude>
+        <longitude>-96.499259</longitude>
+</Pharmacy>
+<Pharmacy id = "p14">
+        <name>Costco pharmacy</name>
+        <image>00014.png</image>
+        <description> This is a dummy description for Pharmacy Costco-Wholesale-Corp</description>
+        <category>Costco-Wholesale-Corp</category>
+        <phoneNumber>3186096036</phoneNumber>
+        <emailId>info14@costcopharma.com</emailId>
+        <city>Crystal River</city>
+        <zip>34429</zip>
+        <latitude>28.872108</latitude>
+        <longitude>-82.5961</longitude>
+</Pharmacy>
+<Pharmacy id = "p15">
+        <name>CVS pharmacy</name>
+        <image>00015.png</image>
+        <description> This is a dummy description for Pharmacy CVS-Health</description>
+        <category>CVS-Health</category>
+        <phoneNumber>3266981861</phoneNumber>
+        <emailId>info15@cvshealth.com</emailId>
+        <city>Charleston</city>
+        <zip>25317</zip>
+        <latitude>38.335647</latitude>
+        <longitude>-81.613794</longitude>
+</Pharmacy>
+<Pharmacy id = "p16">
+        <name>Walgreens pharmacy</name>
+        <image>00016.png</image>
+        <description> This is a dummy description for Pharmacy Walgreens</description>
+        <category>Walgreens</category>
+        <phoneNumber>3906032530</phoneNumber>
+        <emailId>info16@walgreens.com</emailId>
+        <city>Richardson</city>
+        <zip>75082</zip>
+        <latitude>32.993405</latitude>
+        <longitude>-96.65901</longitude>
+</Pharmacy>
+<Pharmacy id = "p17">
+        <name>Costco pharmacy</name>
+        <image>00017.png</image>
+        <description> This is a dummy description for Pharmacy Costco-Wholesale-Corp</description>
+        <category>Costco-Wholesale-Corp</category>
+        <phoneNumber>3726717213</phoneNumber>
+        <emailId>info17@costcopharma.com</emailId>
+        <city>Bedias</city>
+        <zip>77831</zip>
+        <latitude>30.74577</latitude>
+        <longitude>-95.91892</longitude>
+</Pharmacy>
+<Pharmacy id = "p18">
+        <name>CVS pharmacy</name>
+        <image>00018.png</image>
+        <description> This is a dummy description for Pharmacy CVS-Health</description>
+        <category>CVS-Health</category>
+        <phoneNumber>3136493772</phoneNumber>
+        <emailId>info18@cvshealth.com</emailId>
+        <city>Casselberry</city>
+        <zip>32730</zip>
+        <latitude>28.653875</latitude>
+        <longitude>-81.34387</longitude>
+</Pharmacy>
+<Pharmacy id = "p19">
+        <name>Walgreens pharmacy</name>
+        <image>00019.png</image>
+        <description> This is a dummy description for Pharmacy Walgreens</description>
+        <category>Walgreens</category>
+        <phoneNumber>3346787029</phoneNumber>
+        <emailId>info19@walgreens.com</emailId>
+        <city>Crawfordsville</city>
+        <zip>97336</zip>
+        <latitude>44.359301</latitude>
+        <longitude>-122.850752</longitude>
+</Pharmacy>
+<Pharmacy id = "p20">
+        <name>Costco pharmacy</name>
+        <image>00020.png</image>
+        <description> This is a dummy description for Pharmacy Costco-Wholesale-Corp</description>
+        <category>Costco-Wholesale-Corp</category>
+        <phoneNumber>3356981271</phoneNumber>
+        <emailId>info20@costcopharma.com</emailId>
+        <city>Great Neck</city>
+        <zip>11025</zip>
+        <latitude>40.754757</latitude>
+        <longitude>-73.601772</longitude>
+</Pharmacy>
+<Pharmacy id = "p21">
+        <name>CVS pharmacy</name>
+        <image>00021.png</image>
+        <description> This is a dummy description for Pharmacy CVS-Health</description>
+        <category>CVS-Health</category>
+        <phoneNumber>3166351638</phoneNumber>
+        <emailId>info21@cvshealth.com</emailId>
+        <city>Cowlesville</city>
+        <zip>14037</zip>
+        <latitude>42.814667</latitude>
+        <longitude>-78.46076</longitude>
+</Pharmacy>
+<Pharmacy id = "p22">
+        <name>Walgreens pharmacy</name>
+        <image>00022.png</image>
+        <description> This is a dummy description for Pharmacy Walgreens</description>
+        <category>Walgreens</category>
+        <phoneNumber>3396036940</phoneNumber>
+        <emailId>info22@walgreens.com</emailId>
+        <city>Georgetown</city>
+        <zip>83239</zip>
+        <latitude>42.483479</latitude>
+        <longitude>-111.35333</longitude>
+</Pharmacy>
+<Pharmacy id = "p23">
+        <name>Costco pharmacy</name>
+        <image>00023.png</image>
+        <description> This is a dummy description for Pharmacy Costco-Wholesale-Corp</description>
+        <category>Costco-Wholesale-Corp</category>
+        <phoneNumber>3706599336</phoneNumber>
+        <emailId>info23@costcopharma.com</emailId>
+        <city>Bruno</city>
+        <zip>68014</zip>
+        <latitude>41.28216</latitude>
+        <longitude>-96.9594</longitude>
+</Pharmacy>
+<Pharmacy id = "p24">
+        <name>CVS pharmacy</name>
+        <image>00024.png</image>
+        <description> This is a dummy description for Pharmacy CVS-Health</description>
+        <category>CVS-Health</category>
+        <phoneNumber>3376295282</phoneNumber>
+        <emailId>info24@cvshealth.com</emailId>
+        <city>Bruno</city>
+        <zip>68014</zip>
+        <latitude>41.28216</latitude>
+        <longitude>-96.9594</longitude>
+</Pharmacy>
+<Pharmacy id = "p25">
+        <name>Walgreens pharmacy</name>
+        <image>00025.png</image>
+        <description> This is a dummy description for Pharmacy Walgreens</description>
+        <category>Walgreens</category>
+        <phoneNumber>3086478109</phoneNumber>
+        <emailId>info25@walgreens.com</emailId>
+        <city>Caguas</city>
+        <zip>00626</zip>
+        <latitude>18.235003</latitude>
+        <longitude>-66.037318</longitude>
+</Pharmacy>
+<Pharmacy id = "p26">
+        <name>Costco pharmacy</name>
+        <image>00026.png</image>
+        <description> This is a dummy description for Pharmacy Costco-Wholesale-Corp</description>
+        <category>Costco-Wholesale-Corp</category>
+        <phoneNumber>3226948619</phoneNumber>
+        <emailId>info26@costcopharma.com</emailId>
+        <city>Casselberry</city>
+        <zip>32730</zip>
+        <latitude>28.653875</latitude>
+        <longitude>-81.34387</longitude>
+</Pharmacy>
+<Pharmacy id = "p27">
+        <name>CVS pharmacy</name>
+        <image>00027.png</image>
+        <description> This is a dummy description for Pharmacy CVS-Health</description>
+        <category>CVS-Health</category>
+        <phoneNumber>3566958115</phoneNumber>
+        <emailId>info27@cvshealth.com</emailId>
+        <city>Savannah</city>
+        <zip>31401</zip>
+        <latitude>32.068658</latitude>
+        <longitude>-81.09258</longitude>
+</Pharmacy>
+<Pharmacy id = "p28">
+        <name>Walgreens pharmacy</name>
+        <image>00028.png</image>
+        <description> This is a dummy description for Pharmacy Walgreens</description>
+        <category>Walgreens</category>
+        <phoneNumber>3056531355</phoneNumber>
+        <emailId>info28@walgreens.com</emailId>
+        <city>Atlanta</city>
+        <zip>30378</zip>
+        <latitude>33.844371</latitude>
+        <longitude>-84.47405</longitude>
+</Pharmacy>
+<Pharmacy id = "p29">
+        <name>Costco pharmacy</name>
+        <image>00029.png</image>
+        <description> This is a dummy description for Pharmacy Costco-Wholesale-Corp</description>
+        <category>Costco-Wholesale-Corp</category>
+        <phoneNumber>4006246040</phoneNumber>
+        <emailId>info29@costcopharma.com</emailId>
+        <city>Lakeland</city>
+        <zip>33804</zip>
+        <latitude>28.002553</latitude>
+        <longitude>-81.61864</longitude>
+</Pharmacy>
+<Pharmacy id = "p30">
+        <name>CVS pharmacy</name>
+        <image>00030.png</image>
+        <description> This is a dummy description for Pharmacy CVS-Health</description>
+        <category>CVS-Health</category>
+        <phoneNumber>3176812531</phoneNumber>
+        <emailId>info30@cvshealth.com</emailId>
+        <city>Lakeland</city>
+        <zip>33804</zip>
+        <latitude>28.002553</latitude>
+        <longitude>-81.61864</longitude>
+</Pharmacy>
+<Pharmacy id = "p31">
+        <name>Walgreens pharmacy</name>
+        <image>00031.png</image>
+        <description> This is a dummy description for Pharmacy Walgreens</description>
+        <category>Walgreens</category>
+        <phoneNumber>3916386730</phoneNumber>
+        <emailId>info31@walgreens.com</emailId>
+        <city>Lawai</city>
+        <zip>96765</zip>
+        <latitude>21.930922</latitude>
+        <longitude>-159.499342</longitude>
+</Pharmacy>
+<Pharmacy id = "p32">
+        <name>Costco pharmacy</name>
+        <image>00032.png</image>
+        <description> This is a dummy description for Pharmacy Costco-Wholesale-Corp</description>
+        <category>Costco-Wholesale-Corp</category>
+        <phoneNumber>3246951177</phoneNumber>
+        <emailId>info32@costcopharma.com</emailId>
+        <city>East Berlin</city>
+        <zip>06023</zip>
+        <latitude>41.612748</latitude>
+        <longitude>-72.72017</longitude>
+</Pharmacy>
+<Pharmacy id = "p33">
+        <name>CVS pharmacy</name>
+        <image>00033.png</image>
+        <description> This is a dummy description for Pharmacy CVS-Health</description>
+        <category>CVS-Health</category>
+        <phoneNumber>3166132707</phoneNumber>
+        <emailId>info33@cvshealth.com</emailId>
+        <city>Jonesburg</city>
+        <zip>63351</zip>
+        <latitude>38.862422</latitude>
+        <longitude>-91.31284</longitude>
+</Pharmacy>
+<Pharmacy id = "p34">
+        <name>Walgreens pharmacy</name>
+        <image>00034.png</image>
+        <description> This is a dummy description for Pharmacy Walgreens</description>
+        <category>Walgreens</category>
+        <phoneNumber>3946327222</phoneNumber>
+        <emailId>info34@walgreens.com</emailId>
+        <city>Graham</city>
+        <zip>73437</zip>
+        <latitude>34.363418</latitude>
+        <longitude>-97.43017</longitude>
+</Pharmacy>
+<Pharmacy id = "p35">
+        <name>Costco pharmacy</name>
+        <image>00035.png</image>
+        <description> This is a dummy description for Pharmacy Costco-Wholesale-Corp</description>
+        <category>Costco-Wholesale-Corp</category>
+        <phoneNumber>3366902460</phoneNumber>
+        <emailId>info35@costcopharma.com</emailId>
+        <city>Sidney Center</city>
+        <zip>13839</zip>
+        <latitude>42.236762</latitude>
+        <longitude>-75.25901</longitude>
+</Pharmacy>
+<Pharmacy id = "p36">
+        <name>CVS pharmacy</name>
+        <image>00036.png</image>
+        <description> This is a dummy description for Pharmacy CVS-Health</description>
+        <category>CVS-Health</category>
+        <phoneNumber>3216843941</phoneNumber>
+        <emailId>info36@cvshealth.com</emailId>
+        <city>Bellflower</city>
+        <zip>63333</zip>
+        <latitude>39.03288</latitude>
+        <longitude>-91.32983</longitude>
+</Pharmacy>
+<Pharmacy id = "p37">
+        <name>Walgreens pharmacy</name>
+        <image>00037.png</image>
+        <description> This is a dummy description for Pharmacy Walgreens</description>
+        <category>Walgreens</category>
+        <phoneNumber>3466522629</phoneNumber>
+        <emailId>info37@walgreens.com</emailId>
+        <city>Savannah</city>
+        <zip>31401</zip>
+        <latitude>32.068658</latitude>
+        <longitude>-81.09258</longitude>
+</Pharmacy>
+<Pharmacy id = "p38">
+        <name>Costco pharmacy</name>
+        <image>00038.png</image>
+        <description> This is a dummy description for Pharmacy Costco-Wholesale-Corp</description>
+        <category>Costco-Wholesale-Corp</category>
+        <phoneNumber>3946314231</phoneNumber>
+        <emailId>info38@costcopharma.com</emailId>
+        <city>Whitefield</city>
+        <zip>74472</zip>
+        <latitude>35.259201</latitude>
+        <longitude>-95.24701</longitude>
+</Pharmacy>
+<Pharmacy id = "p39">
+        <name>CVS pharmacy</name>
+        <image>00039.png</image>
+        <description> This is a dummy description for Pharmacy CVS-Health</description>
+        <category>CVS-Health</category>
+        <phoneNumber>3206758481</phoneNumber>
+        <emailId>info39@cvshealth.com</emailId>
+        <city>Lake Harbor</city>
+        <zip>33459</zip>
+        <latitude>26.645895</latitude>
+        <longitude>-80.430269</longitude>
+</Pharmacy>
+<Pharmacy id = "p40">
+        <name>Walgreens pharmacy</name>
+        <image>00040.png</image>
+        <description> This is a dummy description for Pharmacy Walgreens</description>
+        <category>Walgreens</category>
+        <phoneNumber>3436481183</phoneNumber>
+        <emailId>info40@walgreens.com</emailId>
+        <city>Jonesburg</city>
+        <zip>63351</zip>
+        <latitude>38.862422</latitude>
+        <longitude>-91.31284</longitude>
+</Pharmacy>
+<Pharmacy id = "p41">
+        <name>Costco pharmacy</name>
+        <image>00041.png</image>
+        <description> This is a dummy description for Pharmacy Costco-Wholesale-Corp</description>
+        <category>Costco-Wholesale-Corp</category>
+        <phoneNumber>3486962281</phoneNumber>
+        <emailId>info41@costcopharma.com</emailId>
+        <city>Red Bluff</city>
+        <zip>96080</zip>
+        <latitude>40.183837</latitude>
+        <longitude>-122.24074</longitude>
+</Pharmacy>
+<Pharmacy id = "p42">
+        <name>CVS pharmacy</name>
+        <image>00042.png</image>
+        <description> This is a dummy description for Pharmacy CVS-Health</description>
+        <category>CVS-Health</category>
+        <phoneNumber>3336711726</phoneNumber>
+        <emailId>info42@cvshealth.com</emailId>
+        <city>Lakeland</city>
+        <zip>33804</zip>
+        <latitude>28.002553</latitude>
+        <longitude>-81.61864</longitude>
+</Pharmacy>
+<Pharmacy id = "p43">
+        <name>Walgreens pharmacy</name>
+        <image>00043.png</image>
+        <description> This is a dummy description for Pharmacy Walgreens</description>
+        <category>Walgreens</category>
+        <phoneNumber>3616374453</phoneNumber>
+        <emailId>info43@walgreens.com</emailId>
+        <city>Casselberry</city>
+        <zip>32730</zip>
+        <latitude>28.653875</latitude>
+        <longitude>-81.34387</longitude>
+</Pharmacy>
+<Pharmacy id = "p44">
+        <name>Costco pharmacy</name>
+        <image>00044.png</image>
+        <description> This is a dummy description for Pharmacy Costco-Wholesale-Corp</description>
+        <category>Costco-Wholesale-Corp</category>
+        <phoneNumber>3766231343</phoneNumber>
+        <emailId>info44@costcopharma.com</emailId>
+        <city>Graham</city>
+        <zip>73437</zip>
+        <latitude>34.363418</latitude>
+        <longitude>-97.43017</longitude>
+</Pharmacy>
+<Pharmacy id = "p45">
+        <name>CVS pharmacy</name>
+        <image>00045.png</image>
+        <description> This is a dummy description for Pharmacy CVS-Health</description>
+        <category>CVS-Health</category>
+        <phoneNumber>3176795664</phoneNumber>
+        <emailId>info45@cvshealth.com</emailId>
+        <city>Little Rock</city>
+        <zip>72221</zip>
+        <latitude>34.751918</latitude>
+        <longitude>-92.392487</longitude>
+</Pharmacy>
+<Pharmacy id = "p46">
+        <name>Walgreens pharmacy</name>
+        <image>00046.png</image>
+        <description> This is a dummy description for Pharmacy Walgreens</description>
+        <category>Walgreens</category>
+        <phoneNumber>3636893106</phoneNumber>
+        <emailId>info46@walgreens.com</emailId>
+        <city>Big Sioux</city>
+        <zip>57949</zip>
+        <latitude>42.505818</latitude>
+        <longitude>-96.499259</longitude>
+</Pharmacy>
+<Pharmacy id = "p47">
+        <name>Costco pharmacy</name>
+        <image>00047.png</image>
+        <description> This is a dummy description for Pharmacy Costco-Wholesale-Corp</description>
+        <category>Costco-Wholesale-Corp</category>
+        <phoneNumber>3926759192</phoneNumber>
+        <emailId>info47@costcopharma.com</emailId>
+        <city>Georgetown</city>
+        <zip>83239</zip>
+        <latitude>42.483479</latitude>
+        <longitude>-111.35333</longitude>
+</Pharmacy>
+<Pharmacy id = "p48">
+        <name>CVS pharmacy</name>
+        <image>00048.png</image>
+        <description> This is a dummy description for Pharmacy CVS-Health</description>
+        <category>CVS-Health</category>
+        <phoneNumber>3746246545</phoneNumber>
+        <emailId>info48@cvshealth.com</emailId>
+        <city>Little Rock</city>
+        <zip>72221</zip>
+        <latitude>34.751918</latitude>
+        <longitude>-92.392487</longitude>
+</Pharmacy>
+<Pharmacy id = "p49">
+        <name>Walgreens pharmacy</name>
+        <image>00049.png</image>
+        <description> This is a dummy description for Pharmacy Walgreens</description>
+        <category>Walgreens</category>
+        <phoneNumber>3786422224</phoneNumber>
+        <emailId>info49@walgreens.com</emailId>
+        <city>Stedman</city>
+        <zip>28391</zip>
+        <latitude>35.016373</latitude>
+        <longitude>-78.6941</longitude>
+</Pharmacy>
+<Pharmacy id = "p50">
+        <name>Costco pharmacy</name>
+        <image>00050.png</image>
+        <description> This is a dummy description for Pharmacy Costco-Wholesale-Corp</description>
+        <category>Costco-Wholesale-Corp</category>
+        <phoneNumber>3756912088</phoneNumber>
+        <emailId>info50@costcopharma.com</emailId>
+        <city>Hawaii National Park</city>
+        <zip>96718</zip>
+        <latitude>19.435739</latitude>
+        <longitude>-155.26648</longitude>
+</Pharmacy>
+</PharmacyCatalog>
 </ProductCatalog>
