@@ -10,11 +10,16 @@ public class MySqlDataStoreUtilities
         try
         {
         Class.forName("com.mysql.jdbc.Driver").newInstance();
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bestdeal","root","IllinoisTech2021@");							
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthhub","root","IllinoisTech2021@");	
+        System.out.println("----------------------------------------");
+        System.out.println("SQL Connection Established");	
+        System.out.println("----------------------------------------");					
         }
         catch(Exception e)
         {
-        
+            System.out.println("----------------------------------------");
+            System.out.println("SQL Connection Failed");	
+            System.out.println("----------------------------------------");	
         }
     }
 
@@ -49,6 +54,35 @@ public class MySqlDataStoreUtilities
         catch(Exception e)
         {            
         }
+    }
+
+    public static void insertDoctor(String id, String name, double price, String image, String description, String category, String phoneNumber, String city, String zip, String latitude, String longitude )
+    {
+        // System.out.println(type + " | " + ID + " | " + name + " | " + price + " | " + image + " | " + manufactorer + " | " + condition + " | " + discount + " | " + description);
+        try
+        {        
+            getConnection();
+            String insertIntoCustomerOrderQuery = "INSERT INTO doctors(id, name, price, image, description, category, phoneNumber, city, zip, latitude, longitude )"
+            + "VALUES (?,?,?,?,?,?,?,?,?,?,?);";	
+                
+            PreparedStatement pst = conn.prepareStatement(insertIntoCustomerOrderQuery);
+            pst.setString(1,id);
+            pst.setString(2,name);
+            pst.setDouble(3,price);
+            pst.setString(4,image);
+            pst.setString(5,description);
+            pst.setString(6,category);
+            pst.setString(7,phoneNumber);
+            pst.setString(8,city);
+            pst.setString(9,zip);
+            pst.setString(10,latitude);
+            pst.setString(11,longitude);
+            pst.execute();
+        }
+        catch(Exception e)
+        {
+        
+        }		
     }
 
     public static void insertProduct(String type, String ID, String name, double price, String image, String manufactorer, String condition, double discount, String description)

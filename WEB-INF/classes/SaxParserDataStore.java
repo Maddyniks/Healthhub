@@ -177,29 +177,19 @@ public class SaxParserDataStore extends DefaultHandler {
 		try
 		{
 			if (element.equals("Doctor")) {
-				// System.out.println("Name: " + doctor.getName());
-				// System.out.println("ID: " + doctor.getId());
-				// System.out.println("Price: " + doctor.getPrice());
-				// System.out.println("Category: " + doctor.getCategory());
-				// System.out.println("Image: " + doctor.getImage());
-				// System.out.println("Desc: " + doctor.getDescription());
-				// System.out.println("Phone: " + doctor.getPhone());
-				// System.out.println("ZIP: " + doctor.getZip());
-				// System.out.println("City: " + doctor.getCity());
-				// System.out.println("Lat: " + doctor.getLat());
 				doctors.put(doctor.getId(),doctor);
-				//MySqlDataStoreUtilities.insertProduct("doctor", doctor.getId(), doctor.getName(), doctor.getPrice(), doctor.getImage(), doctor.getRetailer(), doctor.getCondition(), doctor.getDiscount(), doctor.getDescription());  
+				MySqlDataStoreUtilities.insertDoctor(doctor.getId(), doctor.getName(), doctor.getPrice(), doctor.getImage(), doctor.getDescription(), doctor.getCategory(), doctor.getPhone(), doctor.getCity(), doctor.getZip(), doctor.getLat(), doctor.getLongi());  
 				return;
 			}
 	 
 			if (element.equals("phone")) {	
 				phones.put(phone.getId(),phone);
-				MySqlDataStoreUtilities.insertProduct("phone", phone.getId(), phone.getName(), phone.getPrice(), phone.getImage(), phone.getRetailer(), phone.getCondition(), phone.getDiscount(), phone.getDescription());  
+				//MySqlDataStoreUtilities.insertProduct("phone", phone.getId(), phone.getName(), phone.getPrice(), phone.getImage(), phone.getRetailer(), phone.getCondition(), phone.getDiscount(), phone.getDescription());  
 				return;
 			}
 			if (element.equals("soundsystem")) {	  
 				soundsystems.put(soundsystem.getId(),soundsystem);
-				MySqlDataStoreUtilities.insertProduct("soundsystem", soundsystem.getId(), soundsystem.getName(), soundsystem.getPrice(), soundsystem.getImage(), soundsystem.getRetailer(), soundsystem.getCondition(), soundsystem.getDiscount(), soundsystem.getDescription());
+				//MySqlDataStoreUtilities.insertProduct("soundsystem", soundsystem.getId(), soundsystem.getName(), soundsystem.getPrice(), soundsystem.getImage(), soundsystem.getRetailer(), soundsystem.getCondition(), soundsystem.getDiscount(), soundsystem.getDescription());
 				return;
 			}
 		}

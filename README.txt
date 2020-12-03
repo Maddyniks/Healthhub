@@ -1,12 +1,13 @@
-To Run Assignment 5 Follow the steps:
+To Run HealthHUb Follow the steps:
 
 
-- Extract the Zip and Paste the Tutorial_1 folder under webapps (C:\apache-tomcat-7.0.34\webapps\Tutorial_1)
+- Extract the Zip and Paste the Healthhub folder under webapps (C:\apache-tomcat-7.0.34\webapps\Healthhub)
 
 
-- In Your MySQL Workbench import the provided SQL files under sql folder
-	- MySQL DB Name: bestdeal
-	- MySQL DB Password: IllinoisTech2021@
+- Setup MySQL Workbench import the provided SQL files under sql folder
+	- Create MySQL DB Name: healthhub
+	- Create MySQL DB Password: IllinoisTech2021@
+	- import healthhub.sql file (This will setup all the required tables)
 
 
 - Open MongoDB Compass and import the reviews.json file
@@ -26,7 +27,7 @@ To Run Assignment 5 Follow the steps:
 
 
 - Open Terminal: 
-	- cd C:\apache-tomcat-7.0.34\webapps\Tutorial_1
+	- cd C:\apache-tomcat-7.0.34\webapps\Healthhub
 	- Type: "env-setup-for-tomcat" and enter
 	- cd ..
 	- cd ..
