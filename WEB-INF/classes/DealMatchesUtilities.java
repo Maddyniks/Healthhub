@@ -17,13 +17,13 @@ public class DealMatchesUtilities extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
 
-        HashMap<String,DoctorType> selectedproducts=new HashMap<String,DoctorType>();
+        HashMap<String,DoctorType> selectedDoctors=new HashMap<String,DoctorType>();
 		try
 		{
             pw.print("<div id='content'>");
             pw.print("<div class='post'>");
             pw.print("<h2 class='title'>");
-            pw.print("<a href='/Tutorial_1'>Welcome to Health-Hub Deals</a></h2>");
+            pw.print("<a href='/Healthhub'>Welcome to Health-Hub Deals</a></h2>");
             
             pw.print("<div class='entry'>");
             pw.print("<img src='images/site/img08.jpg'style='width: 600px; display: block; margin-left: auto; margin-right: auto' />");
@@ -40,11 +40,11 @@ public class DealMatchesUtilities extends HttpServlet {
 			int i = 0;
 			for(Map.Entry<String, DoctorType> entry : productmap.entrySet())
 			{
-                if(selectedproducts.size()<2 && !selectedproducts.containsKey(entry.getKey()))
+                if(selectedDoctors.size()<2 && !selectedDoctors.containsKey(entry.getKey()))
                 {	
-                    BufferedReader reader = new BufferedReader(new FileReader (new File(TOMCAT_HOME+"\\webapps\\Healthhub-main\\DealMatches.txt")));
+                    BufferedReader reader = new BufferedReader(new FileReader (new File(TOMCAT_HOME+"\\webapps\\Healthhub\\DealMatches.txt")));
                     line=reader.readLine().toLowerCase();	
-                    
+                    System.out.println(line);
                     if(line==null)
                     {
                         pw.print("<div class='panel panel-default'>");
@@ -66,7 +66,7 @@ public class DealMatchesUtilities extends HttpServlet {
                                 pw.print("</div>");
                                 pw.print("</div>");
 
-                                selectedproducts.put(entry.getKey(),entry.getValue());
+                                selectedDoctors.put(entry.getKey(),entry.getValue());
                                 break;
                             } 
                         } 
@@ -91,7 +91,7 @@ public class DealMatchesUtilities extends HttpServlet {
 		pw.print("</h2>");
         pw.print("<div class='entry'>");
         
-		if(selectedproducts.size()==0)
+		if(selectedDoctors.size()==0)
 		{
             pw.print("<br> <br>");
 		    pw.print("<div class='panel panel-default'>");
@@ -104,7 +104,7 @@ public class DealMatchesUtilities extends HttpServlet {
 		{
             pw.print("<table id='bestseller'>");
             pw.print("<tr>");
-            for(Map.Entry<String, DoctorType> entry : selectedproducts.entrySet())
+            for(Map.Entry<String, DoctorType> entry : selectedDoctors.entrySet())
             {
                 pw.print("<td><div id='shop_item'><h3>"+entry.getValue().getName()+"</h3>");
                 pw.print("<strong>"+entry.getValue().getPrice()+"$</strong>");
