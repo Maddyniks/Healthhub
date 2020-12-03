@@ -9,8 +9,8 @@ public class MySqlDataStoreUtilities
     {
         try
         {
-        Class.forName("com.mysql.jdbc.Driver").newInstance();
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthhub","root","IllinoisTech2021@");	
+        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthhub","root","root");	
         System.out.println("----------------------------------------");
         System.out.println("SQL Connection Established");	
         System.out.println("----------------------------------------");					
@@ -486,18 +486,19 @@ public class MySqlDataStoreUtilities
         return hm;			
     }
     
-    public static HashMap<String,Product> getData()
+    public static HashMap<String,DoctorType> getData()
 	{
-		HashMap<String,Product> hm=new HashMap<String,Product>();
+		HashMap<String,DoctorType> hm=new HashMap<String,DoctorType>();
 		try
 		{
 			getConnection();
 			Statement stmt=conn.createStatement();
-			String selectCustomerQuery="select * from  productDetails";
+			String selectCustomerQuery="select * from  doctors";
 			ResultSet rs = stmt.executeQuery(selectCustomerQuery);
 			while(rs.next())
-            {	Product p = new Product(rs.getString("productType"), rs.getString("ID"), rs.getInt("Stock"), rs.getString("productName"), rs.getDouble("productPrice"), rs.getString("productImage"), rs.getString("productManufacturer"), rs.getString("productCondition"), rs.getDouble("productDiscount"), rs.getString("description"));
-                hm.put(rs.getString("productName"), p);
+            {	
+				DoctorType p = new DoctorType(rs.getString("id"),rs.getString("name"), rs.getDouble("price"), rs.getString("image"),rs.getString("description"),rs.getString("category"),rs.getString("phoneNumber"),rs.getString("city"),rs.getString("zip"),rs.getString("latitude"),rs.getString("longitude"));
+                hm.put(rs.getString("name"), p);
 			}
 		}
 		catch(Exception e)
