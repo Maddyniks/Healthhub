@@ -14,11 +14,11 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class SaxParserDataStore extends DefaultHandler {
     DoctorType doctor;
-    SSType soundsystem;
+    PharmacyType pharmacy;
 	PhoneType phone;
    
     static HashMap<String,DoctorType> doctors;
-    static HashMap<String,SSType> soundsystems;
+    static HashMap<String,PharmacyType> pharmacies;
 	static HashMap<String,PhoneType> phones;
   
     String consoleXmlFileName;
@@ -31,7 +31,7 @@ public class SaxParserDataStore extends DefaultHandler {
 	public SaxParserDataStore(String consoleXmlFileName) {
     this.consoleXmlFileName = consoleXmlFileName;
     doctors = new HashMap<String, DoctorType>();
-	soundsystems=new  HashMap<String, SSType>();
+	pharmacies=new  HashMap<String, PharmacyType>();
 	phones=new HashMap<String, PhoneType>();
 	
 	
@@ -57,7 +57,7 @@ public class SaxParserDataStore extends DefaultHandler {
         }
 	}
 	
-	// when xml start element is parsed store the id into respective hashmap for Doctor, soundsystems etc 
+	// when xml start element is parsed store the id into respective hashmap for Doctor, pharmacies etc 
     @Override
     public void startElement(String str1, String str2, String elementName, Attributes attributes) throws SAXException {
         if (elementName.equalsIgnoreCase("Doctor")) 
@@ -72,14 +72,14 @@ public class SaxParserDataStore extends DefaultHandler {
 			phone = new PhoneType();
             phone.setId(attributes.getValue("id"));
         }
-        if (elementName.equalsIgnoreCase("soundsystem"))
+        if (elementName.equalsIgnoreCase("pharmacy"))
 		{
-			currentElement="soundsystem";
-			soundsystem= new SSType();
-            soundsystem.setId(attributes.getValue("id"));
+			currentElement="pharmacy";
+			pharmacy= new PharmacyType();
+            pharmacy.setId(attributes.getValue("id"));
 		}
     }
-	// when xml end element is parsed store the data into respective hashmap for Doctor,soundsystems etc respectively
+	// when xml end element is parsed store the data into respective hashmap for Doctor,pharmacies etc respectively
     @Override
 	public void endElement(String str1, String str2, String element) throws SAXException 
 	{
@@ -88,8 +88,8 @@ public class SaxParserDataStore extends DefaultHandler {
         if (element.equalsIgnoreCase("image")) {
 		    if(currentElement.equals("Doctor"))
 				doctor.setImage(elementValueRead);
-        	if(currentElement.equals("soundsystem"))
-				soundsystem.setImage(elementValueRead);
+        	if(currentElement.equals("pharmacy"))
+				pharmacy.setImage(elementValueRead);
             if(currentElement.equals("phone"))
 				phone.setImage(elementValueRead);
 			return;
@@ -97,29 +97,23 @@ public class SaxParserDataStore extends DefaultHandler {
 		if (element.equalsIgnoreCase("description")) {
 		    if(currentElement.equals("Doctor"))
 				doctor.setDescription(elementValueRead);
-        	if(currentElement.equals("soundsystem"))
-				soundsystem.setDescription(elementValueRead);
+        	if(currentElement.equals("pharmacy"))
+				pharmacy.setDescription(elementValueRead);
             if(currentElement.equals("phone"))
 				phone.setDescription(elementValueRead);    
 			return;
         }
 		if (element.equalsIgnoreCase("discount")) {
-        	if(currentElement.equals("soundsystem"))
-				soundsystem.setDiscount(Double.parseDouble(elementValueRead));
             if(currentElement.equals("phone"))
 				phone.setDiscount(Double.parseDouble(elementValueRead));
 			return;
 	    }
 		if (element.equalsIgnoreCase("condition")) {
-        	if(currentElement.equals("soundsystem"))
-				soundsystem.setCondition(elementValueRead);
             if(currentElement.equals("phone"))
 				phone.setCondition(elementValueRead); 
 			return;  
 		}
 		if (element.equalsIgnoreCase("manufacturer")) {
-        	if(currentElement.equals("soundsystem"))
-				soundsystem.setRetailer(elementValueRead);
             if(currentElement.equals("phone"))
 				phone.setRetailer(elementValueRead);    
 			return;
@@ -132,8 +126,8 @@ public class SaxParserDataStore extends DefaultHandler {
         if (element.equalsIgnoreCase("name")) {
             if(currentElement.equals("Doctor"))
 				doctor.setName(elementValueRead);
-        	if(currentElement.equals("soundsystem"))
-				soundsystem.setName(elementValueRead);
+        	if(currentElement.equals("pharmacy"))
+				pharmacy.setName(elementValueRead);
             if(currentElement.equals("phone"))
 				phone.setName(elementValueRead); 
 			return;
@@ -141,33 +135,55 @@ public class SaxParserDataStore extends DefaultHandler {
 		if(element.equalsIgnoreCase("phoneNumber")){
 			if(currentElement.equals("Doctor"))
 				doctor.setPhone(elementValueRead);
+			if(currentElement.equals("pharmacy"))
+				pharmacy.setPhone(elementValueRead);
 			return;
 		}
+
+		if(element.equalsIgnoreCase("emailid")){			
+			if(currentElement.equals("pharmacy"))
+				pharmacy.setEmailId(elementValueRead);
+			return;
+
+		}
+
 		if(element.equalsIgnoreCase("city")){
 			if(currentElement.equals("Doctor"))
-					doctor.setCity(elementValueRead);
+				doctor.setCity(elementValueRead);
+			if(currentElement.equals("pharmacy"))
+				pharmacy.setCity(elementValueRead);
 			return;
+
 		}
 		if(element.equalsIgnoreCase("zip")){
 			if(currentElement.equals("Doctor"))
 				doctor.setZip(elementValueRead);
+			
+			if(currentElement.equals("pharmacy"))
+				pharmacy.setZip(elementValueRead);
 			return;
+
 		}
 		if(element.equalsIgnoreCase("latitude")){
 			if(currentElement.equals("Doctor"))
 				doctor.setLat(elementValueRead);
+
+			if(currentElement.equals("pharmacy"))
+				pharmacy.setLat(elementValueRead);
 			return;
 		}
 		if(element.equalsIgnoreCase("longitude")){
 			if(currentElement.equals("Doctor"))
 				doctor.setLongi(elementValueRead);
+
+			if(currentElement.equals("pharmacy"))
+				pharmacy.setLongi(elementValueRead);
 			return;
 		}
         if(element.equalsIgnoreCase("price")){
 			if(currentElement.equals("Doctor"))
 				doctor.setPrice(Double.parseDouble(elementValueRead));
-        	if(currentElement.equals("soundsystem"))
-				soundsystem.setPrice(Double.parseDouble(elementValueRead));
+
             if(currentElement.equals("phone"))
 				phone.setPrice(Double.parseDouble(elementValueRead));   
 			return;
@@ -187,9 +203,9 @@ public class SaxParserDataStore extends DefaultHandler {
 				//MySqlDataStoreUtilities.insertProduct("phone", phone.getId(), phone.getName(), phone.getPrice(), phone.getImage(), phone.getRetailer(), phone.getCondition(), phone.getDiscount(), phone.getDescription());  
 				return;
 			}
-			if (element.equals("soundsystem")) {	  
-				soundsystems.put(soundsystem.getId(),soundsystem);
-				//MySqlDataStoreUtilities.insertProduct("soundsystem", soundsystem.getId(), soundsystem.getName(), soundsystem.getPrice(), soundsystem.getImage(), soundsystem.getRetailer(), soundsystem.getCondition(), soundsystem.getDiscount(), soundsystem.getDescription());
+			if (element.equals("pharmacy")) {	  
+				pharmacies.put(pharmacy.getId(),pharmacy);
+				//MySqlDataStoreUtilities.insertProduct("pharmacy", pharmacy.getId(), pharmacy.getName(), pharmacy.getPrice(), pharmacy.getImage(), pharmacy.getRetailer(), pharmacy.getCondition(), pharmacy.getDiscount(), pharmacy.getDescription());
 				return;
 			}
 		}
