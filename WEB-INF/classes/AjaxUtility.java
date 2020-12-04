@@ -17,8 +17,8 @@ public class AjaxUtility
 	{
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bestdeal","root","1234");							
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthhub","root","root");							
 			message="Successfull";
 			return message;
 		}
@@ -36,7 +36,7 @@ public class AjaxUtility
 	
 	public  StringBuffer readdata(String searchId)
 	{	
-		HashMap<String,Product> data;
+		HashMap<String,DoctorType> data;
 		data = getData();
 		
  	    Iterator it = data.entrySet().iterator();	
@@ -45,14 +45,15 @@ public class AjaxUtility
                     Map.Entry pi = (Map.Entry)it.next();
 			if(pi!=null)
 			{
-				Product p = (Product)pi.getValue();                   
-                if (p.getproductName().toLowerCase().startsWith(searchId))
+				DoctorType p = (DoctorType)pi.getValue();                   
+                if (p.getName().toLowerCase().startsWith(searchId))
                 {
                         sb.append("<product>");
-                        sb.append("<id>" + p.getID() + "</id>");
-                        sb.append("<productName>" + p.getproductName() + "</productName>");
-                        sb.append("<productType>" + p.getproductType() + "</productType>");
-                        sb.append("<productMaker>" + p.getproductManufacturer() + "</productMaker>");
+                        sb.append("<id>" + p.getId() + "</id>");
+                        sb.append("<productName>" + p.getName() + "</productName>");
+						sb.append("<productType>" + "doctors"+ "</productType>");
+						System.out.println(p.getCategory());
+                        //sb.append("<productMaker>" + p.getproductManufacturer() + "</productMaker>");
                         sb.append("</product>");
                 }
 			}
@@ -61,20 +62,23 @@ public class AjaxUtility
 	   return sb;
 	}
 	
-	public static HashMap<String,Product> getData()
+	public static HashMap<String,DoctorType> getData()
 	{
-		HashMap<String,Product> hm=new HashMap<String,Product>();
+		HashMap<String,DoctorType> hm=new HashMap<String,DoctorType>();
 		try
 		{
 			getConnection();
 			
-		    String selectproduct="select * from  productDetails";
+		    String selectproduct="select * from  doctors";
 		    PreparedStatement pst = conn.prepareStatement(selectproduct);
 			ResultSet rs = pst.executeQuery();
 			
 			while(rs.next())
-			{	Product p = new Product(rs.getString("productType"), rs.getString("ID"), rs.getInt("Stock"), rs.getString("productName"),rs.getDouble("productPrice"),rs.getString("productImage"),rs.getString("productManufacturer"),rs.getString("productCondition"),rs.getDouble("productDiscount"), rs.getString("description"));
-				hm.put(rs.getString("Id"), p);
+			{	
+				
+				DoctorType p = new DoctorType(rs.getString("id"),rs.getString("name"), rs.getDouble("price"), rs.getString("image"),rs.getString("description"),rs.getString("category"),rs.getString("phoneNumber"),rs.getString("city"),rs.getString("zip"),rs.getString("latitude"),rs.getString("longitude"));
+                hm.put(rs.getString("name"), p);
+			
 			}
 		}
 		catch(Exception e)
