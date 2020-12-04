@@ -37,7 +37,7 @@ function initRequest () {
 	}
 }
 
-function appendProduct (productName,productId, productType, productMaker) {
+function appendProduct (productName,productId, productType) {
     let row;
     let cell;
     let linkElement;
@@ -58,7 +58,7 @@ function appendProduct (productName,productId, productType, productMaker) {
     cell.className = "popupCell";
     linkElement = document.createElement("a");
     linkElement.className = "popupItem";
-    linkElement.setAttribute("href", `ViewItem?name=${productName}&type=${productType}s&maker=${productMaker}`);
+    linkElement.setAttribute("href", `ViewItem?name=${productName}&type=${productType}`);
     linkElement.appendChild(document.createTextNode(productName));
     cell.appendChild(linkElement);
 }
@@ -79,8 +79,8 @@ function parseMessages (responseXML) {
                 var productName = product.getElementsByTagName("productName")[0];
                 var productId = product.getElementsByTagName("id")[0];
                 var pType = product.getElementsByTagName("productType")[0];
-                var pMaker = product.getElementsByTagName("productMaker")[0];
-                appendProduct(productName.childNodes[0].nodeValue, productId.childNodes[0].nodeValue, pType.childNodes[0].nodeValue, pMaker.childNodes[0].nodeValue);
+                //var pMaker = product.getElementsByTagName("productMaker")[0];
+                appendProduct(productName.childNodes[0].nodeValue, productId.childNodes[0].nodeValue, pType.childNodes[0].nodeValue);
             }
         }
     }
