@@ -71,6 +71,7 @@ public class AutoCompleteServlet extends HttpServlet
 					{
 						response.setContentType("text/xml");
 						response.getWriter().write("<products>" + sb.toString() + "</products>");
+						System.out.println(sb.toString());
 					} 
 					else 
 					{
@@ -81,11 +82,11 @@ public class AutoCompleteServlet extends HttpServlet
 			}
 			if (action.equals("lookup"))
 			{
-				HashMap<String,Product> data=AjaxUtility.getData();     	
+				HashMap<String,DoctorType> data=AjaxUtility.getData();     	
 				if ((searchId != null) && data.containsKey(searchId.trim())) 
 				{
 					request.setAttribute("data",data.get(searchId.trim()));	
-					RequestDispatcher rd = context.getRequestDispatcher("/ProductData");
+					RequestDispatcher rd = context.getRequestDispatcher("/ProductsData");
 					rd.forward(request,response);
 				}
 			}

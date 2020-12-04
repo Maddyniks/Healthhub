@@ -51,19 +51,19 @@ public class WriteReview extends HttpServlet
 		pw.print("<a style='font-size: 24px;'>Review</a>");
 		pw.print("</h2><div class='entry'>");
         pw.print("<table class='gridtable'>");
-		pw.print("<tr><td> Product Name: </td><td>");
+		pw.print("<tr><td> Name: </td><td>");
 		pw.print(productname);
 		pw.print("<input type='hidden' name='productname' value='" + productname + "'>");
 		pw.print("</td></tr>");
-        pw.print("<tr><td> Product Type:</td><td>");
+        pw.print("<tr><td> Type:</td><td>");
         pw.print(productType);
         pw.print("<input type='hidden' name='producttype' value='" + productType + "'>");
 		pw.print("</td></tr>");
-		pw.print("<tr><td> Product Price:</td><td>");
+		pw.print("<tr><td> Price:</td><td>");
         pw.print("$ " + productPrice);
         pw.print("<input type='hidden' name='productprice' value='" + productPrice + "'>");
 		pw.print("</td></tr>");		
-        pw.print("<tr><td> Brand: </td><td>");
+        pw.print("<tr><td> Category: </td><td>");
         pw.print(productMaker);
 		pw.print("<input type='hidden' name='productmaker' value='"+productMaker+"'>");
         pw.print("</td></tr><table>");
@@ -77,15 +77,20 @@ public class WriteReview extends HttpServlet
         pw.print("<option value='4'>4</option>");
         pw.print("<option value='5'>5</option>");  
         pw.print("</td></tr>");
+		
+		pw.print("<tr>");
+        pw.print("<td> User Address: </td>");
+        pw.print("<td> <input type='text' name='address'> </td>");
+        pw.print("</tr>");		
     
         pw.print("<tr>");
-        pw.print("<td> Retailer Zip Code: </td>");
+        pw.print("<td> User Zip Code: </td>");
         pw.print("<td> <input type='text' name='zipcode'> </td>");
         pw.print("</tr>");		
 
 
         pw.print("<tr>");
-        pw.print("<td> Retailer City: </td>");
+        pw.print("<td> User City: </td>");
         pw.print("<td> <input type='text' name='retailercity'> </td>");
         pw.print("</tr>");							
 		

@@ -15,17 +15,17 @@ public class MongoDBDataStoreUtilities
         MongoClient mongo;
         mongo = new MongoClient("localhost", 27017);
         DB db = mongo.getDB("CustomerReviews");
-        myReviews= db.getCollection("myReviews");	
+        myReviews= db.getCollection("myReviews1");	
         return myReviews; 
     }
 
 
-    public static String insertReview(String productname,String username,String producttype,String productmaker,String reviewrating,String reviewdate,String reviewtext,String retailerpin,String price,String retailercity)
+    public static String insertReview(String productname,String username,String producttype,String productmaker,String reviewrating,String reviewdate,String reviewtext,String retailerpin,String price,String retailercity,String address)
     {
         try
         {		
             getConnection();
-            BasicDBObject doc = new BasicDBObject("title", "myReviews").
+            BasicDBObject doc = new BasicDBObject("title", "myReviews1").
                 append("userName", username).
                 append("productName", productname).
                 append("productType", producttype).
@@ -33,6 +33,7 @@ public class MongoDBDataStoreUtilities
                 append("reviewRating",Integer.parseInt(reviewrating)).
                 append("reviewDate", reviewdate).
                 append("reviewText", reviewtext).
+				append("address", address).
                 append("retailerpin", retailerpin).
                 append("retailercity", retailercity).
                 append("price",(int) Double.parseDouble(price));
@@ -65,7 +66,7 @@ public class MongoDBDataStoreUtilities
                 }
                 ArrayList<Review> listReview = reviews.get(obj.getString("productName"));		
                 Review review =new Review(obj.getString("productName"),obj.getString("userName"),obj.getString("productType"),obj.getString("productMaker"),
-                    obj.getString("reviewRating"),obj.getString("reviewDate"),obj.getString("reviewText"),obj.getString("retailerpin"),obj.getString("price"),obj.getString("retailercity"));
+                    obj.getString("reviewRating"),obj.getString("reviewDate"),obj.getString("reviewText"),obj.getString("retailerpin"),obj.getString("price"),obj.getString("retailercity"),obj.getString("address"));
                 // add to review hashmap
                 listReview.add(review);
                 

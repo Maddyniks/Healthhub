@@ -9,8 +9,8 @@ public class MySqlDataStoreUtilities
     {
         try
         {
-        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthhub","root","IllinoisTech2021@");	
+        Class.forName("com.mysql.jdbc.Driver").newInstance();
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthhub","root","1234");	
         System.out.println("----------------------------------------");
         System.out.println("SQL Connection Established");	
         System.out.println("----------------------------------------");					
@@ -84,6 +84,65 @@ public class MySqlDataStoreUtilities
         
         }		
     }
+
+    public static void insertPharmacy(String id, String name, String image, String description, String category, String phoneNumber, String emailId, String city, String zip, String latitude, String longitude )
+    {
+        // System.out.println(type + " | " + ID + " | " + name + " | " + image + " | " + manufactorer + " | " + condition + " | " + discount + " | " + description);
+        try
+        {        
+            getConnection();
+            String insertIntoCustomerOrderQuery = "INSERT INTO pharmacy(id, name, image, description, category, phoneNumber, emailId, city, zip, latitude, longitude )"
+            + "VALUES (?,?,?,?,?,?,?,?,?,?,?);";	
+                
+            PreparedStatement pst = conn.prepareStatement(insertIntoCustomerOrderQuery);
+            pst.setString(1,id);
+            pst.setString(2,name);
+            pst.setString(3,image);
+            pst.setString(4,description);
+            pst.setString(5,category);
+            pst.setString(6,phoneNumber);
+            pst.setString(7,emailId);
+            pst.setString(8,city);
+            pst.setString(9,zip);
+            pst.setString(10,latitude);
+            pst.setString(11,longitude);
+            pst.execute();
+        }
+        catch(Exception e)
+        {
+        
+        }		
+    }
+
+    public static void insertInsurance(String id, String name, String category, String subcategory, double price, String image, String description, String duration, String emailId, double deductables, double totalcoverage )
+    {
+        // System.out.println(type + " | " + ID + " | " + name + " | " + image + " | " + manufactorer + " | " + condition + " | " + discount + " | " + description);
+        try
+        {        
+            getConnection();
+            String insertIntoCustomerOrderQuery = "INSERT INTO insurance(id, name, category, subcategory, price, image, description, duration, emailId, deductables, totalcoverage )"
+            + "VALUES (?,?,?,?,?,?,?,?,?,?,?);";	
+                
+            PreparedStatement pst = conn.prepareStatement(insertIntoCustomerOrderQuery);
+            pst.setString(1,id);
+            pst.setString(2,name);
+            pst.setString(3,category);
+            pst.setString(4,subcategory);
+            pst.setDouble(5,price);
+            pst.setString(6,image);
+            pst.setString(7,description);
+            pst.setString(8,duration);
+            pst.setString(9,emailId);
+            pst.setDouble(10,deductables);
+            pst.setDouble(11,totalcoverage);
+            pst.execute();
+        }
+        catch(Exception e)
+        {
+        
+        }		
+    }
+
 
     public static void insertProduct(String type, String ID, String name, double price, String image, String manufactorer, String condition, double discount, String description)
     {

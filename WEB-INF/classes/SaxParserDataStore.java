@@ -14,12 +14,12 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class SaxParserDataStore extends DefaultHandler {
     DoctorType doctor;
-    SSType soundsystem;
-	PhoneType phone;
+    PharmacyType pharmacy;
+	InsuranceType insurance;
    
     static HashMap<String,DoctorType> doctors;
-    static HashMap<String,SSType> soundsystems;
-	static HashMap<String,PhoneType> phones;
+    static HashMap<String,PharmacyType> pharmacies;
+	static HashMap<String,InsuranceType> insurances;
   
     String consoleXmlFileName;
 	
@@ -31,8 +31,8 @@ public class SaxParserDataStore extends DefaultHandler {
 	public SaxParserDataStore(String consoleXmlFileName) {
     this.consoleXmlFileName = consoleXmlFileName;
     doctors = new HashMap<String, DoctorType>();
-	soundsystems=new  HashMap<String, SSType>();
-	phones=new HashMap<String, PhoneType>();
+	pharmacies=new  HashMap<String, PharmacyType>();
+	insurances=new HashMap<String, InsuranceType>();
 	
 	
 	
@@ -57,7 +57,7 @@ public class SaxParserDataStore extends DefaultHandler {
         }
 	}
 	
-	// when xml start element is parsed store the id into respective hashmap for Doctor, soundsystems etc 
+	// when xml start element is parsed store the id into respective hashmap for Doctor, pharmacies etc 
     @Override
     public void startElement(String str1, String str2, String elementName, Attributes attributes) throws SAXException {
         if (elementName.equalsIgnoreCase("Doctor")) 
@@ -66,20 +66,20 @@ public class SaxParserDataStore extends DefaultHandler {
 			doctor = new DoctorType();
             doctor.setId(attributes.getValue("id"));
 		}
-        if (elementName.equalsIgnoreCase("phone"))
+        if (elementName.equalsIgnoreCase("Insurance"))
 		{
-			currentElement="phone";
-			phone = new PhoneType();
-            phone.setId(attributes.getValue("id"));
+			currentElement="Insurance";
+			insurance = new InsuranceType();
+            insurance.setId(attributes.getValue("id"));
         }
-        if (elementName.equalsIgnoreCase("soundsystem"))
+        if (elementName.equalsIgnoreCase("Pharmacy"))
 		{
-			currentElement="soundsystem";
-			soundsystem= new SSType();
-            soundsystem.setId(attributes.getValue("id"));
+			currentElement="Pharmacy";
+			pharmacy= new PharmacyType();
+            pharmacy.setId(attributes.getValue("id"));
 		}
     }
-	// when xml end element is parsed store the data into respective hashmap for Doctor,soundsystems etc respectively
+	// when xml end element is parsed store the data into respective hashmap for Doctor,pharmacies etc respectively
     @Override
 	public void endElement(String str1, String str2, String element) throws SAXException 
 	{
@@ -88,90 +88,141 @@ public class SaxParserDataStore extends DefaultHandler {
         if (element.equalsIgnoreCase("image")) {
 		    if(currentElement.equals("Doctor"))
 				doctor.setImage(elementValueRead);
-        	if(currentElement.equals("soundsystem"))
-				soundsystem.setImage(elementValueRead);
-            if(currentElement.equals("phone"))
-				phone.setImage(elementValueRead);
+        	if(currentElement.equals("Pharmacy"))
+				pharmacy.setImage(elementValueRead);
+            if(currentElement.equals("Insurance"))
+				insurance.setImage(elementValueRead);
 			return;
 		}
 		if (element.equalsIgnoreCase("description")) {
 		    if(currentElement.equals("Doctor"))
 				doctor.setDescription(elementValueRead);
-        	if(currentElement.equals("soundsystem"))
-				soundsystem.setDescription(elementValueRead);
-            if(currentElement.equals("phone"))
-				phone.setDescription(elementValueRead);    
+        	if(currentElement.equals("Pharmacy"))
+				pharmacy.setDescription(elementValueRead);
+            if(currentElement.equals("Insurance"))
+				insurance.setDescription(elementValueRead);    
 			return;
         }
-		if (element.equalsIgnoreCase("discount")) {
-        	if(currentElement.equals("soundsystem"))
-				soundsystem.setDiscount(Double.parseDouble(elementValueRead));
-            if(currentElement.equals("phone"))
-				phone.setDiscount(Double.parseDouble(elementValueRead));
-			return;
-	    }
-		if (element.equalsIgnoreCase("condition")) {
-        	if(currentElement.equals("soundsystem"))
-				soundsystem.setCondition(elementValueRead);
-            if(currentElement.equals("phone"))
-				phone.setCondition(elementValueRead); 
-			return;  
-		}
-		if (element.equalsIgnoreCase("manufacturer")) {
-        	if(currentElement.equals("soundsystem"))
-				soundsystem.setRetailer(elementValueRead);
-            if(currentElement.equals("phone"))
-				phone.setRetailer(elementValueRead);    
-			return;
-		}
+		// if (element.equalsIgnoreCase("discount")) {
+        //     if(currentElement.equals("phone"))
+		// 		phone.setDiscount(Double.parseDouble(elementValueRead));
+		// 	return;
+	    // }
+		// if (element.equalsIgnoreCase("condition")) {
+        //     if(currentElement.equals("phone"))
+		// 		phone.setCondition(elementValueRead); 
+		// 	return;  
+		// }
+		// if (element.equalsIgnoreCase("manufacturer")) {
+        //     if(currentElement.equals("phone"))
+		// 		phone.setRetailer(elementValueRead);    
+		// 	return;
+		// }
 		if(element.equalsIgnoreCase("category")){
 			if(currentElement.equals("Doctor"))
 				doctor.setCategory(elementValueRead);
+
+			if(currentElement.equals("Pharmacy"))
+				pharmacy.setCategory(elementValueRead);
+			
+			if(currentElement.equals("Insurance"))
+				insurance.setCategory(elementValueRead);
 			return;
 		}
         if (element.equalsIgnoreCase("name")) {
             if(currentElement.equals("Doctor"))
 				doctor.setName(elementValueRead);
-        	if(currentElement.equals("soundsystem"))
-				soundsystem.setName(elementValueRead);
-            if(currentElement.equals("phone"))
-				phone.setName(elementValueRead); 
+        	if(currentElement.equals("Pharmacy"))
+				pharmacy.setName(elementValueRead);
+            if(currentElement.equals("Insurance"))
+				insurance.setName(elementValueRead); 
 			return;
 		}
 		if(element.equalsIgnoreCase("phoneNumber")){
 			if(currentElement.equals("Doctor"))
 				doctor.setPhone(elementValueRead);
+			if(currentElement.equals("Pharmacy"))
+				pharmacy.setPhone(elementValueRead);
 			return;
 		}
+
+		if(element.equalsIgnoreCase("emailId")){			
+			if(currentElement.equals("Pharmacy"))
+				pharmacy.setEmailId(elementValueRead);
+
+			if(currentElement.equals("Insurance"))
+				insurance.setEmailId(elementValueRead);
+			return;
+
+		}
+
 		if(element.equalsIgnoreCase("city")){
 			if(currentElement.equals("Doctor"))
-					doctor.setCity(elementValueRead);
+				doctor.setCity(elementValueRead);
+			if(currentElement.equals("Pharmacy"))
+				pharmacy.setCity(elementValueRead);
 			return;
+
 		}
 		if(element.equalsIgnoreCase("zip")){
 			if(currentElement.equals("Doctor"))
 				doctor.setZip(elementValueRead);
+			
+			if(currentElement.equals("Pharmacy"))
+				pharmacy.setZip(elementValueRead);
 			return;
+
 		}
 		if(element.equalsIgnoreCase("latitude")){
 			if(currentElement.equals("Doctor"))
 				doctor.setLat(elementValueRead);
+
+			if(currentElement.equals("Pharmacy"))
+				pharmacy.setLat(elementValueRead);
 			return;
 		}
 		if(element.equalsIgnoreCase("longitude")){
 			if(currentElement.equals("Doctor"))
 				doctor.setLongi(elementValueRead);
+
+			if(currentElement.equals("Pharmacy"))
+				pharmacy.setLongi(elementValueRead);
 			return;
 		}
         if(element.equalsIgnoreCase("price")){
 			if(currentElement.equals("Doctor"))
 				doctor.setPrice(Double.parseDouble(elementValueRead));
-        	if(currentElement.equals("soundsystem"))
-				soundsystem.setPrice(Double.parseDouble(elementValueRead));
-            if(currentElement.equals("phone"))
-				phone.setPrice(Double.parseDouble(elementValueRead));   
+
+            if(currentElement.equals("Insurance"))
+				insurance.setPrice(Double.parseDouble(elementValueRead));   
 			return;
 		}
+
+		if(element.equalsIgnoreCase("deductables")){
+            if(currentElement.equals("Insurance"))
+				insurance.setDeductables(Double.parseDouble(elementValueRead));   
+			return;
+		}
+
+		if(element.equalsIgnoreCase("totalcover")){
+            if(currentElement.equals("Insurance"))
+				insurance.setTotalCov(Double.parseDouble(elementValueRead));   
+			return;
+		}
+
+		if(element.equalsIgnoreCase("duration")){
+			if(currentElement.equals("Insurance"))
+				insurance.setDuration(elementValueRead);
+			return;
+		}
+
+		if(element.equalsIgnoreCase("subcategory")){
+			if(currentElement.equals("Insurance"))
+				insurance.setSubCategory(elementValueRead);
+			return;
+		}
+
+
 		
 
 		try
@@ -182,14 +233,15 @@ public class SaxParserDataStore extends DefaultHandler {
 				return;
 			}
 	 
-			if (element.equals("phone")) {	
-				phones.put(phone.getId(),phone);
+			if (element.equals("Insurance")) {	
+				insurances.put(insurance.getId(),insurance);
 				//MySqlDataStoreUtilities.insertProduct("phone", phone.getId(), phone.getName(), phone.getPrice(), phone.getImage(), phone.getRetailer(), phone.getCondition(), phone.getDiscount(), phone.getDescription());  
+				MySqlDataStoreUtilities.insertInsurance(insurance.getId(), insurance.getName(), insurance.getCategory(), insurance.getSubCategory(), insurance.getPrice(), insurance.getImage(), insurance.getDescription(), insurance.getDuration(), insurance.getEmailId(), insurance.getDeductables(), insurance.getTotalCov());  
 				return;
 			}
-			if (element.equals("soundsystem")) {	  
-				soundsystems.put(soundsystem.getId(),soundsystem);
-				//MySqlDataStoreUtilities.insertProduct("soundsystem", soundsystem.getId(), soundsystem.getName(), soundsystem.getPrice(), soundsystem.getImage(), soundsystem.getRetailer(), soundsystem.getCondition(), soundsystem.getDiscount(), soundsystem.getDescription());
+			if (element.equals("Pharmacy")) {	  
+				pharmacies.put(pharmacy.getId(),pharmacy);
+				MySqlDataStoreUtilities.insertPharmacy(pharmacy.getId(), pharmacy.getName(), pharmacy.getImage(), pharmacy.getDescription(), pharmacy.getCategory(), pharmacy.getPhone(), pharmacy.getEmailId(), pharmacy.getCity(), pharmacy.getZip(), pharmacy.getLat(), pharmacy.getLongi());  
 				return;
 			}
 		}
