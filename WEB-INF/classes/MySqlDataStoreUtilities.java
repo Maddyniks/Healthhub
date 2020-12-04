@@ -357,19 +357,19 @@ public class MySqlDataStoreUtilities
         }     
     }
 
-    public static ArrayList<Product> getInventory()
+     public static ArrayList<PharmacyType> getInventory()
     {	
-       ArrayList<Product> productList = new ArrayList<Product>();
+       ArrayList<PharmacyType> productList = new ArrayList<PharmacyType>();
        try
         {			
             getConnection();
-            String selectInventoryQuery ="select * from productDetails";			
+            String selectInventoryQuery ="select * from pharmacy";			
             PreparedStatement pst = conn.prepareStatement(selectInventoryQuery);
             ResultSet rs = pst.executeQuery();	
             while(rs.next())
             {
-                Product temp = new Product(rs.getString("productType"), rs.getString("ID"), rs.getInt("Stock"), rs.getString("productName"), rs.getDouble("productPrice"), rs.getString("productImage"), rs.getString("productManufacturer"), rs.getString("productCondition"), rs.getDouble("productDiscount"), rs.getString("description"));
-                productList.add(temp);		
+              PharmacyType p = new PharmacyType(rs.getString("id"),rs.getString("name"),rs.getString("image"),rs.getString("description"),rs.getString("category"),rs.getString("phoneNumber"),rs.getString("emailId"),rs.getString("city"),rs.getString("zip"),rs.getString("latitude"),rs.getString("longitude"));
+              productList.add(p);	 		
             }					
         }
         catch(Exception e)
@@ -378,6 +378,8 @@ public class MySqlDataStoreUtilities
         }
         return productList;
     }
+
+   
 
     
     public static ArrayList<Product> getDiscountedProducts()
