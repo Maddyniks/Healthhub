@@ -35,7 +35,7 @@ public class ViewItem extends HttpServlet
     Utilities utility = new Utilities(request, pw);
     DoctorType doctor = new DoctorType();
     PharmacyType pharmacy = new PharmacyType();
-    PhoneType phone = new PhoneType();
+    InsuranceType insurance = new InsuranceType ();
 
     String name = request.getParameter("name");
     String type = request.getParameter("type");
@@ -79,16 +79,15 @@ public class ViewItem extends HttpServlet
       }
       break;
 
-      case "phones":
-        for (Map.Entry<String, PhoneType> entry : SaxParserDataStore.phones.entrySet()) {
-          if (entry.getValue().getRetailer().equals(maker) && entry.getValue().getName().equals(name)) 
+      case "insurances":
+        for (Map.Entry<String, InsuranceType > entry : SaxParserDataStore.insurances.entrySet()) {
+          if (entry.getValue().getCategory().equals(maker) && entry.getValue().getName().equals(name)) 
           {
-            phone = entry.getValue();
-            price = phone.getPrice();
-            discount = phone.getDiscount();
-            image = phone.getImage();
-            description = phone.getDescription();
-            retailer = phone.getRetailer();
+            insurance = entry.getValue();
+            price = insurance.getPrice();
+            image = insurance.getImage();
+            description = insurance.getDescription();
+            retailer = insurance.getCategory();
             key = entry.getKey();
             break;
           }

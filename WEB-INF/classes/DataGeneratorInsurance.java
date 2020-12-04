@@ -12,7 +12,7 @@ public class DataGeneratorInsurance {
             for (int j = 0 ; j <= 4; j++){
                 int year = (int)(Math.random() * (5 - 1 + 1) + 1);
                 int price = (int)(Math.random() * (1200 - 800 + 1) + 800) * year;
-                int deductables = 200 + (int)(Math.random() * (700 - 400 + 1) + 400);
+                double deductables = 200 + (int)(Math.random() * (700 - 400 + 1) + 400);
                 int totalcover = price * 15;
                 System.out.println("<Insurance id = \"I"+i+j+"\">");
                 System.out.println("\t<category>"+category[i]+"</category>");

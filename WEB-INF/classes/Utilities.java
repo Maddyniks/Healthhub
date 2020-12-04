@@ -220,11 +220,11 @@ public class Utilities extends HttpServlet{
 			// OrderItem orderitem = new OrderItem(pharmacy.getId(), pharmacy.getName(), pharmacy.getPrice(), pharmacy.getDiscount(), getNewPrice(pharmacy.getPrice(), pharmacy.getDiscount()), pharmacy.getImage(), pharmacy.getRetailer(), type);
 			// orderItems.add(orderitem);
 		}
-		if(type.equals("phones")){
-			PhoneType phone = null;
-			phone = SaxParserDataStore.phones.get(name);
-			OrderItem orderitem = new OrderItem(phone.getId(), phone.getName(), phone.getPrice(), phone.getDiscount(), getNewPrice(phone.getPrice(), phone.getDiscount()), phone.getImage(), phone.getRetailer(), type);
-			orderItems.add(orderitem);
+		if(type.equals("insurances")){
+			InsuranceType insurance = null;
+			insurance = SaxParserDataStore.insurances.get(name);
+			//OrderItem orderitem = new OrderItem(insurance.getId(), insurance.getName(), insurance.getPrice(), insurance.getDiscount(), getNewPrice(phone.getPrice(), phone.getDiscount()), phone.getImage(), phone.getRetailer(), type);
+			//orderItems.add(orderitem);
 		}
 	}
 
@@ -296,11 +296,11 @@ public class Utilities extends HttpServlet{
 			return hm;
 	}
 	
-	/* getPhones Functions returns the Hashmap with all Phones in the store.*/
+	/* getInsurances Functions returns the Hashmap with all Phones in the store.*/
 
-	public HashMap<String, PhoneType> getPhones(){
-			HashMap<String, PhoneType> hm = new HashMap<String, PhoneType>();
-			hm.putAll(SaxParserDataStore.phones);
+	public HashMap<String, InsuranceType> getInsurances(){
+			HashMap<String, InsuranceType> hm = new HashMap<String, InsuranceType>();
+			hm.putAll(SaxParserDataStore.insurances);
 			return hm;
 	}
 
@@ -326,9 +326,9 @@ public class Utilities extends HttpServlet{
 	
 	/* getProductsPhones Functions returns the Arraylist of Phones in the store.*/
 
-	public ArrayList<String> getProductsPhones(){		
+	public ArrayList<String> getProductsInsurance(){		
 		ArrayList<String> ar = new ArrayList<String>();
-		for(Map.Entry<String, PhoneType> entry : getPhones().entrySet()){
+		for(Map.Entry<String, InsuranceType> entry : getInsurances().entrySet()){
 			ar.add(entry.getValue().getName());
 		}
 		return ar;

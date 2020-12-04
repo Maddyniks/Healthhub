@@ -15,11 +15,11 @@ import org.xml.sax.helpers.DefaultHandler;
 public class SaxParserDataStore extends DefaultHandler {
     DoctorType doctor;
     PharmacyType pharmacy;
-	PhoneType phone;
+	InsuranceType insurance;
    
     static HashMap<String,DoctorType> doctors;
     static HashMap<String,PharmacyType> pharmacies;
-	static HashMap<String,PhoneType> phones;
+	static HashMap<String,InsuranceType> insurances;
   
     String consoleXmlFileName;
 	
@@ -32,7 +32,7 @@ public class SaxParserDataStore extends DefaultHandler {
     this.consoleXmlFileName = consoleXmlFileName;
     doctors = new HashMap<String, DoctorType>();
 	pharmacies=new  HashMap<String, PharmacyType>();
-	phones=new HashMap<String, PhoneType>();
+	insurances=new HashMap<String, InsuranceType>();
 	
 	
 	
@@ -66,11 +66,11 @@ public class SaxParserDataStore extends DefaultHandler {
 			doctor = new DoctorType();
             doctor.setId(attributes.getValue("id"));
 		}
-        if (elementName.equalsIgnoreCase("phone"))
+        if (elementName.equalsIgnoreCase("Insurance"))
 		{
-			currentElement="phone";
-			phone = new PhoneType();
-            phone.setId(attributes.getValue("id"));
+			currentElement="Insurance";
+			insurance = new InsuranceType();
+            insurance.setId(attributes.getValue("id"));
         }
         if (elementName.equalsIgnoreCase("Pharmacy"))
 		{
@@ -90,8 +90,8 @@ public class SaxParserDataStore extends DefaultHandler {
 				doctor.setImage(elementValueRead);
         	if(currentElement.equals("Pharmacy"))
 				pharmacy.setImage(elementValueRead);
-            if(currentElement.equals("phone"))
-				phone.setImage(elementValueRead);
+            if(currentElement.equals("Insurance"))
+				insurance.setImage(elementValueRead);
 			return;
 		}
 		if (element.equalsIgnoreCase("description")) {
@@ -99,31 +99,34 @@ public class SaxParserDataStore extends DefaultHandler {
 				doctor.setDescription(elementValueRead);
         	if(currentElement.equals("Pharmacy"))
 				pharmacy.setDescription(elementValueRead);
-            if(currentElement.equals("phone"))
-				phone.setDescription(elementValueRead);    
+            if(currentElement.equals("Insurance"))
+				insurance.setDescription(elementValueRead);    
 			return;
         }
-		if (element.equalsIgnoreCase("discount")) {
-            if(currentElement.equals("phone"))
-				phone.setDiscount(Double.parseDouble(elementValueRead));
-			return;
-	    }
-		if (element.equalsIgnoreCase("condition")) {
-            if(currentElement.equals("phone"))
-				phone.setCondition(elementValueRead); 
-			return;  
-		}
-		if (element.equalsIgnoreCase("manufacturer")) {
-            if(currentElement.equals("phone"))
-				phone.setRetailer(elementValueRead);    
-			return;
-		}
+		// if (element.equalsIgnoreCase("discount")) {
+        //     if(currentElement.equals("phone"))
+		// 		phone.setDiscount(Double.parseDouble(elementValueRead));
+		// 	return;
+	    // }
+		// if (element.equalsIgnoreCase("condition")) {
+        //     if(currentElement.equals("phone"))
+		// 		phone.setCondition(elementValueRead); 
+		// 	return;  
+		// }
+		// if (element.equalsIgnoreCase("manufacturer")) {
+        //     if(currentElement.equals("phone"))
+		// 		phone.setRetailer(elementValueRead);    
+		// 	return;
+		// }
 		if(element.equalsIgnoreCase("category")){
 			if(currentElement.equals("Doctor"))
 				doctor.setCategory(elementValueRead);
 
 			if(currentElement.equals("Pharmacy"))
 				pharmacy.setCategory(elementValueRead);
+			
+			if(currentElement.equals("Insurance"))
+				insurance.setCategory(elementValueRead);
 			return;
 		}
         if (element.equalsIgnoreCase("name")) {
@@ -131,8 +134,8 @@ public class SaxParserDataStore extends DefaultHandler {
 				doctor.setName(elementValueRead);
         	if(currentElement.equals("Pharmacy"))
 				pharmacy.setName(elementValueRead);
-            if(currentElement.equals("phone"))
-				phone.setName(elementValueRead); 
+            if(currentElement.equals("Insurance"))
+				insurance.setName(elementValueRead); 
 			return;
 		}
 		if(element.equalsIgnoreCase("phoneNumber")){
@@ -146,6 +149,9 @@ public class SaxParserDataStore extends DefaultHandler {
 		if(element.equalsIgnoreCase("emailId")){			
 			if(currentElement.equals("Pharmacy"))
 				pharmacy.setEmailId(elementValueRead);
+
+			if(currentElement.equals("Insurance"))
+				insurance.setEmailId(elementValueRead);
 			return;
 
 		}
@@ -187,10 +193,36 @@ public class SaxParserDataStore extends DefaultHandler {
 			if(currentElement.equals("Doctor"))
 				doctor.setPrice(Double.parseDouble(elementValueRead));
 
-            if(currentElement.equals("phone"))
-				phone.setPrice(Double.parseDouble(elementValueRead));   
+            if(currentElement.equals("Insurance"))
+				insurance.setPrice(Double.parseDouble(elementValueRead));   
 			return;
 		}
+
+		if(element.equalsIgnoreCase("deductables")){
+            if(currentElement.equals("Insurance"))
+				insurance.setDeductables(Double.parseDouble(elementValueRead));   
+			return;
+		}
+
+		if(element.equalsIgnoreCase("totalcover")){
+            if(currentElement.equals("Insurance"))
+				insurance.setTotalCov(Double.parseDouble(elementValueRead));   
+			return;
+		}
+
+		if(element.equalsIgnoreCase("duration")){
+			if(currentElement.equals("Insurance"))
+				insurance.setDuration(elementValueRead);
+			return;
+		}
+
+		if(element.equalsIgnoreCase("subcategory")){
+			if(currentElement.equals("Insurance"))
+				insurance.setSubCategory(elementValueRead);
+			return;
+		}
+
+
 		
 
 		try
@@ -201,9 +233,10 @@ public class SaxParserDataStore extends DefaultHandler {
 				return;
 			}
 	 
-			if (element.equals("phone")) {	
-				phones.put(phone.getId(),phone);
+			if (element.equals("Insurance")) {	
+				insurances.put(insurance.getId(),insurance);
 				//MySqlDataStoreUtilities.insertProduct("phone", phone.getId(), phone.getName(), phone.getPrice(), phone.getImage(), phone.getRetailer(), phone.getCondition(), phone.getDiscount(), phone.getDescription());  
+				MySqlDataStoreUtilities.insertInsurance(insurance.getId(), insurance.getName(), insurance.getCategory(), insurance.getSubCategory(), insurance.getPrice(), insurance.getImage(), insurance.getDescription(), insurance.getDuration(), insurance.getEmailId(), insurance.getDeductables(), insurance.getTotalCov());  
 				return;
 			}
 			if (element.equals("Pharmacy")) {	  

@@ -92,7 +92,7 @@ public class PharmacyType extends HttpServlet{
 		return emailid;
 	}
 
-	public void setEmailId(String phone) {
+	public void setEmailId(String emailid) {
 		this.emailid = emailid;
 	}
 

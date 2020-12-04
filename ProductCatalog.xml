@@ -484,89 +484,188 @@
 </Doctor>
 </DoctorCatalog>
 
-<PhoneCatalog>
-    <phone id="gp1">
-        <name>Google Pixel 2XL</name>
-        <price>599.99</price>
-        <image>google-pixel2xl.jpg</image>
-        <description>This is a dummy description.</description>
-        <manufacturer>Google</manufacturer>
-        <condition>New</condition>
-        <discount>10.0</discount>
-    </phone>
-    <phone id="gp2">
-        <name>Google Pixel 4</name>
-        <price>399.99</price>
-        <image>google-pixel4.jpg</image>
-        <description>This is a dummy description.</description>
-        <manufacturer>Google</manufacturer>
-        <condition>new</condition>
-        <discount>10.0</discount>
-    </phone>
-    <phone id="gp3">
-        <name>Google Pixel 4XL</name>
-        <price>599.99</price>
-        <image>google-pixel4xl.jpg</image>
-        <description>This is a dummy description.</description>
-        <manufacturer>Google</manufacturer>
-        <condition>new</condition>
-        <discount>10.0</discount>
-    </phone>
-    <phone id="ap1">
-        <name>Apple iPhone 11</name>
-        <price>699.99</price>
-        <image>iphone11.jpg</image>
-        <description>This is a dummy description.</description>
-        <manufacturer>Apple</manufacturer>
-        <condition>New</condition>
-        <discount>15.0</discount>
-    </phone>
-    <phone id="ap2">
-        <name>Apple iPhone 11 Pro</name>
-        <price>999.99</price>
-        <image>iphone11-pro.jpg</image>
-        <description>This is a dummy description.</description>
-        <manufacturer>Apple</manufacturer>
-        <condition>New</condition>
-        <discount>15.0</discount>
-    </phone>
-    <phone id="ap3">
-        <name>Apple iPhone 11 Pro Max</name>
-        <price>1190.99</price>
-        <image>iphone11-pro-max.jpg</image>
-        <description>This is a dummy description.</description>
-        <manufacturer>Apple</manufacturer>
-        <condition>New</condition>
-        <discount>15.0</discount>
-    </phone>
-    <phone id="sp1">
-        <name>Samsung Galaxy Note 20 -5G</name>
-        <price>990.99</price>
-        <image>samsung-galaxy-note20-5g.jpg</image>
-        <description>This is a dummy description.</description>
-        <manufacturer>Samsung</manufacturer>
-        <condition>New</condition>
-        <discount>12.0</discount>
-    </phone>
-     <phone id="sp2">
-        <name>Samsung Galaxy S20 -5G</name>
-        <price>799.99</price>
-        <image>samsung-galaxy-s20-5g.jpg</image>
-        <description>This is a dummy description.</description>
-        <manufacturer>Samsung</manufacturer>
-        <condition>New</condition>
-        <discount>12.0</discount>
-    </phone>
-     <phone id="sp3">
-        <name>Samsung Galaxy ZFlip</name>
-        <price>599.99</price>
-        <image>samsung-galaxy-zFlip.jpg</image>
-        <description>This is a dummy description.</description>
-        <manufacturer>Samsung</manufacturer>
-        <condition>New</condition>
-        <discount>12.0</discount>
-    </phone>
-</PhoneCatalog>
+<InsuranceCatalog>
+    <Insurance id = "I00">
+        <category>UnitedHealth</category>
+        <subcategory>Dental</subcategory>
+        <name>UnitedHealthDental0Insurance</name>
+        <duration>3year</duration>
+        <price>3363</price>
+        <image>00000.png</image>
+        <description>This is a dummy description for Dental Insurance provided by UnitedHealth</description>
+        <emailId>support0@unitedhealth.com</emailId>
+        <deductables>782</deductables>
+        <totalcover>50445</totalcover>
+</Insurance>
+<Insurance id = "I01">
+        <category>UnitedHealth</category>
+        <subcategory>Vision</subcategory>
+        <name>UnitedHealthVision1Insurance</name>
+        <duration>3year</duration>
+        <price>3228</price>
+        <image>00001.png</image>
+        <description>This is a dummy description for Vision Insurance provided by UnitedHealth</description>
+        <emailId>support0@unitedhealth.com</emailId>
+        <deductables>726</deductables>
+        <totalcover>48420</totalcover>
+</Insurance>
+<Insurance id = "I02">
+        <category>UnitedHealth</category>
+        <subcategory>Health</subcategory>
+        <name>UnitedHealthHealth2Insurance</name>
+        <duration>2year</duration>
+        <price>1728</price>
+        <image>00002.png</image>
+        <description>This is a dummy description for Health Insurance provided by UnitedHealth</description>
+        <emailId>support0@unitedhealth.com</emailId>
+        <deductables>900</deductables>
+        <totalcover>25920</totalcover>
+</Insurance>
+<Insurance id = "I03">
+        <category>UnitedHealth</category>
+        <subcategory>Mental-Health</subcategory>
+        <name>UnitedHealthMental-Health3Insurance</name>
+        <duration>4year</duration>
+        <price>4332</price>
+        <image>00003.png</image>
+        <description>This is a dummy description for Mental-Health Insurance provided by UnitedHealth</description>
+        <emailId>support0@unitedhealth.com</emailId>
+        <deductables>717</deductables>
+        <totalcover>64980</totalcover>
+</Insurance>
+<Insurance id = "I04">
+        <category>UnitedHealth</category>
+        <subcategory>Crtical-Illness</subcategory>
+        <name>UnitedHealthCrtical-Illness4Insurance</name>
+        <duration>2year</duration>
+        <price>2172</price>
+        <image>00004.png</image>
+        <description>This is a dummy description for Crtical-Illness Insurance provided by UnitedHealth</description>
+        <emailId>support0@unitedhealth.com</emailId>
+        <deductables>714</deductables>
+        <totalcover>32580</totalcover>
+</Insurance>
+<Insurance id = "I10">
+        <category>AetnaHealth</category>
+        <subcategory>Dental</subcategory>
+        <name>AetnaHealthDental0Insurance</name>
+        <duration>1year</duration>
+        <price>910</price>
+        <image>00010.png</image>
+        <description>This is a dummy description for Dental Insurance provided by AetnaHealth</description>
+        <emailId>support1@aetnahealth.com</emailId>
+        <deductables>698</deductables>
+        <totalcover>13650</totalcover>
+</Insurance>
+<Insurance id = "I11">
+        <category>AetnaHealth</category>
+        <subcategory>Vision</subcategory>
+        <name>AetnaHealthVision1Insurance</name>
+        <duration>2year</duration>
+        <price>2358</price>
+        <image>00011.png</image>
+        <description>This is a dummy description for Vision Insurance provided by AetnaHealth</description>
+        <emailId>support1@aetnahealth.com</emailId>
+        <deductables>859</deductables>
+        <totalcover>35370</totalcover>
+</Insurance>
+<Insurance id = "I12">
+        <category>AetnaHealth</category>
+        <subcategory>Health</subcategory>
+        <name>AetnaHealthHealth2Insurance</name>
+        <duration>3year</duration>
+        <price>3429</price>
+        <image>00012.png</image>
+        <description>This is a dummy description for Health Insurance provided by AetnaHealth</description>
+        <emailId>support1@aetnahealth.com</emailId>
+        <deductables>823</deductables>
+        <totalcover>51435</totalcover>
+</Insurance>
+<Insurance id = "I13">
+        <category>AetnaHealth</category>
+        <subcategory>Mental-Health</subcategory>
+        <name>AetnaHealthMental-Health3Insurance</name>
+        <duration>2year</duration>
+        <price>1730</price>
+        <image>00013.png</image>
+        <description>This is a dummy description for Mental-Health Insurance provided by AetnaHealth</description>
+        <emailId>support1@aetnahealth.com</emailId>
+        <deductables>776</deductables>
+        <totalcover>25950</totalcover>
+</Insurance>
+<Insurance id = "I14">
+        <category>AetnaHealth</category>
+        <subcategory>Crtical-Illness</subcategory>
+        <name>AetnaHealthCrtical-Illness4Insurance</name>
+        <duration>3year</duration>
+        <price>3171</price>
+        <image>00014.png</image>
+        <description>This is a dummy description for Crtical-Illness Insurance provided by AetnaHealth</description>
+        <emailId>support1@aetnahealth.com</emailId>
+        <deductables>693</deductables>
+        <totalcover>47565</totalcover>
+</Insurance>
+<Insurance id = "I20">
+        <category>Kaiser-Foundation</category>
+        <subcategory>Dental</subcategory>
+        <name>Kaiser-FoundationDental0Insurance</name>
+        <duration>1year</duration>
+        <price>805</price>
+        <image>00020.png</image>
+        <description>This is a dummy description for Dental Insurance provided by Kaiser-Foundation</description>
+        <emailId>support2@kaiserfo.com</emailId>
+        <deductables>617</deductables>
+        <totalcover>12075</totalcover>
+</Insurance>
+<Insurance id = "I21">
+        <category>Kaiser-Foundation</category>
+        <subcategory>Vision</subcategory>
+        <name>Kaiser-FoundationVision1Insurance</name>
+        <duration>2year</duration>
+        <price>1830</price>
+        <image>00021.png</image>
+        <description>This is a dummy description for Vision Insurance provided by Kaiser-Foundation</description>
+        <emailId>support2@kaiserfo.com</emailId>
+        <deductables>633</deductables>
+        <totalcover>27450</totalcover>
+</Insurance>
+<Insurance id = "I22">
+        <category>Kaiser-Foundation</category>
+        <subcategory>Health</subcategory>
+        <name>Kaiser-FoundationHealth2Insurance</name>
+        <duration>5year</duration>
+        <price>5400</price>
+        <image>00022.png</image>
+        <description>This is a dummy description for Health Insurance provided by Kaiser-Foundation</description>
+        <emailId>support2@kaiserfo.com</emailId>
+        <deductables>720</deductables>
+        <totalcover>81000</totalcover>
+</Insurance>
+<Insurance id = "I23">
+        <category>Kaiser-Foundation</category>
+        <subcategory>Mental-Health</subcategory>
+        <name>Kaiser-FoundationMental-Health3Insurance</name>
+        <duration>2year</duration>
+        <price>2288</price>
+        <image>00023.png</image>
+        <description>This is a dummy description for Mental-Health Insurance provided by Kaiser-Foundation</description>
+        <emailId>support2@kaiserfo.com</emailId>
+        <deductables>724</deductables>
+        <totalcover>34320</totalcover>
+</Insurance>
+<Insurance id = "I24">
+        <category>Kaiser-Foundation</category>
+        <subcategory>Crtical-Illness</subcategory>
+        <name>Kaiser-FoundationCrtical-Illness4Insurance</name>
+        <duration>3year</duration>
+        <price>2985</price>
+        <image>00024.png</image>
+        <description>This is a dummy description for Crtical-Illness Insurance provided by Kaiser-Foundation</description>
+        <emailId>support2@kaiserfo.com</emailId>
+        <deductables>634</deductables>
+        <totalcover>44775</totalcover>
+</Insurance>
+</InsuranceCatalog>
 
 <PharmacyCatalog>
         <Pharmacy id = "p1">

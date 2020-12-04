@@ -114,6 +114,38 @@ public class MySqlDataStoreUtilities
         }		
     }
 
+    public static void insertInsurance(String id, String name, String category, String subcategory, double price, String image, String description, String duration, String emailId, double deductables, double totalcoverage )
+    {
+        // System.out.println(type + " | " + ID + " | " + name + " | " + image + " | " + manufactorer + " | " + condition + " | " + discount + " | " + description);
+        try
+        {        
+            getConnection();
+            String insertIntoCustomerOrderQuery = "INSERT INTO insurance(id, name, category, subcategory, price, image, description, duration, emailId, deductables, totalcoverage )"
+            + "VALUES (?,?,?,?,?,?,?,?,?,?,?);";	
+                
+            PreparedStatement pst = conn.prepareStatement(insertIntoCustomerOrderQuery);
+            pst.setString(1,id);
+            pst.setString(2,name);
+            pst.setString(3,category);
+            pst.setString(4,subcategory);
+            pst.setDouble(5,price);
+            pst.setString(6,image);
+            pst.setString(7,description);
+            pst.setString(8,duration);
+            pst.setString(9,emailId);
+            pst.setDouble(10,deductables);
+            pst.setDouble(11,totalcoverage);
+            pst.execute();
+        }
+        catch(Exception e)
+        {
+        
+        }		
+    }
+
+
+
+
     public static void insertProduct(String type, String ID, String name, double price, String image, String manufactorer, String condition, double discount, String description)
     {
         // System.out.println(type + " | " + ID + " | " + name + " | " + price + " | " + image + " | " + manufactorer + " | " + condition + " | " + discount + " | " + description);
