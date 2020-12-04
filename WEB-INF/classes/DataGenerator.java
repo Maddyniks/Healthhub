@@ -24,7 +24,7 @@ public class DataGenerator{
             System.out.println("\t<name>"+names[i]+"</name>");
             System.out.println("\t<price>"+price+"</price>");
             System.out.println("\t<image>000"+i+".png</image>");
-            System.out.println("\t<description> This is a dummy description for Doctor "+i+"</description>");
+            System.out.println("\t<description>This is a dummy description for Doctor "+i+"</description>");
             System.out.println("\t<category>"+category[count]+"</category>");
             System.out.println("\t<phoneNumber>"+price2+price+phone+"</phoneNumber>");
             System.out.println("\t<city>"+cities[location]+"</city>");

@@ -24,7 +24,7 @@ public class DataGeneratorPharmacy {
             System.out.println("<Pharmacy id = \"p"+i+"\">");
             System.out.println("\t<name>"+names[i]+"</name>");
             System.out.println("\t<image>000"+i+".png</image>");
-            System.out.println("\t<description> This is a dummy description for Pharmacy "+category[count]+"</description>");
+            System.out.println("\t<description>This is a dummy description for Pharmacy "+category[count]+"</description>");
             System.out.println("\t<category>"+category[count]+"</category>");
             System.out.println("\t<phoneNumber>"+price2+price+phone+"</phoneNumber>");
             System.out.println("\t<emailId>info"+i+emailext[count]+"</emailId>");
