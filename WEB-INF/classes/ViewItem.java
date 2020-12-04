@@ -34,7 +34,7 @@ public class ViewItem extends HttpServlet
     PrintWriter pw = response.getWriter();
     Utilities utility = new Utilities(request, pw);
     DoctorType doctor = new DoctorType();
-    PharmacyType pharmacy = new PharmacyType();
+    SSType soundsystem = new SSType();
     PhoneType phone = new PhoneType();
 
     String name = request.getParameter("name");
@@ -52,7 +52,7 @@ public class ViewItem extends HttpServlet
     {
       case "doctors":
         for (Map.Entry<String, DoctorType> entry : SaxParserDataStore.doctors.entrySet()) {
-          if (entry.getValue().getCategory().equals(maker) && entry.getValue().getName().equals(name)) 
+          if (entry.getValue().getName().equals(name)) 
           {
             doctor = entry.getValue();
             price = doctor.getPrice();
@@ -66,14 +66,16 @@ public class ViewItem extends HttpServlet
         }
         break;
 
-      case "pharmacies":
-      for (Map.Entry<String, PharmacyType> entry : SaxParserDataStore.pharmacies.entrySet()) {
-        if (entry.getValue().getCategory().equals(maker) && entry.getValue().getName().equals(name)) 
+      case "soundsystems":
+      for (Map.Entry<String, SSType> entry : SaxParserDataStore.soundsystems.entrySet()) {
+        if (entry.getValue().getRetailer().equals(maker) && entry.getValue().getName().equals(name)) 
         {
-          pharmacy = entry.getValue();
-          image = pharmacy.getImage();
-          description = pharmacy.getDescription();
-          retailer = pharmacy.getCategory();
+          soundsystem = entry.getValue();
+          price = soundsystem.getPrice();
+          discount = soundsystem.getDiscount();
+          image = soundsystem.getImage();
+          description = soundsystem.getDescription();
+          retailer = soundsystem.getRetailer();
           key = entry.getKey();
           break;
         }
@@ -109,7 +111,7 @@ public class ViewItem extends HttpServlet
     pw.print("<td><div id='shop_item'>");
 
     pw.print("<h3><span style = 'font-size: 3rem;font-weight: bold;'>$ " + getNewPrice(price, discount) + "</span></h3>");
-    pw.print("<strong>Discount: " + discount + " %</strong>");
+    //pw.print("<strong>Discount: " + discount + " %</strong>");
     pw.print("<h3><span  style = 'color: #a6a6a6;'>Old Price: $ " + price + "</span></h3><ul>");
     pw.print("<li id='item'><img src='images/" + type +"/" + image +"' alt='' /></li>");
     pw.print("<li><p style = 'text-align: center;'>" + description + "</p></li>");
