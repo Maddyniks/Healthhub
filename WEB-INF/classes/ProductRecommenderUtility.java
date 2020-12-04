@@ -13,7 +13,7 @@ public class ProductRecommenderUtility
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bestdeal","root","1234");							
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthhub","root","root");							
 			message="Successfull";
 			return message;
 		}
@@ -38,7 +38,7 @@ public class ProductRecommenderUtility
 		HashMap<String,String> prodRecmMap = new HashMap<String,String>();
         try 
         {
-            br = new BufferedReader(new FileReader(new File(TOMCAT_HOME+"\\webapps\\Tutorial_1\\matrixFactorizationBasedRecommendations.csv")));
+            br = new BufferedReader(new FileReader(new File(TOMCAT_HOME+"\\webapps\\Healthhub\\matrixFactorizationBasedRecommendations.csv")));
             while ((line = br.readLine()) != null) 
             {
                 String[] prod_recm = line.split(cvsSplitBy,2);
@@ -72,19 +72,19 @@ public class ProductRecommenderUtility
 		return prodRecmMap;
 	}
 	
-    public static Product getProduct(String product)
+    public static PharmacyType getProduct(String product)
     {
         System.out.println("-----------Inside getProduct()----------");
         System.out.println("Requested Product = " + product);
         
-        Product prodObj = new Product();
+        PharmacyType prodObj = new PharmacyType();
 
         try 
 		{
-            ArrayList<Product> productList = MySqlDataStoreUtilities.getInventory();
-            for(Product temp : productList)
+            ArrayList<PharmacyType> productList = MySqlDataStoreUtilities.getInventory();
+            for(PharmacyType temp : productList)
             {
-                if(temp.getproductName().contains(product))
+                if(temp.getName().contains(product))
                 {
                     prodObj = temp;
                     break;
@@ -96,7 +96,7 @@ public class ProductRecommenderUtility
 		{
             System.out.println(ex.getMessage());
         }
-        System.out.println("Product Found = " + prodObj.getproductName());
+        System.out.println("Product Found = " + prodObj.getName());
         System.out.println("------------------------------------");
         return prodObj;
 	}

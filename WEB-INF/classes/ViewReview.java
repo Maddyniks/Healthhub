@@ -50,6 +50,7 @@ public class ViewReview extends HttpServlet
             String reviewText = "";	
             String price = "";
             String city ="";
+			String address="";
         
             utility.printHtml("Header.html");
             utility.printHtml("LeftNavigationBar.html");
@@ -71,7 +72,7 @@ public class ViewReview extends HttpServlet
                 {
                     pw.print("<table class='gridtable'  style = 'width: 100%'>");
 
-                    pw.print("<tr><td> Product Name </td>");
+                    pw.print("<tr><td> Name </td>");
                     pw.print("<th style = 'text-align: center;'>" + productName + "</th></tr>");
 
                     pw.print("<tr><td> Price </td>");
@@ -85,7 +86,7 @@ public class ViewReview extends HttpServlet
                     pw.print("</table><br>");
 
                     pw.print("<table class='gridtable'  style = 'width: 100%'>");
-                    pw.print("<tr><th style = 'text-align: center;'> Rating </th><th style = 'text-align: center;'>Reviewer</th><th style = 'text-align: center;'> Review </th><th style = 'text-align: center;'>Review Date</th><th style = 'text-align: center;'> Retailer City</th></tr>");
+                    pw.print("<tr><th style = 'text-align: center;'> Rating </th><th style = 'text-align: center;'>Reviewer</th><th style = 'text-align: center;'> Review </th><th style = 'text-align: center;'>Review Date</th><th style = 'text-align: center;'> Address</th><th style = 'text-align: center;'> City</th></tr>");
                     for (Review r : hm.get(productName)) 
                     {	
                         pw.print("<tr>");
@@ -101,6 +102,10 @@ public class ViewReview extends HttpServlet
                         
                         reviewDate = r.getReviewDate().toString();
                         pw.print("<td>" + reviewDate + "</td>");
+						
+						
+						address = r.getaddress();
+                        pw.print("<td>" + address + "</td>");
 
                         city = r.getRetailerCity();
                         pw.print("<td>" + city + "</td>");

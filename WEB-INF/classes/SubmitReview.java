@@ -40,9 +40,10 @@ public class SubmitReview extends HttpServlet
             String reviewrating = request.getParameter("reviewrating");
             String reviewdate = request.getParameter("reviewdate");
             String reviewtext = request.getParameter("reviewtext");
+			String address=request.getParameter("address");
             String retailerpin = request.getParameter("zipcode");
             String retailercity = request.getParameter("retailercity");
-            String message = utility.storeReview(productname,producttype,productmaker,reviewrating,reviewdate,reviewtext,retailerpin,productprice,retailercity);				     
+            String message = utility.storeReview(productname,producttype,productmaker,reviewrating,reviewdate,reviewtext,retailerpin,productprice,retailercity,address);				     
         
             utility.printHtml("Header.html");
             utility.printHtml("LeftNavigationBar.html");
