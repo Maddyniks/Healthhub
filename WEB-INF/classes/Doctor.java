@@ -161,14 +161,14 @@ public class Doctor extends HttpServlet {
 					"<input type='hidden' name='type' value='doctors'>"+
 					"<input type='hidden' name='maker' value='"+doctor.getCategory()+"'>"+
 					"<input type='hidden' name='access' value=''>"+
-					"<input type='submit' class='btnbuy' value='View Item'></form></li>");
+					"<input type='submit' class='btnbuy' value='View Doctor'></form></li>");
 			
 			pw.print("<li><form method='post' action='Cart'>" +
 					"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
 					"<input type='hidden' name='type' value='doctors'>"+
 					"<input type='hidden' name='maker' value='"+CategoryName+"'>"+
 					"<input type='hidden' name='access' value=''>"+
-					"<input type='submit' class='btnbuy' value='Buy Now'></form></li>");
+					"<input type='submit' class='btnbuy' value='Book an Appointment'></form></li>");
 			
 			pw.print("<li><form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='" + doctor.getName() + "'>"+
 					"<input type='hidden' name='type' value='doctors'>"+
