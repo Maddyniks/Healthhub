@@ -34,7 +34,7 @@ public class ViewItem extends HttpServlet
     PrintWriter pw = response.getWriter();
     Utilities utility = new Utilities(request, pw);
     DoctorType doctor = new DoctorType();
-    SSType soundsystem = new SSType();
+    PharmacyType pharmacy = new PharmacyType();
     PhoneType phone = new PhoneType();
 
     String name = request.getParameter("name");
@@ -66,17 +66,14 @@ public class ViewItem extends HttpServlet
         }
         break;
 
-      case "soundsystems":
-      for (Map.Entry<String, SSType> entry : SaxParserDataStore.soundsystems.entrySet()) {
-        if (entry.getValue().getRetailer().equals(maker) && entry.getValue().getName().equals(name)) 
-        {
-          soundsystem = entry.getValue();
-          price = soundsystem.getPrice();
-          discount = soundsystem.getDiscount();
-          image = soundsystem.getImage();
-          description = soundsystem.getDescription();
-          retailer = soundsystem.getRetailer();
-          key = entry.getKey();
+     case "pharmacies":
+      for (Map.Entry<String, PharmacyType> entry : SaxParserDataStore.pharmacies.entrySet()) {
+        if (entry.getValue().getCategory().equals(maker) && entry.getValue().getName().equals(name)) 
+		{
+          pharmacy = entry.getValue();
+          image = pharmacy.getImage();
+          description = pharmacy.getDescription();
+          retailer = pharmacy.getCategory();
           break;
         }
       }
