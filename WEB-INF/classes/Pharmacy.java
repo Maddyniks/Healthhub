@@ -12,15 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Pharmacy extends HttpServlet {
 
-	/* Sound Systems Page Displays all the Sound Systems and their Information in Best Deal */
-
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
-
-		/* Checks the Sound Systems type whether it is electronicArts or activision or takeTwoInteractive */
 				
 		String name = null;
 		String CategoryName = request.getParameter("maker");
@@ -70,12 +66,6 @@ public class Pharmacy extends HttpServlet {
 			 }
 		}
 
-		/* Header, Left Navigation Bar are Printed.
-
-		All the Sound Sytems and Sound Sytems information are dispalyed in the Content Section
-
-		and then Footer is Printed*/
-		
 		Utilities utility = new Utilities(request,pw);
 		utility.printHtml("Header.html");
 		utility.printHtml("LeftNavigationBar.html");
@@ -105,7 +95,7 @@ public class Pharmacy extends HttpServlet {
 					"<input type='hidden' name='type' value='Pharmacy'>"+
 					"<input type='hidden' name='maker' value='"+CategoryName+"'>"+
 					"<input type='hidden' name='access' value=''>"+
-					"<input type='submit' class='btnbuy' value='Buy Now'></form></li>");
+					"<input type='submit' class='btnbuy' value='Book Appointment'></form></li>");
 			
 			pw.print("<li><form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='" + pharmacy.getName() + "'>"+
 					"<input type='hidden' name='type' value='Pharmacy'>"+

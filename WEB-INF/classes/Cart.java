@@ -100,7 +100,7 @@ public class Cart extends HttpServlet {
 		switch (type) {
 			case "doctors":
 				return "Doctor";
-			case "pharmacies":
+			case "Pharmacy":
 				return "Pharmacy";
 			case "insurances":
 				return "Insurance";
