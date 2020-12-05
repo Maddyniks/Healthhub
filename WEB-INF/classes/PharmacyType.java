@@ -28,7 +28,7 @@ public class PharmacyType extends HttpServlet{
 	private String lat;
 	private String longi;
 	
-	public PharmacyType(String id, String name, double price, String image, String description, String category, String phone, String emailid, String city, String zip, String lat, String longi){
+	public PharmacyType(String id, String name, String image, String description, String category, String phone, String emailid, String city, String zip, String lat, String longi){
 		this.id = id;
 		this.name=name;
 		this.image=image;
