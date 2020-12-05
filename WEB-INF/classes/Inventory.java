@@ -1,4 +1,4 @@
-import java.io.IOException;
+/*import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import javax.servlet.ServletException;
@@ -30,7 +30,7 @@ public class Inventory extends HttpServlet {
 	{
 		try 
 		{
-            ArrayList<Product> productList = MySqlDataStoreUtilities.getInventory();
+            ArrayList<PharmacyType> productList = MySqlDataStoreUtilities.getInventory();
             
             String productListJson = new Gson().toJson(productList);
 
@@ -46,7 +46,7 @@ public class Inventory extends HttpServlet {
 
     }
 
-	/* Display Account Details of the Customer (Name and Usertype) */
+	/* Display Account Details of the Customer (Name and Usertype) 
 
 	protected void displayAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
@@ -81,7 +81,7 @@ public class Inventory extends HttpServlet {
             pw.print("</tr></table>");
             
             
-			ArrayList<Product> productList = new ArrayList<Product>();
+			ArrayList<PharmacyType> productList = new ArrayList<PharmacyType>();
 			ArrayList<Product> discountedProductList = new ArrayList<Product>();
 			
 			try
@@ -111,7 +111,7 @@ public class Inventory extends HttpServlet {
 
 	
 
-	void displayInventoryTable(ArrayList<Product> productList, PrintWriter pw)
+	void displayInventoryTable(ArrayList<PharmacyType> productList, PrintWriter pw)
 	{
 		int size = productList.size();
 	
@@ -136,7 +136,7 @@ public class Inventory extends HttpServlet {
 			pw.print("<th style = 'text-align: center;'>Items Available</th></tr>");
         
             int count = 1;
-            for(Product temp : productList)	
+            for(PharmacyType temp : productList)	
             {
                
                 pw.print("<tr>");					
@@ -206,7 +206,7 @@ public class Inventory extends HttpServlet {
 
 	
 }
-
+*/
 
 
 
