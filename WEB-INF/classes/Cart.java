@@ -59,24 +59,56 @@ public class Cart extends HttpServlet {
 			pw.print("<table  class='gridtable' style = 'width: 100%'>");
 			int i = 1;
 			double total = 0;
+			
 			for (OrderItem oi : utility.getCustomerOrders()) 
 			{
-				pw.print("<tr>");
-				pw.print("<td>"+i+".</td><td>"+oi.getName()+"</td><td>" + (oi.getCategory().equals("doctors") ? "Doctor" : oi.getCategory()) + "</td>");
+				if(!oi.getCategory().equals("Insurance"))
+				{
+					pw.print(i == 1  ? ("<tr><th colspan = '4' style = 'text-align: center;'>Appointments</th></tr>") : (""));
+					pw.print("<tr>");
+					pw.print("<td>"+i+".</td><td>"+oi.getName()+"</td><td>" + (oi.getCategory().equals("doctors") ? "Doctor" : oi.getCategory()) + "</td>");
 
-				pw.print("<form name ='Cart' action='Cart' method='post'>");
-				pw.print("<input type='hidden' name='name' value='"+oi.getName()+"'>");
-				pw.print("<input type='hidden' name='operation' value='remove'>");		
-				pw.print("<td><input type='submit' name='Remove' value='Remove' class='btnbuy' />");
-				pw.print("</form>");
+					pw.print("<form name ='Cart' action='Cart' method='post'>");
+					pw.print("<input type='hidden' name='name' value='"+oi.getName()+"'>");
+					pw.print("<input type='hidden' name='operation' value='remove'>");		
+					pw.print("<td><input type='submit' name='Remove' value='Remove' class='btnbuy' />");
+					pw.print("</form>");
+					
+					pw.print("</tr>");
+					total = total +oi.getPrice();
+					i++;
+				}
 				
-				pw.print("</tr>");
-				total = total +oi.getPrice();
-				i++;
 			}
+			
+			
+
+			i = 1;
+			for (OrderItem oi : utility.getCustomerOrders()) 
+			{
+				if(oi.getCategory().equals("Insurance"))
+				{
+					pw.print(i == 1  ? ("<tr><th colspan = '4' style = 'text-align: center;'>Products</th></tr>") : (""));
+					pw.print("<tr>");
+					pw.print("<td>"+i+".</td><td>"+oi.getName()+"</td><td>" + (oi.getCategory().equals("doctors") ? "Doctor" : oi.getCategory()) + "</td>");
+
+					pw.print("<form name ='Cart' action='Cart' method='post'>");
+					pw.print("<input type='hidden' name='name' value='"+oi.getName()+"'>");
+					pw.print("<input type='hidden' name='operation' value='remove'>");		
+					pw.print("<td><input type='submit' name='Remove' value='Remove' class='btnbuy' />");
+					pw.print("</form>");
+					
+					pw.print("</tr>");
+					total = total +oi.getPrice();
+					i++;
+				}
+				
+			}
+
+
 			pw.print("<form name ='Cart' action='CheckOut' method='post'>");
 			pw.print("<input type='hidden' name='orderTotal' value='"+total+"'>");	
-			pw.print("<tr><td colspan = '3'><input type='submit' name='CheckOut' value='Check Out' class='btnbuy' style = 'width: 80%;' /></td>");
+			pw.print("<tr><td colspan = '4'><input type='submit' name='CheckOut' value='Check Out' class='btnbuy' style = 'width: 80%;' /></td></tr>");
 			pw.print("</table></form>");
 		}
 		else
