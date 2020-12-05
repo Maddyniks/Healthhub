@@ -62,7 +62,7 @@ public class Cart extends HttpServlet {
 			for (OrderItem oi : utility.getCustomerOrders()) 
 			{
 				pw.print("<tr>");
-				pw.print("<td>"+i+".</td><td>"+oi.getName()+"</td><td>"+getCategory(oi.getCategory())+"</td>");
+				pw.print("<td>"+i+".</td><td>"+oi.getName()+"</td><td>" + (oi.getCategory().equals("doctors") ? "Doctor" : oi.getCategory()) + "</td>");
 
 				pw.print("<form name ='Cart' action='Cart' method='post'>");
 				pw.print("<input type='hidden' name='name' value='"+oi.getName()+"'>");
@@ -93,19 +93,5 @@ public class Cart extends HttpServlet {
 		Utilities utility = new Utilities(request, pw);
 		
 		displayCart(request, response);
-	}
-
-	String getCategory(String type)
-	{
-		switch (type) {
-			case "doctors":
-				return "Doctor";
-			case "Pharmacy":
-				return "Pharmacy";
-			case "insurances":
-				return "Insurance";
-			default:
-				return "UnIdentified";
-		}
 	}
 }

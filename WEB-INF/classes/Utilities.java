@@ -197,11 +197,11 @@ public class Utilities extends HttpServlet{
 			OrderItem orderitem = new OrderItem(pharmacy.getId(), pharmacy.getName(),0, pharmacy.getImage(), type);
 			orderItems.add(orderitem);
 		}
-		if(type.equals("insurances")){
+		if(type.equals("Insurance")){
 			InsuranceType insurance = null;
 			insurance = SaxParserDataStore.insurances.get(name);
-			//OrderItem orderitem = new OrderItem(insurance.getId(), insurance.getName(), insurance.getPrice(), insurance.getDiscount(), getNewPrice(phone.getPrice(), phone.getDiscount()), phone.getImage(), phone.getRetailer(), type);
-			//orderItems.add(orderitem);
+			OrderItem orderitem = new OrderItem(insurance.getId(), insurance.getName(), insurance.getPrice(), insurance.getImage(), type);
+			orderItems.add(orderitem);
 		}
 	}
 

@@ -12,14 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Insurances extends HttpServlet {
 
-	/* Insurances Page Displays all the Phone and their Information in Best Deal */
-
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
-
-	/* Checks the Phone type whether it is microsft or apple or samsung */
 
 		String name = null;
 		String CategoryName = request.getParameter("maker");
@@ -65,14 +61,8 @@ public class Insurances extends HttpServlet {
 				 }
 					 name = "Kaiser-Foundation";
 			 }
-	    }
-
-		/* Header, Left Navigation Bar are Printed.
-
-		All the Insurances and phone information are dispalyed in the Content Section
-
-		and then Footer is Printed*/
-
+		}
+		
 		Utilities utility = new Utilities(request, pw);
 		utility.printHtml("Header.html");
 		utility.printHtml("LeftNavigationBar.html");
