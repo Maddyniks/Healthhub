@@ -28,38 +28,38 @@ public class Insurances extends HttpServlet {
 		} 
 		else 
 		{
-			if(CategoryName.trim().equals("UnitedHealth"))
+			if(CategoryName.trim().equals("United-Health"))
 			{
 			  for(Map.Entry<String,InsuranceType> entry : SaxParserDataStore.insurances.entrySet())
 			  {
-				 if(entry.getValue().getCategory().equals("UnitedHealth"))
+				 if(entry.getValue().getCategory().equals("United Health"))
 				  {
 					  hm.put(entry.getValue().getId(),entry.getValue());
 				  }
 			  }
-				 name = "UnitedHealth";
+				 name = "United Health";
 			}
-			else if(CategoryName.equals("AetnaHealth"))
+			else if(CategoryName.equals("Aetna-Health"))
 			 {
 			 for(Map.Entry<String,InsuranceType> entry : SaxParserDataStore.insurances.entrySet())
 				 {
-				  if(entry.getValue().getCategory().equals("AetnaHealth"))
+				  if(entry.getValue().getCategory().equals("Aetna Health"))
 				  {
 					  hm.put(entry.getValue().getId(),entry.getValue());
 				  }
 				 }
-				  name = "AetnaHealth";
+				  name = "Aetna Health";
 			 }
 			 else if(CategoryName.equals("Kaiser-Foundation"))
 			 {
 				 for(Map.Entry<String,InsuranceType> entry : SaxParserDataStore.insurances.entrySet())
 				 {
-				  if(entry.getValue().getCategory().equals("Kaiser-Foundation"))
+				  if(entry.getValue().getCategory().equals("Kaiser Foundation"))
 				  {
 					  hm.put(entry.getValue().getId(),entry.getValue());
 				  }
 				 }
-					 name = "Kaiser-Foundation";
+					 name = "Kaiser Foundation";
 			 }
 		}
 		

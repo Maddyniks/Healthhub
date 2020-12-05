@@ -2,7 +2,7 @@ public class DataGeneratorInsurance {
 
     public static void main(String []args){
         
-        String [] category = {"UnitedHealth","AetnaHealth", "Kaiser-Foundation"};
+        String [] category = {"United Health","Aetna Health", "Kaiser Foundation"};
 
         String [] emailext = {"@unitedhealth.com", "@aetnahealth.com", "@kaiserfo.com" };
 
@@ -17,7 +17,7 @@ public class DataGeneratorInsurance {
                 System.out.println("<Insurance id = \"I"+i+j+"\">");
                 System.out.println("\t<category>"+category[i]+"</category>");
                 System.out.println("\t<subcategory>"+subcategory[j]+"</subcategory>");
-                System.out.println("\t<name>"+category[i]+subcategory[j]+j+"Insurance"+"</name>");
+                System.out.println("\t<name>"+category[i] + " "+ subcategory[j] + " Insurance Plan "+ (j+1) + "</name>");
                 System.out.println("\t<duration>"+year+"year"+"</duration>");
                 System.out.println("\t<price>"+price+"</price>");
                 System.out.println("\t<image>000"+i+j+".png</image>");

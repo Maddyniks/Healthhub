@@ -485,185 +485,185 @@
 </DoctorCatalog>
 
 <InsuranceCatalog>
-    <Insurance id = "I00">
-        <category>UnitedHealth</category>
+<Insurance id = "I00">
+        <category>United Health</category>
         <subcategory>Dental</subcategory>
-        <name>UnitedHealthDental0Insurance</name>
-        <duration>3year</duration>
-        <price>3363</price>
+        <name>United Health Dental Insurance Plan 1</name>
+        <duration>1year</duration>
+        <price>905</price>
         <image>00000.png</image>
-        <description>This is a dummy description for Dental Insurance provided by UnitedHealth</description>
+        <description>This is a dummy description for Dental Insurance provided by United Health</description>
         <emailId>support0@unitedhealth.com</emailId>
-        <deductables>782</deductables>
-        <totalcover>50445</totalcover>
+        <deductables>755.0</deductables>
+        <totalcover>13575</totalcover>
 </Insurance>
 <Insurance id = "I01">
-        <category>UnitedHealth</category>
+        <category>United Health</category>
         <subcategory>Vision</subcategory>
-        <name>UnitedHealthVision1Insurance</name>
-        <duration>3year</duration>
-        <price>3228</price>
+        <name>United Health Vision Insurance Plan 2</name>
+        <duration>5year</duration>
+        <price>4635</price>
         <image>00001.png</image>
-        <description>This is a dummy description for Vision Insurance provided by UnitedHealth</description>
+        <description>This is a dummy description for Vision Insurance provided by United Health</description>
         <emailId>support0@unitedhealth.com</emailId>
-        <deductables>726</deductables>
-        <totalcover>48420</totalcover>
+        <deductables>688.0</deductables>
+        <totalcover>69525</totalcover>
 </Insurance>
 <Insurance id = "I02">
-        <category>UnitedHealth</category>
+        <category>United Health</category>
         <subcategory>Health</subcategory>
-        <name>UnitedHealthHealth2Insurance</name>
-        <duration>2year</duration>
-        <price>1728</price>
+        <name>United Health Health Insurance Plan 3</name>
+        <duration>4year</duration>
+        <price>3476</price>
         <image>00002.png</image>
-        <description>This is a dummy description for Health Insurance provided by UnitedHealth</description>
+        <description>This is a dummy description for Health Insurance provided by United Health</description>       
         <emailId>support0@unitedhealth.com</emailId>
-        <deductables>900</deductables>
-        <totalcover>25920</totalcover>
+        <deductables>812.0</deductables>
+        <totalcover>52140</totalcover>
 </Insurance>
 <Insurance id = "I03">
-        <category>UnitedHealth</category>
+        <category>United Health</category>
         <subcategory>Mental-Health</subcategory>
-        <name>UnitedHealthMental-Health3Insurance</name>
-        <duration>4year</duration>
-        <price>4332</price>
+        <name>United Health Mental-Health Insurance Plan 4</name>
+        <duration>2year</duration>
+        <price>2270</price>
         <image>00003.png</image>
-        <description>This is a dummy description for Mental-Health Insurance provided by UnitedHealth</description>
+        <description>This is a dummy description for Mental-Health Insurance provided by United Health</description>
         <emailId>support0@unitedhealth.com</emailId>
-        <deductables>717</deductables>
-        <totalcover>64980</totalcover>
+        <deductables>635.0</deductables>
+        <totalcover>34050</totalcover>
 </Insurance>
 <Insurance id = "I04">
-        <category>UnitedHealth</category>
+        <category>United Health</category>
         <subcategory>Crtical-Illness</subcategory>
-        <name>UnitedHealthCrtical-Illness4Insurance</name>
-        <duration>2year</duration>
-        <price>2172</price>
+        <name>United Health Crtical-Illness Insurance Plan 5</name>
+        <duration>3year</duration>
+        <price>3009</price>
         <image>00004.png</image>
-        <description>This is a dummy description for Crtical-Illness Insurance provided by UnitedHealth</description>
+        <description>This is a dummy description for Crtical-Illness Insurance provided by United Health</description>
         <emailId>support0@unitedhealth.com</emailId>
-        <deductables>714</deductables>
-        <totalcover>32580</totalcover>
+        <deductables>686.0</deductables>
+        <totalcover>45135</totalcover>
 </Insurance>
 <Insurance id = "I10">
-        <category>AetnaHealth</category>
+        <category>Aetna Health</category>
         <subcategory>Dental</subcategory>
-        <name>AetnaHealthDental0Insurance</name>
-        <duration>1year</duration>
-        <price>910</price>
+        <name>Aetna Health Dental Insurance Plan 1</name>
+        <duration>2year</duration>
+        <price>2192</price>
         <image>00010.png</image>
-        <description>This is a dummy description for Dental Insurance provided by AetnaHealth</description>
+        <description>This is a dummy description for Dental Insurance provided by Aetna Health</description>
         <emailId>support1@aetnahealth.com</emailId>
-        <deductables>698</deductables>
-        <totalcover>13650</totalcover>
+        <deductables>801.0</deductables>
+        <totalcover>32880</totalcover>
 </Insurance>
 <Insurance id = "I11">
-        <category>AetnaHealth</category>
+        <category>Aetna Health</category>
         <subcategory>Vision</subcategory>
-        <name>AetnaHealthVision1Insurance</name>
-        <duration>2year</duration>
-        <price>2358</price>
+        <name>Aetna Health Vision Insurance Plan 2</name>
+        <duration>5year</duration>
+        <price>4780</price>
         <image>00011.png</image>
-        <description>This is a dummy description for Vision Insurance provided by AetnaHealth</description>
+        <description>This is a dummy description for Vision Insurance provided by Aetna Health</description>
         <emailId>support1@aetnahealth.com</emailId>
-        <deductables>859</deductables>
-        <totalcover>35370</totalcover>
+        <deductables>896.0</deductables>
+        <totalcover>71700</totalcover>
 </Insurance>
 <Insurance id = "I12">
-        <category>AetnaHealth</category>
+        <category>Aetna Health</category>
         <subcategory>Health</subcategory>
-        <name>AetnaHealthHealth2Insurance</name>
-        <duration>3year</duration>
-        <price>3429</price>
+        <name>Aetna Health Health Insurance Plan 3</name>
+        <duration>4year</duration>
+        <price>4488</price>
         <image>00012.png</image>
-        <description>This is a dummy description for Health Insurance provided by AetnaHealth</description>
+        <description>This is a dummy description for Health Insurance provided by Aetna Health</description>
         <emailId>support1@aetnahealth.com</emailId>
-        <deductables>823</deductables>
-        <totalcover>51435</totalcover>
+        <deductables>878.0</deductables>
+        <totalcover>67320</totalcover>
 </Insurance>
 <Insurance id = "I13">
-        <category>AetnaHealth</category>
+        <category>Aetna Health</category>
         <subcategory>Mental-Health</subcategory>
-        <name>AetnaHealthMental-Health3Insurance</name>
-        <duration>2year</duration>
-        <price>1730</price>
+        <name>Aetna Health Mental-Health Insurance Plan 4</name>
+        <duration>3year</duration>
+        <price>3066</price>
         <image>00013.png</image>
-        <description>This is a dummy description for Mental-Health Insurance provided by AetnaHealth</description>
+        <description>This is a dummy description for Mental-Health Insurance provided by Aetna Health</description>
         <emailId>support1@aetnahealth.com</emailId>
-        <deductables>776</deductables>
-        <totalcover>25950</totalcover>
+        <deductables>648.0</deductables>
+        <totalcover>45990</totalcover>
 </Insurance>
 <Insurance id = "I14">
-        <category>AetnaHealth</category>
+        <category>Aetna Health</category>
         <subcategory>Crtical-Illness</subcategory>
-        <name>AetnaHealthCrtical-Illness4Insurance</name>
-        <duration>3year</duration>
-        <price>3171</price>
+        <name>Aetna Health Crtical-Illness Insurance Plan 5</name>
+        <duration>5year</duration>
+        <price>5310</price>
         <image>00014.png</image>
-        <description>This is a dummy description for Crtical-Illness Insurance provided by AetnaHealth</description>
+        <description>This is a dummy description for Crtical-Illness Insurance provided by Aetna Health</description>
         <emailId>support1@aetnahealth.com</emailId>
-        <deductables>693</deductables>
-        <totalcover>47565</totalcover>
+        <deductables>677.0</deductables>
+        <totalcover>79650</totalcover>
 </Insurance>
 <Insurance id = "I20">
-        <category>Kaiser-Foundation</category>
+        <category>Kaiser Foundation</category>
         <subcategory>Dental</subcategory>
-        <name>Kaiser-FoundationDental0Insurance</name>
-        <duration>1year</duration>
-        <price>805</price>
+        <name>Kaiser Foundation Dental Insurance Plan 1</name>
+        <duration>5year</duration>
+        <price>5460</price>
         <image>00020.png</image>
-        <description>This is a dummy description for Dental Insurance provided by Kaiser-Foundation</description>
+        <description>This is a dummy description for Dental Insurance provided by Kaiser Foundation</description>
         <emailId>support2@kaiserfo.com</emailId>
-        <deductables>617</deductables>
-        <totalcover>12075</totalcover>
+        <deductables>614.0</deductables>
+        <totalcover>81900</totalcover>
 </Insurance>
 <Insurance id = "I21">
-        <category>Kaiser-Foundation</category>
+        <category>Kaiser Foundation</category>
         <subcategory>Vision</subcategory>
-        <name>Kaiser-FoundationVision1Insurance</name>
-        <duration>2year</duration>
-        <price>1830</price>
+        <name>Kaiser Foundation Vision Insurance Plan 2</name>
+        <duration>3year</duration>
+        <price>3243</price>
         <image>00021.png</image>
-        <description>This is a dummy description for Vision Insurance provided by Kaiser-Foundation</description>
+        <description>This is a dummy description for Vision Insurance provided by Kaiser Foundation</description>
         <emailId>support2@kaiserfo.com</emailId>
-        <deductables>633</deductables>
-        <totalcover>27450</totalcover>
+        <deductables>680.0</deductables>
+        <totalcover>48645</totalcover>
 </Insurance>
 <Insurance id = "I22">
-        <category>Kaiser-Foundation</category>
+        <category>Kaiser Foundation</category>
         <subcategory>Health</subcategory>
-        <name>Kaiser-FoundationHealth2Insurance</name>
-        <duration>5year</duration>
-        <price>5400</price>
+        <name>Kaiser Foundation Health Insurance Plan 3</name>
+        <duration>4year</duration>
+        <price>4800</price>
         <image>00022.png</image>
-        <description>This is a dummy description for Health Insurance provided by Kaiser-Foundation</description>
+        <description>This is a dummy description for Health Insurance provided by Kaiser Foundation</description>
         <emailId>support2@kaiserfo.com</emailId>
-        <deductables>720</deductables>
-        <totalcover>81000</totalcover>
+        <deductables>651.0</deductables>
+        <totalcover>72000</totalcover>
 </Insurance>
 <Insurance id = "I23">
-        <category>Kaiser-Foundation</category>
+        <category>Kaiser Foundation</category>
         <subcategory>Mental-Health</subcategory>
-        <name>Kaiser-FoundationMental-Health3Insurance</name>
+        <name>Kaiser Foundation Mental-Health Insurance Plan 4</name>
         <duration>2year</duration>
-        <price>2288</price>
+        <price>1966</price>
         <image>00023.png</image>
-        <description>This is a dummy description for Mental-Health Insurance provided by Kaiser-Foundation</description>
+        <description>This is a dummy description for Mental-Health Insurance provided by Kaiser Foundation</description>
         <emailId>support2@kaiserfo.com</emailId>
-        <deductables>724</deductables>
-        <totalcover>34320</totalcover>
+        <deductables>721.0</deductables>
+        <totalcover>29490</totalcover>
 </Insurance>
 <Insurance id = "I24">
-        <category>Kaiser-Foundation</category>
+        <category>Kaiser Foundation</category>
         <subcategory>Crtical-Illness</subcategory>
-        <name>Kaiser-FoundationCrtical-Illness4Insurance</name>
-        <duration>3year</duration>
-        <price>2985</price>
+        <name>Kaiser Foundation Crtical-Illness Insurance Plan 5</name>
+        <duration>2year</duration>
+        <price>2336</price>
         <image>00024.png</image>
-        <description>This is a dummy description for Crtical-Illness Insurance provided by Kaiser-Foundation</description>
+        <description>This is a dummy description for Crtical-Illness Insurance provided by Kaiser Foundation</description>
         <emailId>support2@kaiserfo.com</emailId>
-        <deductables>634</deductables>
-        <totalcover>44775</totalcover>
+        <deductables>734.0</deductables>
+        <totalcover>35040</totalcover>
 </Insurance>
 </InsuranceCatalog>
 
