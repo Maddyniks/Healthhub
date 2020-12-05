@@ -62,7 +62,7 @@ public class CheckOut extends HttpServlet {
 			// for each order iterate and display the order name price
 			for (OrderItem oi : utility.getCustomerOrders()) 
 			{
-				pw.print("<tr><td>" + oi.getName()+"</td><td>" + oi.getNetTotal() + "</td></tr>");
+				pw.print("<tr><td>" + oi.getName()+"</td><td>" + oi.getPrice() + "</td></tr>");
 				pw.print("<input type='hidden' name='orderPrice' value='$ "+oi.getPrice()+"'>");
 				pw.print("<input type='hidden' name='orderName' value='"+oi.getName()+"'>");
 			}

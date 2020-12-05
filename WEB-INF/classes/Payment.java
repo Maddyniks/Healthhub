@@ -64,7 +64,7 @@ public class Payment extends HttpServlet {
 			//iterate through each order
 			for (OrderItem oi : utility.getCustomerOrders())
 			{
-				utility.storePayment(user.getId(), user.getName(), userAddress, creditCardNo, orderId, oi.getId(), oi.getName(), oi.getCategory(),  orderDate, shipDate, oi.getPrice(), 0, oi.getDiscount(), shippingCost, oi.getNetTotal() + shippingCost, mode, storeID, location);
+				utility.storePayment(user.getId(), user.getName(), userAddress, creditCardNo, orderId, oi.getId(), oi.getName(), oi.getCategory(),  orderDate, shipDate, oi.getPrice(), 0, 0.0, shippingCost, 0.0, mode, storeID, location);
 			}
 
 			//remove the order details from cart after processing			

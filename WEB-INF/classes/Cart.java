@@ -62,7 +62,7 @@ public class Cart extends HttpServlet {
 			for (OrderItem oi : utility.getCustomerOrders()) 
 			{
 				pw.print("<tr>");
-				pw.print("<td>"+i+".</td><td>"+oi.getName()+"</td><td>$ "+oi.getNetTotal()+"</td>");
+				pw.print("<td>"+i+".</td><td>"+oi.getName()+"</td><td>"+getCategory(oi.getCategory())+"</td>");
 
 				pw.print("<form name ='Cart' action='Cart' method='post'>");
 				pw.print("<input type='hidden' name='name' value='"+oi.getName()+"'>");
@@ -71,12 +71,11 @@ public class Cart extends HttpServlet {
 				pw.print("</form>");
 				
 				pw.print("</tr>");
-				total = total +oi.getNetTotal();
+				total = total +oi.getPrice();
 				i++;
 			}
 			pw.print("<form name ='Cart' action='CheckOut' method='post'>");
 			pw.print("<input type='hidden' name='orderTotal' value='"+total+"'>");	
-			pw.print("<tr><th colspan = '2' style = 'text-align: center;'>Total</th><th style = 'text-align: center;'>$ "+total+"</th>");
 			pw.print("<tr><td colspan = '3'><input type='submit' name='CheckOut' value='Check Out' class='btnbuy' style = 'width: 80%;' /></td>");
 			pw.print("</table></form>");
 		}
@@ -94,5 +93,19 @@ public class Cart extends HttpServlet {
 		Utilities utility = new Utilities(request, pw);
 		
 		displayCart(request, response);
+	}
+
+	String getCategory(String type)
+	{
+		switch (type) {
+			case "doctors":
+				return "Doctor";
+			case "pharmacies":
+				return "Pharmacy";
+			case "insurances":
+				return "Insurance";
+			default:
+				return "UnIdentified";
+		}
 	}
 }
