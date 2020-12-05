@@ -3,7 +3,9 @@ To Run HealthHUb Follow the steps:
 
 - Extract the Zip and Paste the Healthhub folder under webapps (C:\apache-tomcat-7.0.34\webapps\Healthhub)
 
-
+- Please make sure the Path for the ProductCatalog.xml is correct in the SaxParserDataStore.java file 
+	SaxParserDataStore.java | Line 217 : " new SaxParserDataStore(TOMCAT_HOME+"\\webapps\\HealthHub\\ProductCatalog.xml"); " 
+	
 - Setup MySQL Workbench import the provided SQL files under sql folder
 	- Create MySQL DB Name: healthhub
 	- Create MySQL DB Password: IllinoisTech2021@
