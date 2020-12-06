@@ -645,29 +645,29 @@ public class MySqlDataStoreUtilities
         return pharmacy;
     }
 
-    // public static ArrayList<DoctorType> getPharmaciesTrnxs(String userID)
-    // {
-    //     ArrayList<PharmacyType> pharmacies = new ArrayList<PharmacyType>();
-    //     PharmacyType pharmacy;
-    //     try
-    //     {
-    //         Statement stmt=conn.createStatement();
-    //         String selectCustomerQuery="select * from  pharmacyappointments where userID = \"" + userID + "\"";
-	// 		ResultSet rs = stmt.executeQuery(selectCustomerQuery);
-	// 		while(rs.next())
-    //         {	
-	// 			pharmacy = new PharmacyType(rs.getString("id"),rs.getString("name"), rs.getString("image"),rs.getString("description"),rs.getString("category"),rs.getString("phoneNumber"),rs.getString("city"),rs.getString("zip"),rs.getString("latitude"),rs.getString("longitude"));
-    //             pharmacies.add(pharmacy);
-    //             break;
-	// 		}
-    //     }
-    //     catch(Exception e)
-    //     {
-    //         System.out.println("Error in function in getPharmacies() in MySqlDataStoreUtilities");
-    //     }
+    public static ArrayList<PharmacyTransactionType> getPharmaciesTrnxs(String userID)
+    {
+        ArrayList<PharmacyTransactionType> pharmacies = new ArrayList<PharmacyTransactionType>();
+        PharmacyTransactionType pharmacy;
+        try
+        {
+            Statement stmt=conn.createStatement();
+            String selectCustomerQuery="select * from  pharmacyAppointments where userID = \"" + userID + "\"";
+			ResultSet rs = stmt.executeQuery(selectCustomerQuery);
+			while(rs.next())
+            {	
+				pharmacy = new PharmacyTransactionType(rs.getString("transactionID"), rs.getString("userID"), rs.getString("userName"), rs.getString("pharmacyID"), rs.getString("pharmacyName"), rs.getString("pharmacyCategory"),rs.getString("pharmacyCity"), rs.getString("pharmacyZip"),rs.getString("pharmacyLat"),rs.getString("pharmacyLon"), rs.getString("appointmentDate"),rs.getString("appointmentTime"), rs.getString("appointmentDesc"), rs.getString("currentStatus"));
+                pharmacies.add(pharmacy);
+                break;
+			}
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error in function in getPharmacies() in MySqlDataStoreUtilities");
+        }
 
-    //     return pharmacies;
-    // }
+        return pharmacies;
+    }
 
     public static InsuranceType getInsurance(String id)
     {

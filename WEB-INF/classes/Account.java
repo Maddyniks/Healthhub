@@ -99,10 +99,10 @@ public class Account extends HttpServlet {
 		int dSize = 0;
 		int pSize = 0;
 		ArrayList<DoctorTransactionType> doctors = MySqlDataStoreUtilities.getDoctorTrnxs(user.getId());
-		//ArrayList<PharmacyType> pharmacies = MySqlDataStoreUtilities.getPharmaciesTrnxs(user.getId());
+		ArrayList<PharmacyTransactionType> pharmacies = MySqlDataStoreUtilities.getPharmaciesTrnxs(user.getId());
 
 		dSize = ( doctors != null ) ? doctors.size(): 0;
-		//pSize =( pharmacies != null) ? pharmacies.size(): 0;
+		pSize =( pharmacies != null) ? pharmacies.size(): 0;
 				
 		if(dSize > 0 || pSize > 0)
 		{	
@@ -129,6 +129,24 @@ public class Account extends HttpServlet {
 					pw.print("<td  style = 'text-align: center;'>$ "+dTrxn.getDoctorPrice()+"</td>");
 					pw.print("<td  style = 'text-align: center;'><span class='badge badge-pill badge-"+badgeColor(dTrxn.getCurrentStatus())+"'>"+dTrxn.getCurrentStatus()+"</span></td>");
 					pw.print("<input type='hidden' name='orderId' value='"+dTrxn.getTransactionID()+"'>");
+					pw.print("<td  style = 'text-align: center;'><input type='submit' name='Order' value='CancelOrder' class='btn btn-danger'></td>");
+					pw.print("</tr>");
+					pw.print("</form>");
+				}
+			}
+			if(pSize > 0)
+			{
+				for(PharmacyTransactionType pTrxn : pharmacies)
+				{
+					pw.print("<form method='get' action='ViewOrder'>");
+					pw.print("<tr>");			
+					pw.print("<td  style = 'text-align: center;'>"+pTrxn.getTransactionID()+"</td>");			
+					pw.print("<td  style = 'text-align: center;'>"+pTrxn.getPharmacyName()+"</td>");
+					pw.print("<td  style = 'text-align: center;'>"+pTrxn.getAppointmentDate()+"</td>");
+					pw.print("<td  style = 'text-align: center;'>"+pTrxn.getAppointmentTime()+"</td>");
+					pw.print("<td  style = 'text-align: center;'> - </td>");
+					pw.print("<td  style = 'text-align: center;'><span class='badge badge-pill badge-"+badgeColor(pTrxn.getCurrentStatus())+"'>"+pTrxn.getCurrentStatus()+"</span></td>");
+					pw.print("<input type='hidden' name='orderId' value='"+pTrxn.getTransactionID()+"'>");
 					pw.print("<td  style = 'text-align: center;'><input type='submit' name='Order' value='CancelOrder' class='btn btn-danger'></td>");
 					pw.print("</tr>");
 					pw.print("</form>");
