@@ -12,14 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Insurances extends HttpServlet {
 
-	/* Insurances Page Displays all the Phone and their Information in Best Deal */
-
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
-
-	/* Checks the Phone type whether it is microsft or apple or samsung */
 
 		String name = null;
 		String CategoryName = request.getParameter("maker");
@@ -32,47 +28,41 @@ public class Insurances extends HttpServlet {
 		} 
 		else 
 		{
-			if(CategoryName.trim().equals("UnitedHealth"))
+			if(CategoryName.trim().equals("United-Health"))
 			{
 			  for(Map.Entry<String,InsuranceType> entry : SaxParserDataStore.insurances.entrySet())
 			  {
-				 if(entry.getValue().getCategory().equals("UnitedHealth"))
+				 if(entry.getValue().getCategory().equals("United Health"))
 				  {
 					  hm.put(entry.getValue().getId(),entry.getValue());
 				  }
 			  }
-				 name = "UnitedHealth";
+				 name = "United Health";
 			}
-			else if(CategoryName.equals("AetnaHealth"))
+			else if(CategoryName.equals("Aetna-Health"))
 			 {
 			 for(Map.Entry<String,InsuranceType> entry : SaxParserDataStore.insurances.entrySet())
 				 {
-				  if(entry.getValue().getCategory().equals("AetnaHealth"))
+				  if(entry.getValue().getCategory().equals("Aetna Health"))
 				  {
 					  hm.put(entry.getValue().getId(),entry.getValue());
 				  }
 				 }
-				  name = "AetnaHealth";
+				  name = "Aetna Health";
 			 }
 			 else if(CategoryName.equals("Kaiser-Foundation"))
 			 {
 				 for(Map.Entry<String,InsuranceType> entry : SaxParserDataStore.insurances.entrySet())
 				 {
-				  if(entry.getValue().getCategory().equals("Kaiser-Foundation"))
+				  if(entry.getValue().getCategory().equals("Kaiser Foundation"))
 				  {
 					  hm.put(entry.getValue().getId(),entry.getValue());
 				  }
 				 }
-					 name = "Kaiser-Foundation";
+					 name = "Kaiser Foundation";
 			 }
-	    }
-
-		/* Header, Left Navigation Bar are Printed.
-
-		All the Insurances and phone information are dispalyed in the Content Section
-
-		and then Footer is Printed*/
-
+		}
+		
 		Utilities utility = new Utilities(request, pw);
 		utility.printHtml("Header.html");
 		utility.printHtml("LeftNavigationBar.html");

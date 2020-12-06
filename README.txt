@@ -5,7 +5,11 @@ To Run HealthHUb Follow the steps:
 
 - Please make sure the Path for the ProductCatalog.xml is correct in the SaxParserDataStore.java file 
 	SaxParserDataStore.java | Line 217 : " new SaxParserDataStore(TOMCAT_HOME+"\\webapps\\HealthHub\\ProductCatalog.xml"); " 
-	
+
+- Change the MySQL password at the following places:
+	- MySqlDataStoreUtilities File
+	- AjaxUtility File
+	- ProductRecommenderUtility File	
 - Setup MySQL Workbench import the provided SQL files under sql folder
 	- Create MySQL DB Name: healthhub
 	- Create MySQL DB Password: IllinoisTech2021@

@@ -235,7 +235,6 @@ public class SaxParserDataStore extends DefaultHandler {
 	 
 			if (element.equals("Insurance")) {	
 				insurances.put(insurance.getId(),insurance);
-				//MySqlDataStoreUtilities.insertProduct("phone", phone.getId(), phone.getName(), phone.getPrice(), phone.getImage(), phone.getRetailer(), phone.getCondition(), phone.getDiscount(), phone.getDescription());  
 				MySqlDataStoreUtilities.insertInsurance(insurance.getId(), insurance.getName(), insurance.getCategory(), insurance.getSubCategory(), insurance.getPrice(), insurance.getImage(), insurance.getDescription(), insurance.getDuration(), insurance.getEmailId(), insurance.getDeductables(), insurance.getTotalCov());  
 				return;
 			}

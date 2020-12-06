@@ -44,7 +44,6 @@ public class DealMatchesUtilities extends HttpServlet {
                 {	
                     BufferedReader reader = new BufferedReader(new FileReader (new File(TOMCAT_HOME+"\\webapps\\Healthhub\\DealMatches.txt")));
                     line=reader.readLine().toLowerCase();	
-                    System.out.println(line);
                     if(line==null)
                     {
                         pw.print("<div class='panel panel-default'>");

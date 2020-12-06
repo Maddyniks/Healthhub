@@ -19,32 +19,22 @@ import java.io.*;
 
 @WebServlet("/Utilities")
 
-/* 
-	Utilities class contains class variables of type HttpServletRequest, PrintWriter,String and HttpSession.
-
-	Utilities class has a constructor with  HttpServletRequest, PrintWriter variables.
-	  
-*/
-
 public class Utilities extends HttpServlet{
 	HttpServletRequest req;
 	PrintWriter pw;
 	String url;
 	HttpSession session; 
-	public Utilities(HttpServletRequest req, PrintWriter pw) {
+
+	public Utilities(HttpServletRequest req, PrintWriter pw) 
+	{
 		this.req = req;
 		this.pw = pw;
 		this.url = this.getFullURL();
 		this.session = req.getSession(true);
 	}
 
-
-
-	/*  Printhtml Function gets the html file name as function Argument, 
-		If the html file name is Header.html then It gets Username from session variables.
-		Account ,Cart Information ang Logout Options are Displayed*/
-
-	public void printHtml(String file) {
+	public void printHtml(String file) 
+	{
 		String result = HtmlToString(file);
 		String usertype = usertype();
 
@@ -61,7 +51,7 @@ public class Utilities extends HttpServlet{
 					result = result + inventoryMarkup + salesMarkup;
 				}
 				result = result + "<li><a href='ViewOrder'>ViewOrder</a></li>"
-						+ "<li><a>Hello,"+username+"</a></li>"
+						+ "<li><a>Hello, "+username+"</a></li>"
 						+ "<li><a href='Account'>Account</a></li>"
 						+ "<li><a href='Logout'>Logout</a></li>";
 			}
@@ -73,10 +63,8 @@ public class Utilities extends HttpServlet{
 				pw.print(result);
 	}
 	
-
-	/*  getFullURL Function - Reconstructs the URL user request  */
-
-	public String getFullURL() {
+	public String getFullURL() 
+	{
 		String scheme = req.getScheme();
 		String serverName = req.getServerName();
 		int serverPort = req.getServerPort();
@@ -92,10 +80,11 @@ public class Utilities extends HttpServlet{
 		return url.toString();
 	}
 
-	/*  HtmlToString - Gets the Html file and Converts into String and returns the String.*/
-	public String HtmlToString(String file) {
+	public String HtmlToString(String file) 
+	{
 		String result = null;
-		try {
+		try 
+		{
 			String webPage = url + file;
 			URL url = new URL(webPage);
 			URLConnection urlConnection = url.openConnection();
@@ -105,7 +94,8 @@ public class Utilities extends HttpServlet{
 			int numCharsRead;
 			char[] charArray = new char[1024];
 			StringBuffer sb = new StringBuffer();
-			while ((numCharsRead = isr.read(charArray)) > 0) {
+			while ((numCharsRead = isr.read(charArray)) > 0) 
+			{
 				sb.append(charArray, 0, numCharsRead);
 			}
 			result = sb.toString();
@@ -115,22 +105,16 @@ public class Utilities extends HttpServlet{
 		return result;
 	} 
 
-	/*  logout Function removes the username , usertype attributes from the session variable*/
-
 	public void logout(){
 		session.removeAttribute("username");
 		session.removeAttribute("usertype");
 	}
 	
-	/*  isLoggedin Function checks whether the user is loggedIn or Not*/
-
 	public boolean isLoggedin(){
 		if (session.getAttribute("username")==null)
 			return false;
 		return true;
 	}
-
-	/*  username Function returns the username from the session variable.*/
 	
 	public String username(){
 		if (session.getAttribute("username")!=null)
@@ -138,14 +122,12 @@ public class Utilities extends HttpServlet{
 		return null;
 	}
 	
-	/*  usertype Function returns the usertype from the session variable.*/
 	public String usertype(){
 		if (session.getAttribute("usertype")!=null)
 			return session.getAttribute("usertype").toString();
 		return null;
 	}
 	
-	/*  getUser Function checks the user is a customer or retailer or manager and returns the user class variable.*/
 	public User getUser(){
 		String usertype = usertype();
 		HashMap<String, User> hm=new HashMap<String, User>();
@@ -161,7 +143,6 @@ public class Utilities extends HttpServlet{
 		return user;
 	}
 	
-	/*  getCustomerOrders Function gets  the Orders for the user*/
 	public ArrayList<OrderItem> getCustomerOrders(){
 		ArrayList<OrderItem> order = new ArrayList<OrderItem>(); 
 		if(OrdersHashMap.orders.containsKey(username()))
@@ -169,7 +150,6 @@ public class Utilities extends HttpServlet{
 		return order;
 	}
 
-	/*  getOrdersPaymentSize Function gets  the size of OrderPayment */
 	public int getOrderPaymentSize(){
 		HashMap<Integer, ArrayList<OrderPayment>> orderPayments = new HashMap<Integer, ArrayList<OrderPayment>>();
 		
@@ -189,7 +169,6 @@ public class Utilities extends HttpServlet{
 		return size;		
 	}
 
-	/*  CartCount Function gets  the size of User Orders*/
 	public int CartCount(){
 		if(isLoggedin())
 		return getCustomerOrders().size();
@@ -200,8 +179,6 @@ public class Utilities extends HttpServlet{
 		return  Math.round((original * (100 - discount)) / 100);
 	  }
 	
-	/* StoreProduct Function stores the Purchased product in Orders HashMap according to the User Names.*/
-
 	public void storeProduct(String name,String type,String maker, String acc){
 		if(!OrdersHashMap.orders.containsKey(username())){	
 			ArrayList<OrderItem> arr = new ArrayList<OrderItem>();
@@ -211,20 +188,20 @@ public class Utilities extends HttpServlet{
 		if(type.equals("doctors")){
 			DoctorType doctor;
 			doctor = SaxParserDataStore.doctors.get(name);
-			//OrderItem orderitem = new OrderItem(doctor.getId(), doctor.getName(), doctor.getPrice(), doctor.getDiscount(), getNewPrice(doctor.getPrice(), doctor.getDiscount()), doctor.getImage(), doctor.getRetailer(), type);
-			//orderItems.add(orderitem);
+			OrderItem orderitem = new OrderItem(doctor.getId(), doctor.getName(), doctor.getPrice(), doctor.getImage(), type);
+			orderItems.add(orderitem);
 		}
-		if(type.equals("pharmacies")){
+		if(type.equals("Pharmacy")){
 			PharmacyType pharmacy = null;
 			pharmacy = SaxParserDataStore.pharmacies.get(name);
-			// OrderItem orderitem = new OrderItem(pharmacy.getId(), pharmacy.getName(), pharmacy.getPrice(), pharmacy.getDiscount(), getNewPrice(pharmacy.getPrice(), pharmacy.getDiscount()), pharmacy.getImage(), pharmacy.getRetailer(), type);
-			// orderItems.add(orderitem);
+			OrderItem orderitem = new OrderItem(pharmacy.getId(), pharmacy.getName(),0, pharmacy.getImage(), type);
+			orderItems.add(orderitem);
 		}
-		if(type.equals("insurances")){
+		if(type.equals("Insurance")){
 			InsuranceType insurance = null;
 			insurance = SaxParserDataStore.insurances.get(name);
-			//OrderItem orderitem = new OrderItem(insurance.getId(), insurance.getName(), insurance.getPrice(), insurance.getDiscount(), getNewPrice(phone.getPrice(), phone.getDiscount()), phone.getImage(), phone.getRetailer(), type);
-			//orderItems.add(orderitem);
+			OrderItem orderitem = new OrderItem(insurance.getId(), insurance.getName(), insurance.getPrice(), insurance.getImage(), type);
+			orderItems.add(orderitem);
 		}
 	}
 
