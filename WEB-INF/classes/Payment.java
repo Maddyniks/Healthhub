@@ -50,13 +50,12 @@ public class Payment extends HttpServlet {
 		// }
 
 
-		if(!userAddress.isEmpty() && !creditCardNo.isEmpty() )
+		if(!userAddress.isEmpty())
 		{
 			int min = 100000;
 			int max = 999999;
 			
 			int transactionID =  (int)(Math.random()*(max-min+1)+min);  
-			//int transactionID=utility.getOrderPaymentSize()+1; 
 
 			String orderDate = LocalDate.now().toString();
 			String shipDate = LocalDate.now().plusDays(14).toString();
@@ -71,6 +70,14 @@ public class Payment extends HttpServlet {
 					String appointmentTime = request.getParameter("docTime"+oi.getId());
 					String appointmentDesc = request.getParameter("docDesc"+oi.getId());
 					MySqlDataStoreUtilities.storeDoctorAppointment(transactionID + "", user.getId(), user.getName(), doctor.getId(), doctor.getName(), doctor.getPrice(), doctor.getCategory(), doctor.getCity(), doctor.getZip(), doctor.getLat(), doctor.getLongi(), appointmentDate, appointmentTime, appointmentDesc, "Pending"  );
+				}
+				else if(oi.getCategory().equals("Pharmacy"))
+				{
+					PharmacyType pharmacy = MySqlDataStoreUtilities.getPharmacy(oi.getId());
+					String appointmentDate = request.getParameter("pharDate"+oi.getId());
+					String appointmentTime = request.getParameter("pharTime"+oi.getId());
+					String appointmentDesc = request.getParameter("pharDesc"+oi.getId());
+					MySqlDataStoreUtilities.storePharmacyAppointment(transactionID + "", user.getId(), user.getName(), pharmacy.getId(), pharmacy.getName(), pharmacy.getCategory(), pharmacy.getCity(), pharmacy.getZip(), pharmacy.getLat(), pharmacy.getLongi(), appointmentDate, appointmentTime, appointmentDesc, "Pending"  );
 				}
 			}
 
