@@ -75,37 +75,47 @@ public class Insurances extends HttpServlet {
 			InsuranceType insurance = entry.getValue();
 			//System.out.println(insurance.getName() + " | " + insurance.getCity() + " | " + insurance.getZip());
 			if(i%3==1) pw.print("<tr>");
-			pw.print("<td><div id='shop_item'>");
-			pw.print("<h3>"+insurance.getName()+"</h3>");
-			pw.print("<strong>"+insurance.getCategory()+"</strong><ul>");
-			pw.print("<li id='item'><img src='images/insurances/"+insurance.getImage()+"' alt='' /></li>");
-			pw.print("<strong>"+insurance.getPrice()+"</strong><ul>");
+			pw.print("<td>");
+
+			pw.print("<div class='card  bg-light' style=' margin-left: auto; margin-right:auto;'>");
+			pw.print("<img src='images/insurances/"+insurance.getImage()+"' class='card-img-top' alt='...'>");
+			pw.print("<div class='card-body'>");
+			pw.print("<h5 class='card-title'>"+insurance.getName()+"</h5>");
+			pw.print("<h6 class='card-subtitle mb-2 text-muted'>"+insurance.getCategory()+"</h6>");
+			pw.print("<p class='card-text'>"+insurance.getPrice()+"</p>");
+
 			pw.print("<form name ='ViewItem' action='ViewItem' method='post'>");
-			pw.print("<li><input type='hidden' name='name' value='"+insurance.getName()+"'>"+
+			pw.print("<input type='hidden' name='name' value='"+insurance.getName()+"'>"+
 					"<input type='hidden' name='type' value='Insurance'>"+
 					"<input type='hidden' name='maker' value='"+insurance.getCategory()+"'>"+
 					"<input type='hidden' name='access' value=''>"+
-					"<input type='submit' class='btnbuy' value='View Item'></form></li>");
+					"<input type='submit' class='btn btn-primary' style = 'display: block; margin-left: auto; margin-right:auto;' value='View Insurance'></form><br/>");
 			
-			pw.print("<li><form method='post' action='Cart'>" +
+			pw.print("<form method='post' action='Cart'>" +
 					"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
 					"<input type='hidden' name='type' value='Insurance'>"+
 					"<input type='hidden' name='maker' value='"+CategoryName+"'>"+
 					"<input type='hidden' name='access' value=''>"+
-					"<input type='submit' class='btnbuy' value='Buy Now'></form></li>");
+					"<input type='submit' class='btn btn-success' style = 'display: block; margin-left: auto; margin-right:auto;' value='Buy Now'></form><br/>");
 			
-			pw.print("<li><form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='" + insurance.getName() + "'>"+
+			pw.print("<form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='" + insurance.getName() + "'>"+
 					"<input type='hidden' name='type' value='Insurance'>"+
 					"<input type='hidden' name='maker' value='"+insurance.getCategory()+"'>"+
 					"<input type='hidden' name='price' value='"+insurance.getPrice()+"'>"+
-					"<input type='submit' value='WriteReview' class='btnreview'></form></li>");
+					"<input type='submit' value='WriteReview' class='btn btn-info' style = 'display: block; margin-left: auto; margin-right:auto;'></form><br/>");
 					
-			pw.print("<li><form method='post' action='ViewReview'>"+"<input type='hidden' name='name' value='"+ insurance.getName() +"'>"+
+			pw.print("<form method='post' action='ViewReview'>"+"<input type='hidden' name='name' value='"+ insurance.getName() +"'>"+
 					"<input type='hidden' name='type' value='Insurance'>"+
 					"<input type='hidden' name='maker' value='"+insurance.getCategory()+"'>"+
 					"<input type='hidden' name='price' value='"+insurance.getPrice()+"'>"+
-				    "<input type='submit' value='ViewReview' class='btnreview'></form></li>");
-			pw.print("</ul></div></td>");
+					"<input type='submit' value='ViewReview' class='btn btn-info' style = 'display: block; margin-left: auto; margin-right:auto;'></form><br/>");
+					
+					pw.print("</div>");
+					pw.print("</div>");
+		
+		
+					
+					pw.print("</td>");
 			if(i%3==0 || i == size) pw.print("</tr>");
 			i++;
 		}	
