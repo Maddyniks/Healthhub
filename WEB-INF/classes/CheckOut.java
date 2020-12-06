@@ -191,23 +191,36 @@ public class CheckOut extends HttpServlet
 			String docTime = "'docTime" + oi.getId() + "'";
 
 			DoctorType doctor = MySqlDataStoreUtilities.getDoctor(oi.getId());
-			pw.print("<div class='panel panel-default'>");
-			pw.print("<div class='panel-body'>");
-			pw.print("<h4>"+oi.getName()+"</h4>");
-			pw.print("<h5>"+doctor.getCategory()+"</h5>");
-			pw.print("<h5> Appointment Fee: $ "+doctor.getPrice()+"</h5>");
-			pw.print("<h5>"+doctor.getCity()+", "+ doctor.getZip() +"</h5>");
 
+			pw.print("<div class='card mb-3'>");
+			pw.print("<div class='row no-gutters'>");
+			pw.print("<div class='col-md-4'>");
+			pw.print("<img src='images/"+oi.getCategory()+"/"+doctor.getImage()+"' class='card-img' alt='...'>");
+			pw.print("</div>");
+			pw.print("<div class='col-md-8'>");
+			pw.print("<div class='card-body'>");
+			pw.print("<h5 class='card-title'>"+oi.getName()+"</h5>");
+			pw.print("<h6 class='card-subtitle mb-2 text-muted'>"+doctor.getCategory()+", "+doctor.getCity()+", "+ doctor.getZip() +" </h6>");
+			pw.print("<h5><span class='badge badge-primary'>Appointment fee $"+doctor.getPrice()+"</span></h5>");
+			
 			pw.print("<label for = " + docDesc + "'>Please Describe your issue</label><br/>");
-			pw.print("<input type='text' id = " + docDesc + "name=" + docDesc + " required = 'true' ><br/>");
+			pw.print("<input type='text' id = " + docDesc + "name=" + docDesc + " required = 'true' class='form-control form-control-sm'><br/>");
 
 			pw.print("<label for = " + docDesc + "'>Appointment Date</label><br/>");
-			pw.print("<input type='date' id = " + docDate + "name=" + docDate + " required = 'true' ><br/>");
+			pw.print("<input type='date' id = " + docDate + "name=" + docDate + " required = 'true' class='form-control form-control-sm'><br/>");
 
 			pw.print("<label for = " + docTime + "'>Appointment Time</label><br/>");
-			pw.print("<input type='time' id = " + docTime + "name=" + docTime + " required = 'true' ><br/>");
+			pw.print("<input type='time' id = " + docTime + "name=" + docTime + " required = 'true' class='form-control form-control-sm'><br/>");
+
 			pw.print("</div>");
 			pw.print("</div>");
+			pw.print("</div>");
+			pw.print("</div>");
+
+
+
+	
+	
 		}
 
 		void renderPharmacyView(OrderItem oi, PrintWriter pw)
