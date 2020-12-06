@@ -15,7 +15,7 @@ public class MySqlDataStoreUtilities
         try
         {
         Class.forName("com.mysql.jdbc.Driver").newInstance();
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthhub","root","1234");	
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthhub","root","IllinoisTech2021@");	
         System.out.println("----------------------------------------");
         System.out.println("SQL Connection Established");	
         System.out.println("----------------------------------------");					
@@ -620,6 +620,28 @@ public class MySqlDataStoreUtilities
         return pharmacy;
     }
 
+    public static InsuranceType getInsurance(String id)
+    {
+        InsuranceType insurance = new InsuranceType();
+        try
+        {
+            Statement stmt=conn.createStatement();
+            String selectCustomerQuery="select * from  insurance where id = \"" + id + "\"";
+			ResultSet rs = stmt.executeQuery(selectCustomerQuery);
+			while(rs.next())
+            {	
+				insurance = new InsuranceType(rs.getString("id"),rs.getString("name"), rs.getString("category"), rs.getString("subcategory"), rs.getDouble("price"), rs.getString("image"),rs.getString("description"),rs.getString("duration"),rs.getString("emailId"), rs.getDouble("deductables"), rs.getDouble("totalcoverage"));
+                break;
+			}
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error in function in getinsurance() in MySqlDataStoreUtilities");
+        }
+
+        return insurance;
+    }
+
     public static void storeDoctorAppointment(String transactionID, String userID, String userName, String doctorID, String doctorName, double doctorPrice, String doctorCategory, String doctorCity, String doctorZip, String doctorLat, String doctorLon, String appointmentDate, String appointmentTime, String appointmentDesc, String currentStatus)
     {
         try
@@ -681,6 +703,42 @@ public class MySqlDataStoreUtilities
         catch(Exception e)
         {
             System.out.println("Error in function in storePharmacyAppointment() in MySqlDataStoreUtilities: " + e);
+        }		
+    }
+
+    public static void storeInsuranceTransaction(String transactionID, String userID, String userName, String insuranceID, String insuranceName, String insuranceCategory, String insuranceSubCategory, double insurancePrice, String insuranceDuration, double deductables, double totalcoverage, String email, String phName, String phAge, String phAddress1, String phAddress2, String phCity, String phZIP, String phPhone)
+    {
+        try
+        {        
+            String addInsuranceQuery = "INSERT INTO insuranceTransaction(transactionID, userID, userName, insuranceID, insuranceName, insuranceCategory, insuranceSubCategory, insurancePrice, insuranceDuration, deductables, totalcoverage, email, phName, phAge, phAddress1, phAddress2, phCity, phZIP, phPhone )"
+            + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";	
+                
+            PreparedStatement pst = conn.prepareStatement(addInsuranceQuery);
+            //set the parameter for each column and execute the prepared statement
+            pst.setString(1,transactionID);
+            pst.setString(2,userID);
+            pst.setString(3,userName);
+            pst.setString(4,insuranceID);
+            pst.setString(5,insuranceName);
+            pst.setString(6,insuranceCategory);
+            pst.setString(7,insuranceSubCategory);
+            pst.setDouble(8,insurancePrice);
+            pst.setString(9,insuranceDuration);
+            pst.setDouble(10,deductables);
+            pst.setDouble(11,totalcoverage);
+            pst.setString(12,email);
+            pst.setString(13,phName);
+            pst.setString(14,phAge);
+            pst.setString(15,phAddress1);
+            pst.setString(16,phAddress2);
+            pst.setString(17,phCity);
+            pst.setString(18,phZIP);
+            pst.setString(19,phPhone);
+            pst.execute();
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error in function in storeInsuranceTransaction() in MySqlDataStoreUtilities");
         }		
 
     }

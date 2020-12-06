@@ -79,6 +79,21 @@ public class Payment extends HttpServlet {
 					String appointmentDesc = request.getParameter("pharDesc"+oi.getId());
 					MySqlDataStoreUtilities.storePharmacyAppointment(transactionID + "", user.getId(), user.getName(), pharmacy.getId(), pharmacy.getName(), pharmacy.getCategory(), pharmacy.getCity(), pharmacy.getZip(), pharmacy.getLat(), pharmacy.getLongi(), appointmentDate, appointmentTime, appointmentDesc, "Pending"  );
 				}
+				else if(oi.getCategory().equals("Insurance"))
+				{
+					InsuranceType insurance = MySqlDataStoreUtilities.getInsurance(oi.getId());
+
+					String insEmail = request.getParameter("insEmail"+oi.getId());
+					String insphName = request.getParameter("insphName"+oi.getId());
+					String insphAge = request.getParameter("insphAge"+oi.getId());
+					String insphAdd1 = request.getParameter("insphAdd1"+oi.getId());
+					String insphAdd2 = request.getParameter("insphAdd2"+oi.getId());
+					String insphCity = request.getParameter("insphCity"+oi.getId());
+					String insphZip = request.getParameter("insphZip"+oi.getId());
+					String insphPhone = request.getParameter("insphPhone"+oi.getId());
+
+					MySqlDataStoreUtilities.storeInsuranceTransaction(transactionID + "", user.getId(), user.getName(), insurance.getId(), insurance.getName(), insurance.getCategory(), insurance.getSubCategory(), insurance.getPrice(), insurance.getDuration(), insurance.getDeductables(), insurance.getTotalCov(), insEmail, insphName, insphAge, insphAdd1, insphAdd2, insphCity, insphZip, insphPhone );
+				}
 			}
 
 			//remove the order details from cart after processing			
