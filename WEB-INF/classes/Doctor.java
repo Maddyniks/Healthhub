@@ -153,7 +153,7 @@ public class Doctor extends HttpServlet {
 			if(i%3==1) pw.print("<tr>");
 			pw.print("<td>");
 
-			pw.print("<div class='card' style='width: 20rem; margin-left: auto; margin-right:auto;'>");
+			pw.print("<div class='card  bg-light' style=' margin-left: auto; margin-right:auto;'>");
 			pw.print("<img src='images/doctors/"+doctor.getImage()+"' class='card-img-top' alt='...'>");
 			pw.print("<div class='card-body'>");
 			pw.print("<h5 class='card-title'>"+doctor.getName()+"</h5>");

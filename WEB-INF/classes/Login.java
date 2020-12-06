@@ -72,20 +72,29 @@ public class Login extends HttpServlet {
 				+ "<div class='entry'>"
 				+ "<div style='width:400px; margin:25px; margin-left: auto;margin-right: auto;'>");
 		if (error)
-			pw.print("<h4 style='color:red'>Please check your username, password and user type!</h4>");
+			pw.print("<span class='badge badge-pill badge-danger'>Please check your username and password !</span>");
 		HttpSession session = request.getSession(true);
 		if(session.getAttribute("login_msg")!=null){			
 			pw.print("<h4 style='color:red'>"+session.getAttribute("login_msg")+"</h4>");
 			session.removeAttribute("login_msg");
 		}
-		pw.print("<form method='post' action='Login'>"
-				+ "<table style='width:100%'>"
-				+ "<tr><td><h3>Username</h3></td><td><input type='text' name='username' value='' class='input' required></input></td></tr>"
-				+ "<tr><td><h3>Password</h3></td><td><input type='password' name='password' value='' class='input' required></input></td></tr>"
-				+ "<tr><td colspan = '2'><input type='submit' class='btnbuy' value='Login' style=' width: 100%; margin: 2rem;'></input></td></tr>"
-				+ "<tr><td colspan = '2'><strong><a class='' href='Registration' style='float: right;'>New User? Sign up here!</a></strong></td></tr>"
-				+ "</table>"
-				+ "</form>" + "</div></div></div>");
+
+		pw.print("<form  method='post' action='Login'>");
+		pw.print("<div class='form-group'>");
+		pw.print("<label for='exampleInputEmail1'>Username</label>");
+		pw.print("<input type='text' name='username' class='form-control' id='exampleInputEmail1' aria-describedby='emailHelp' required>");
+		pw.print("<small id='emailHelp' class='form-text text-muted'>We'll never share your email with anyone else.</small>");
+		pw.print("</div>");
+		pw.print("<div class='form-group'>");
+		pw.print("<label for='exampleInputPassword1'>Password</label>");
+		pw.print("<input type='password' name='password' class='form-control' id='exampleInputPassword1' required>");
+		pw.print("<a href='Registration' class='badge badge-primary'>New User? Sign up here!</a>");
+		pw.print("</div>");
+		pw.print("<button type='submit' class='btn btn-primary'>Login</button>");
+		pw.print("</form>");
+
+		pw.print("</div></div></div>");
+		
 		utility.printHtml("Footer.html");
 	}
 
