@@ -1,0 +1,30 @@
+CREATE CONSTRAINT ON (u:Users) ASSERT u.id IS UNIQUE;
+CREATE CONSTRAINT ON (d:Doctors) ASSERT d.id IS UNIQUE;
+
+LOAD CSV WITH HEADERS FROM 'file:///doctors_appointments.csv' AS line 
+WITH line, line.appointmentDate AS date
+
+MERGE (user:Users {user_id: line.userID})
+SET user.name = line.userName
+
+MERGE (doctors:Doctors {doctor_id: line.doctorID})
+SET doctors.name = line.doctorName,
+	doctors.price = line.doctorPrice,
+	doctors.category = line.doctorCategory,
+	doctors.city = line.doctorCity,
+	doctors.zip = line.doctorZip,
+	doctors.latitude = line.doctorLat,
+	doctors.longitude = line.doctorLon
+
+CREATE (user)-[r:BOOKS_APPOINTMENT]->(doctors)
+SET r.transaction_id  = line.transactionID,
+	r.appointmentdate = line.appointmentDate,
+	r.appointmenttime = line.appointmentTime,
+	r.appointmentdesc = line.appointmentDesc,
+	r.currentStatus = line.currentStatus
+
+// delete existing graph
+match (n) detach delete n;
+
+// verify you have no nodes/relationships in your graph
+match (n) return n;

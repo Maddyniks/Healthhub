@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.20, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.21, for Win64 (x86_64)
 --
 -- Host: localhost    Database: healthhub
 -- ------------------------------------------------------
@@ -47,7 +47,7 @@ CREATE TABLE `doctorappointments` (
 
 LOCK TABLES `doctorappointments` WRITE;
 /*!40000 ALTER TABLE `doctorappointments` DISABLE KEYS */;
-INSERT INTO `doctorappointments` VALUES ('424584','1602341465','chirag','d16','Leonora Choiniere',622,'Physician','Oklahoma City','73152','35.551409','-97.407537','2020-12-29','20:39','Cough and Cold','Pending'),('851111','1602341465','chirag','d12','Hunter Moctezuma',678,'Dentist','Sherman Oaks','91413','33.786594','-118.298662','2020-12-14','23:42','Root Canal','Pending');
+INSERT INTO `doctorappointments` VALUES ('424584','1602341465','chirag','d16','Leonora Choiniere',622,'Physician','Oklahoma City','73152','35.551409','-97.407537','2020-12-29','20:39','Cough and Cold','Pending'),('851111','1602341465','chirag','d12','Hunter Moctezuma',678,'Dentist','Sherman Oaks','91413','33.786594','-118.298662','2020-12-14','23:42','Root Canal','Pending'),('361090','1602465977','harsh','d32','Modesta Anspach',632,'Allergist','Lake Forest','92630','33.640223','-117.69108','2020-12-07','11:05','Dummy Data 1','Pending'),('361090','1602465977','harsh','d26','Celeste Woolverton',669,'Surgeon','Oklahoma City','73152','35.551409','-97.407537','2020-12-10','12:06','Dummy data 2','Pending'),('950430','1602462193','nishant','d2','Tamar Biles',647,'Cardiologist','Boise','83744','43.459855','-116.243984','2020-12-07','14:46','heartache','Pending'),('297252','1602462193','nishant','d14','Pasquale Spilman',683,'Dentist','Eudora','66025','38.917032','-95.06455','2020-12-14','08:30','Toothache','Pending'),('647972','1602465967','ninad','d15','Krystle Wyche',604,'Physician','Eudora','66025','38.917032','-95.06455','2020-12-14','11:49','Cough','Pending'),('734758','1602465967','ninad','d11','Zetta Glascock',669,'Dentist','Pricedale','15072','40.13848','-79.85575','2020-12-21','12:30','Root Canal','Pending'),('450957','1602465951','satyaveer','d19','Samatha Gardner',663,'Physician','Oklahoma City','73152','35.551409','-97.407537','2021-01-20','17:30','Cough and cold','Pending'),('333299','1602465951','satyaveer','d31','Tanika Wickman',635,'Allergist','Eudora','66025','38.917032','-95.06455','2021-02-10','17:45','Skin Treatment','Pending'),('132432','1602465989','mounin','d5','Patti Shoultz',632,'Endocrinologist','Rancho Santa Fe','92067','33.016492','-117.20264','2021-02-10','14:45','Metabolism','Pending'),('952348','1602465989','mounin','d13','Eliza Federico',637,'Dentist','Oklahoma City','73152','35.551409','-97.407537','2021-02-23','14:30','Teeth Whitening','Pending'),('421344','1602465989','mounin','d30','Garrett Rolen',613,'Allergist','Durham','3824','43.128085','-70.96035','2021-02-16','00:50','skin treatment','Pending'),('256111','1602466011','shloka','d6','Stephanie Ahumada',633,'Endocrinologist','Parsons','26287','39.141165','-79.67466','2021-01-12','15:30','Respirtion Problem','Pending'),('239364','1602466011','shloka','d11','Zetta Glascock',669,'Dentist','Pricedale','15072','40.13848','-79.85575','2021-02-09','10:00','Braces','Pending'),('466824','1602466033','omar','d20','Barb Wold',692,'Dermatologist','Philadelphia','19132','39.995412','-75.16977','2021-02-09','16:00','Laser Therapy','Pending'),('333933','1602466033','omar','d28','Connie Lisi',641,'Surgeon','Savanna','74565','34.831398','-95.83967','2021-02-04','08:00','Heart Surgery','Pending');
 /*!40000 ALTER TABLE `doctorappointments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,6 +116,46 @@ INSERT INTO `insurance` VALUES ('I00','United Health Dental Insurance Plan 1','U
 UNLOCK TABLES;
 
 --
+-- Table structure for table `insurancetransaction`
+--
+
+DROP TABLE IF EXISTS `insurancetransaction`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `insurancetransaction` (
+  `transactionID` varchar(11) DEFAULT NULL,
+  `userID` varchar(20) NOT NULL,
+  `userName` varchar(40) NOT NULL,
+  `insuranceID` varchar(5) NOT NULL,
+  `insuranceName` varchar(40) NOT NULL,
+  `insuranceCategory` varchar(30) NOT NULL,
+  `insuranceSubCategory` varchar(30) NOT NULL,
+  `insurancePrice` double NOT NULL,
+  `insuranceDuration` varchar(30) NOT NULL,
+  `deductables` double NOT NULL,
+  `totalcoverage` double NOT NULL,
+  `email` varchar(25) NOT NULL,
+  `phName` varchar(35) NOT NULL,
+  `phAge` varchar(3) NOT NULL,
+  `phAddress1` varchar(55) NOT NULL,
+  `phAddress2` varchar(55) NOT NULL,
+  `phCity` varchar(25) NOT NULL,
+  `phZIP` varchar(10) NOT NULL,
+  `phPhone` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `insurancetransaction`
+--
+
+LOCK TABLES `insurancetransaction` WRITE;
+/*!40000 ALTER TABLE `insurancetransaction` DISABLE KEYS */;
+INSERT INTO `insurancetransaction` VALUES ('995872','1602465977','harsh','I00','United Health Dental Insurance Plan 1','United Health','Dental',905,'1year',755,13575,'harshvora242@gmail.com','Harsh','23','2740 S Prairie Avenue','215','Chicago','60616','3127925717');
+/*!40000 ALTER TABLE `insurancetransaction` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `pharmacy`
 --
 
@@ -178,7 +218,7 @@ CREATE TABLE `pharmacyappointments` (
 
 LOCK TABLES `pharmacyappointments` WRITE;
 /*!40000 ALTER TABLE `pharmacyappointments` DISABLE KEYS */;
-INSERT INTO `pharmacyappointments` VALUES ('628637','1602341465','chirag','p3','CVS pharmacy','CVS-Health','Big Sioux','57949','42.505818','-96.499259','2020-12-15','07:12','timepass','Pending');
+INSERT INTO `pharmacyappointments` VALUES ('764823','1602465977','harsh','p3','CVS pharmacy','CVS-Health','Big Sioux','57949','42.505818','-96.499259','2020-12-17','15:14','Buying Medicines','Pending'),('545675','1602465977','harsh','p6','CVS pharmacy','CVS-Health','Atlanta','30378','33.844371','-84.47405','2020-12-15','18:00','Medicine Purchase','Pending'),('245951','1602465977','harsh','p1','Walgreens pharmacy','Walgreens','Sidney Center','13839','42.236762','-75.25901','2020-12-14','16:00','Inquiry','Pending'),('770486','1602465977','harsh','p5','Costco pharmacy','Costco-Wholesale-Corp','Whitefield','74472','35.259201','-95.24701','2021-01-04','18:00','Medicine Purchase','Pending'),('395408','1602341465','chirag','p4','Walgreens pharmacy','Walgreens','Lawai','96765','21.930922','-159.499342','2020-12-15','16:55','Inquiry','Pending'),('464741','1602341465','chirag','p10','Walgreens pharmacy','Walgreens','Stedman','28391','35.016373','-78.6941','2020-12-15','17:55','Medicine Purchase','Pending'),('190980','1602466011','shloka','p4','Walgreens pharmacy','Walgreens','Lawai','96765','21.930922','-159.499342','2020-12-30','18:05','Medicine Inquiry','Pending'),('742996','1602465967','ninad','p2','Costco pharmacy','Costco-Wholesale-Corp','Caguas','00626','18.235003','-66.037318','2020-12-14','17:00','Medicine','Pending'),('694151','1602465967','ninad','p5','Costco pharmacy','Costco-Wholesale-Corp','Whitefield','74472','35.259201','-95.24701','2020-12-08','16:10','Inquiry','Pending'),('642313','1602465951','satyaveer','p2','Costco pharmacy','Costco-Wholesale-Corp','Caguas','00626','18.235003','-66.037318','2020-12-22','17:10','Prescription Medicine','Pending'),('747111','1602465951','satyaveer','p4','Walgreens pharmacy','Walgreens','Lawai','96765','21.930922','-159.499342','2021-01-11','17:10','Inquiry','Pending'),('300718','1602465989','mounin','p5','Costco pharmacy','Costco-Wholesale-Corp','Whitefield','74472','35.259201','-95.24701','2020-12-29','12:00','Medicine Purchase','Pending'),('550141','1602465931','dhiraj','p4','Walgreens pharmacy','Walgreens','Lawai','96765','21.930922','-159.499342','2020-12-22','18:15','Inquiry','Pending'),('349363','1602465920','akash','p4','Walgreens pharmacy','Walgreens','Lawai','96765','21.930922','-159.499342','2020-12-28','08:00','Medicine Inquiry','Pending'),('683862','1602466022','kevin','p4','Walgreens pharmacy','Walgreens','Lawai','96765','21.930922','-159.499342','2020-12-15','12:30','Inquiry','Pending'),('491464','1602466022','kevin','p6','CVS pharmacy','CVS-Health','Atlanta','30378','33.844371','-84.47405','2021-01-18','13:00','Medicine Purchase','Pending'),('263946','1602466033','omar','p2','Costco pharmacy','Costco-Wholesale-Corp','Caguas','00626','18.235003','-66.037318','2020-12-15','19:05','Prescription Medicine','Pending'),('746509','1602466033','omar','p6','CVS pharmacy','CVS-Health','Atlanta','30378','33.844371','-84.47405','2021-02-24','08:00','Medicine Purchase','Pending'),('285382','1602466043','nadeen','p1','Walgreens pharmacy','Walgreens','Sidney Center','13839','42.236762','-75.25901','2020-12-31','11:07','Inquiry','Pending'),('174974','1602466072','chris','p4','Walgreens pharmacy','Walgreens','Lawai','96765','21.930922','-159.499342','2021-01-05','09:10','Medicine Inquiry','Pending'),('310553','1602466072','chris','p5','Costco pharmacy','Costco-Wholesale-Corp','Whitefield','74472','35.259201','-95.24701','2021-01-13','19:10','Medicine Purchase','Pending'),('203650','1602466090','jean','p3','CVS pharmacy','CVS-Health','Big Sioux','57949','42.505818','-96.499259','2021-01-01','19:08','Buying Medicines','Pending');
 /*!40000 ALTER TABLE `pharmacyappointments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,7 +243,7 @@ CREATE TABLE `registration` (
 
 LOCK TABLES `registration` WRITE;
 /*!40000 ALTER TABLE `registration` DISABLE KEYS */;
-INSERT INTO `registration` VALUES (NULL,'admin','admin123','retailer'),('1602341465','chirag','1234','customer'),('1602462193','nishant','1234','customer'),('1602465920','akash','1234','customer'),('1602465931','dhiraj','1234','customer'),('1602465951','satyaveer','1234','customer'),('1602465967','ninad','1234','customer'),('1602465977','harsh','1234','customer'),('1602465989','mounin','1234','customer'),('1602466001','akshay','1234','customer'),('1602466011','shloka','1234','customer'),('1602466022','kevin','1234','customer'),('1602466033','omar','1234','customer'),('1602466043','nadeen','1234','customer'),('1602466056','jeanperre','1234','customer'),('1602466072','chris','1234','customer'),('1602466080','jose','1234','customer'),('1602466090','jean','1234','customer'),('1602466150','gauri','1234','customer'),('1602466165','shivani','1234','customer'),('1602466177','sarthak','1234','customer'),('1602468478','testuser','1234','customer'),('1607188205','user1','1234','customer');
+INSERT INTO `registration` VALUES (NULL,'admin','admin123','retailer'),('1602341465','chirag','1234','customer'),('1602462193','nishant','1234','customer'),('1602465920','akash','1234','customer'),('1602465931','dhiraj','1234','customer'),('1602465951','satyaveer','1234','customer'),('1602465967','ninad','1234','customer'),('1602465977','harsh','1234','customer'),('1602465989','mounin','1234','customer'),('1602466001','akshay','1234','customer'),('1602466011','shloka','1234','customer'),('1602466022','kevin','1234','customer'),('1602466033','omar','1234','customer'),('1602466043','nadeen','1234','customer'),('1602466056','jeanperre','1234','customer'),('1602466072','chris','1234','customer'),('1602466080','jose','1234','customer'),('1602466090','jean','1234','customer'),('1602466150','gauri','1234','customer'),('1602466165','shivani','1234','customer'),('1602466177','sarthak','1234','customer'),('1602468478','testuser','1234','customer'),('1607188205','user1','1234','customer'),('1607244287','saurabh','1234','customer');
 /*!40000 ALTER TABLE `registration` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -216,4 +256,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-06  1:09:46
+-- Dump completed on 2020-12-06  4:14:09
