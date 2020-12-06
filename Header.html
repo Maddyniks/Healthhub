@@ -48,7 +48,7 @@
     style="
       margin: 0px !important;
       padding: 0 !important;
-      background: #6a5acd !important;
+      background: #ebebec !important;
       font-family: 'Roboto', sans-serif;
       font-size: 12px !important;
     "
@@ -69,25 +69,29 @@
           float: right;
           width: 30%;
           margin-top: 35px;
-          border: 1px solid white;
+
           padding: 5px;
           padding-right: 15px;
         "
       >
-        <em style="color: white">Search Product:</em>
+        <em style="color: black">Search Product:</em>
 
         <div name="autofillform">
-          <input
-            type="text"
-            name="searchId"
-            value=""
-            class="input"
-            id="searchId"
-            onkeyup="doCompletion()"
-            autocomplete="off"
-            placeholder="search here.."
-            style="padding: 5px; font-size: 16px"
-          />
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              name="searchId"
+              value=""
+              class="form-control"
+              id="searchId"
+              onkeyup="doCompletion()"
+              autocomplete="off"
+              placeholder="Search here.."
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+            />
+          </div>
+          
           <div id="auto-row">
             <table
               id="complete-table"
@@ -106,16 +110,16 @@
       <div id="menu">
         <ul>
           <li>
-            <a href="Home" class="first">Home</a>
+            <a href="Home" class="first" style="color: black">Home</a>
           </li>
           <li>
-            <a href="Doctor">Doctors</a>
+            <a href="Doctor" style="color: black">Doctors</a>
           </li>
           <li>
-            <a href="Pharmacy">Pharmacy</a>
+            <a href="Pharmacy" style="color: black">Pharmacy</a>
           </li>
           <li>
-            <a href="Insurances">Insurance</a>
+            <a href="Insurances" style="color: black">Insurance</a>
           </li>
         </ul>
       </div>
