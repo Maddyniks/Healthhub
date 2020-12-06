@@ -5,16 +5,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/PharmacyType")
-
-/* 
-	PharmacyType class contains class variables name,price,image,retailer,condition,discount.
-
-	PharmacyType class has a constructor with Arguments name,price,image,retailer,condition,discount.
-	  
-	PharmacyType class contains getters and setters for name,price,image,retailer,condition,discount.
-
-*/
-
 public class PharmacyType extends HttpServlet{
 	private String id;
 	private String name;

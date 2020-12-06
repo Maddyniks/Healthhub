@@ -16,11 +16,7 @@ public class Login extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
-
-		/* User Information(username,password,usertype) is obtained from HttpServletRequest,
-		Based on the Type of user(customer,retailer,manager) respective hashmap is called and the username and 
-		password are validated and added to session variable and display Login Function is called */
-
+		
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String usertype = request.getParameter("usertype");

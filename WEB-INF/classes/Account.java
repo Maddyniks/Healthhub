@@ -96,53 +96,46 @@ public class Account extends HttpServlet {
 
 	void displayCustomerTable(HashMap<Integer, ArrayList<OrderPayment>> orderPayments, PrintWriter pw, User user)
 	{
-		int size=0;
-		for(Map.Entry<Integer, ArrayList<OrderPayment>> entry : orderPayments.entrySet())
-		{
-			for(OrderPayment od:entry.getValue())	
-			if(od.getUserName().equals(user.getName()))
-			size= size+1;
-		}
+		int dSize = 0;
+		int pSize = 0;
+		ArrayList<DoctorTransactionType> doctors = MySqlDataStoreUtilities.getDoctorTrnxs(user.getId());
+		//ArrayList<PharmacyType> pharmacies = MySqlDataStoreUtilities.getPharmaciesTrnxs(user.getId());
+
+		dSize = ( doctors != null ) ? doctors.size(): 0;
+		//pSize =( pharmacies != null) ? pharmacies.size(): 0;
 				
-		if(size>0)
+		if(dSize > 0 || pSize > 0)
 		{	
-			pw.print("<br><h3 style = 'text-align: center;'>Order Details</h3><br>");
-			pw.print("<table class='gridtable'><tr><th></th>");
-			pw.print("<th style = 'text-align: center;'>OrderId</th>");
-			pw.print("<th style = 'text-align: center;'>Order Date</th>");
-			pw.print("<th style = 'text-align: center;'>UserName</th>");
-			pw.print("<th style = 'text-align: center;'>Item</th>");
+			pw.print("<br><h3 style = 'text-align: center;'>Appointments</h3><br>");
+			pw.print("<table class='table table-hover table-sm' style = 'width: 100%'><thead><tr>");
+			pw.print("<th style = 'text-align: center;'>TransactionID</th>");
+			pw.print("<th style = 'text-align: center;'>Name</th>");
+			pw.print("<th style = 'text-align: center;'>Date</th>");
+			pw.print("<th style = 'text-align: center;'>Time</th>");
 			pw.print("<th style = 'text-align: center;'>Price</th>");
-			pw.print("<th style = 'text-align: center;'>Shipping Mode</th>");
-			pw.print("<th style = 'text-align: center;'>Pickup Location</th>");
-			pw.print("<th style = 'text-align: center;'>Action</th></tr>");
-			for(Map.Entry<Integer, ArrayList<OrderPayment>> entry : orderPayments.entrySet())
+			pw.print("<th style = 'text-align: center;'>Status</th>");
+			pw.print("<th style = 'text-align: center;'>Action</th></tr></thead><tbody>");
+
+			if(dSize > 0)
 			{
-				for(OrderPayment oi:entry.getValue())	
-				if(oi.getUserName().equals(user.getName())) 
+				for(DoctorTransactionType dTrxn : doctors)
 				{
 					pw.print("<form method='get' action='ViewOrder'>");
 					pw.print("<tr>");			
-					pw.print("<td><input type='radio' name='orderName' value='"+oi.getOrderName()+"'></td>");			
-					pw.print("<td>"+oi.getOrderId()+"</td>");
-					pw.print("<td>"+oi.getOrderDate()+"</td>");
-					pw.print("<td>"+oi.getUserName()+"</td>");
-					pw.print("<td>"+oi.getOrderName()+"</td>");
-					pw.print("<td>$ "+oi.getNetTotal()+"</td>");
-					pw.print("<td>"+oi.getMode()+"</td>");
-					if(!oi.getLocation().equals(""))
-						pw.print("<td>"+oi.getLocation()+"</td>");
-					else
-					pw.print("<td> - </td>");
-					pw.print("<input type='hidden' name='orderId' value='"+oi.getOrderId()+"'>");
-					pw.print("<td><input type='submit' name='Order' value='CancelOrder' class='btnbuy'></td>");
+					pw.print("<td  style = 'text-align: center;'>"+dTrxn.getTransactionID()+"</td>");			
+					pw.print("<td  style = 'text-align: center;'>"+dTrxn.getDoctorName()+"</td>");
+					pw.print("<td  style = 'text-align: center;'>"+dTrxn.getAppointmentDate()+"</td>");
+					pw.print("<td  style = 'text-align: center;'>"+dTrxn.getAppointmentTime()+"</td>");
+					pw.print("<td  style = 'text-align: center;'>$ "+dTrxn.getDoctorPrice()+"</td>");
+					pw.print("<td  style = 'text-align: center;'><span class='badge badge-pill badge-"+badgeColor(dTrxn.getCurrentStatus())+"'>"+dTrxn.getCurrentStatus()+"</span></td>");
+					pw.print("<input type='hidden' name='orderId' value='"+dTrxn.getTransactionID()+"'>");
+					pw.print("<td  style = 'text-align: center;'><input type='submit' name='Order' value='CancelOrder' class='btn btn-danger'></td>");
 					pw.print("</tr>");
 					pw.print("</form>");
 				}
-			
 			}
-			
-			pw.print("</table>");
+
+			pw.print("</tbody></table>");
 		}
 		else
 		{
@@ -366,6 +359,20 @@ public class Account extends HttpServlet {
 				}
 			}
 			pw.print("</table>");
+		}
+	}
+
+	String badgeColor(String status)
+	{
+		switch (status) {
+			case "Pending":
+				return "warning";
+			case "approved":
+				return "success";
+			case "canceled":
+				return "danger";
+			default:
+				return "secondary";
 		}
 	}
 }
