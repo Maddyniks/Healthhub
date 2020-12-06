@@ -75,7 +75,7 @@ public class Login extends HttpServlet {
 			pw.print("<span class='badge badge-pill badge-danger'>Please check your username and password !</span>");
 		HttpSession session = request.getSession(true);
 		if(session.getAttribute("login_msg")!=null){			
-			pw.print("<h4 style='color:red'>"+session.getAttribute("login_msg")+"</h4>");
+			pw.print("<span class='badge badge-pill badge-danger'>"+session.getAttribute("login_msg")+"</span>");
 			session.removeAttribute("login_msg");
 		}
 
