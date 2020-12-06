@@ -151,37 +151,45 @@ public class Doctor extends HttpServlet {
 			DoctorType doctor = entry.getValue();
 			//System.out.println(doctor.getName() + " | " + doctor.getCity() + " | " + doctor.getZip());
 			if(i%3==1) pw.print("<tr>");
-			pw.print("<td><div id='shop_item'>");
-			pw.print("<h3>"+doctor.getName()+"</h3>");
-			pw.print("<strong>"+doctor.getCategory()+"</strong><ul>");
-			pw.print("<li id='item'><img src='images/doctors/"+doctor.getImage()+"' alt='' /></li>");
-			pw.print("<strong>"+doctor.getCity()+"</strong><ul>");
+			pw.print("<td>");
+
+			pw.print("<div class='card' style='width: 20rem; margin-left: auto; margin-right:auto;'>");
+			pw.print("<img src='images/doctors/"+doctor.getImage()+"' class='card-img-top' alt='...'>");
+			pw.print("<div class='card-body'>");
+			pw.print("<h5 class='card-title'>"+doctor.getName()+"</h5>");
+			pw.print("<h6 class='card-subtitle mb-2 text-muted'>"+doctor.getCategory()+"</h6>");
+			pw.print("<p class='card-text'>"+doctor.getCity()+"</p>");
 			pw.print("<form name ='ViewItem' action='ViewItem' method='post'>");
-			pw.print("<li><input type='hidden' name='name' value='"+doctor.getName()+"'>"+
+			pw.print("<input type='hidden' name='name' value='"+doctor.getName()+"'>"+
 					"<input type='hidden' name='type' value='doctors'>"+
 					"<input type='hidden' name='maker' value='"+doctor.getCategory()+"'>"+
 					"<input type='hidden' name='access' value=''>"+
-					"<input type='submit' class='btn btn-primary' style = 'display: block; margin-left: auto; margin-right:auto;' value='View Doctor'></form></li>");
+					"<input type='submit' class='btn btn-primary' style = 'display: block; margin-left: auto; margin-right:auto;' value='View Doctor'></form><br/>");
 			
-			pw.print("<li><form method='post' action='Cart'>" +
+			pw.print("<form method='post' action='Cart'>" +
 					"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
 					"<input type='hidden' name='type' value='doctors'>"+
 					"<input type='hidden' name='maker' value='"+CategoryName+"'>"+
 					"<input type='hidden' name='access' value=''>"+
-					"<input type='submit' class='btn btn-success' style = 'display: block; margin-left: auto; margin-right:auto;' value='Book Appointment'></form></li>");
+					"<input type='submit' class='btn btn-success' style = 'display: block; margin-left: auto; margin-right:auto;' value='Book Appointment'></form><br/>");
 			
-			pw.print("<li><form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='" + doctor.getName() + "'>"+
+			pw.print("<form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='" + doctor.getName() + "'>"+
 					"<input type='hidden' name='type' value='doctors'>"+
 					"<input type='hidden' name='maker' value='"+doctor.getCategory()+"'>"+
 					"<input type='hidden' name='price' value='"+doctor.getPrice()+"'>"+
-					"<input type='submit' value='WriteReview' class='btn btn-info' style = 'display: block; margin-left: auto; margin-right:auto;'></form></li>");
+					"<input type='submit' value='WriteReview' class='btn btn-info' style = 'display: block; margin-left: auto; margin-right:auto;'></form><br/>");
 					
-			pw.print("<li><form method='post' action='ViewReview'>"+"<input type='hidden' name='name' value='"+ doctor.getName() +"'>"+
+			pw.print("<form method='post' action='ViewReview'>"+"<input type='hidden' name='name' value='"+ doctor.getName() +"'>"+
 					"<input type='hidden' name='type' value='doctors'>"+
 					"<input type='hidden' name='maker' value='"+doctor.getCategory()+"'>"+
 					"<input type='hidden' name='price' value='"+doctor.getPrice()+"'>"+
-				    "<input type='submit' value='ViewReview' class='btn btn-info' style = 'display: block; margin-left: auto; margin-right:auto;'></form></li>");
-			pw.print("</ul></div></td>");
+				    "<input type='submit' value='ViewReview' class='btn btn-info' style = 'display: block; margin-left: auto; margin-right:auto;'></form><br/>");
+			pw.print("</div>");
+			pw.print("</div>");
+
+
+			
+			pw.print("</td>");
 			if(i%3==0 || i == size) pw.print("</tr>");
 			i++;
 		}	
