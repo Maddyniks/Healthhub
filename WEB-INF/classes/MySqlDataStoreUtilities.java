@@ -15,7 +15,7 @@ public class MySqlDataStoreUtilities
         try
         {
         Class.forName("com.mysql.jdbc.Driver").newInstance();
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthhub","root","1234");	
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthhub","root","IllinoisTech2021@");	
         System.out.println("----------------------------------------");
         System.out.println("SQL Connection Established");	
         System.out.println("----------------------------------------");					
@@ -598,6 +598,31 @@ public class MySqlDataStoreUtilities
         return doctor;
     }
 
+    public static ArrayList<DoctorTransactionType> getDoctorTrnxs(String userID)
+    {
+        ArrayList<DoctorTransactionType> doctors = new ArrayList<DoctorTransactionType>();
+        DoctorTransactionType doctor;
+        try
+        {
+            Statement stmt=conn.createStatement();
+            String selectCustomerQuery="select * from  doctorappointments where userID = \"" + userID + "\"";
+			ResultSet rs = stmt.executeQuery(selectCustomerQuery);
+			while(rs.next())
+            {	
+				doctor = new DoctorTransactionType(rs.getString("transactionID"), rs.getString("userID"), rs.getString("userName"), rs.getString("doctorID"), rs.getString("doctorName"),rs.getDouble("doctorPrice"), rs.getString("doctorCategory"),rs.getString("doctorCity"), rs.getString("doctorZip"),rs.getString("doctorLat"),rs.getString("doctorLon"), rs.getString("appointmentDate"),rs.getString("appointmentTime"), rs.getString("appointmentDesc"), rs.getString("currentStatus"));
+                doctors.add(doctor);
+                break;
+			}
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error in function in getDoctors() in MySqlDataStoreUtilities");
+        }
+
+        return doctors;
+    }
+
+
     public static PharmacyType getPharmacy(String id)
     {
         PharmacyType pharmacy = new PharmacyType();
@@ -618,6 +643,30 @@ public class MySqlDataStoreUtilities
         }
 
         return pharmacy;
+    }
+
+    public static ArrayList<PharmacyTransactionType> getPharmaciesTrnxs(String userID)
+    {
+        ArrayList<PharmacyTransactionType> pharmacies = new ArrayList<PharmacyTransactionType>();
+        PharmacyTransactionType pharmacy;
+        try
+        {
+            Statement stmt=conn.createStatement();
+            String selectCustomerQuery="select * from  pharmacyAppointments where userID = \"" + userID + "\"";
+			ResultSet rs = stmt.executeQuery(selectCustomerQuery);
+			while(rs.next())
+            {	
+				pharmacy = new PharmacyTransactionType(rs.getString("transactionID"), rs.getString("userID"), rs.getString("userName"), rs.getString("pharmacyID"), rs.getString("pharmacyName"), rs.getString("pharmacyCategory"),rs.getString("pharmacyCity"), rs.getString("pharmacyZip"),rs.getString("pharmacyLat"),rs.getString("pharmacyLon"), rs.getString("appointmentDate"),rs.getString("appointmentTime"), rs.getString("appointmentDesc"), rs.getString("currentStatus"));
+                pharmacies.add(pharmacy);
+                break;
+			}
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error in function in getPharmacies() in MySqlDataStoreUtilities");
+        }
+
+        return pharmacies;
     }
 
     public static InsuranceType getInsurance(String id)
@@ -641,6 +690,30 @@ public class MySqlDataStoreUtilities
 
         return insurance;
     }
+
+    // public static InsuranceType getInsurances(String userID)
+    // {
+    //     ArrayList<InsuranceType> insurances = new ArrayList<InsuranceType>();
+    //     InsuranceType insurance = new InsuranceType();
+    //     try
+    //     {
+    //         Statement stmt=conn.createStatement();
+    //         String selectCustomerQuery="select * from  insurancetransaction where userID = \"" + userID + "\"";
+	// 		ResultSet rs = stmt.executeQuery(selectCustomerQuery);
+	// 		while(rs.next())
+    //         {	
+	// 			insurance = new InsuranceType(rs.getString("id"),rs.getString("name"), rs.getString("category"), rs.getString("subcategory"), rs.getDouble("price"), rs.getString("image"),rs.getString("description"),rs.getString("duration"),rs.getString("emailId"), rs.getDouble("deductables"), rs.getDouble("totalcoverage"));
+    //             insurances.add(insurance);
+    //             break;
+	// 		}
+    //     }
+    //     catch(Exception e)
+    //     {
+    //         System.out.println("Error in function in getInsurances() in MySqlDataStoreUtilities");
+    //     }
+
+    //     return insurances;
+    // }
 
     public static void storeDoctorAppointment(String transactionID, String userID, String userName, String doctorID, String doctorName, double doctorPrice, String doctorCategory, String doctorCity, String doctorZip, String doctorLat, String doctorLon, String appointmentDate, String appointmentTime, String appointmentDesc, String currentStatus)
     {

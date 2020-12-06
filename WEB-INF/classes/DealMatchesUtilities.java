@@ -22,15 +22,11 @@ public class DealMatchesUtilities extends HttpServlet {
 		{
             pw.print("<div id='content'>");
             pw.print("<div class='post'>");
-            pw.print("<h2 class='title'>");
-            pw.print("<a href='/Healthhub'>Welcome to Health-Hub Deals</a></h2>");
-            
             pw.print("<div class='entry'>");
-            pw.print("<img src='images/site/img08.jpg'style='width: 600px; display: block; margin-left: auto; margin-right: auto' />");
-            pw.print("<br> <br>");
-            pw.print("<h1 style = 'text-align: center'>Get the latest deals and more.</h1>");
-            pw.print("<br> <br>");
-            pw.print("<h2 style = 'text-align: center'>We beat our competitors in all aspects. Price-Match Guaranteed</h2>");
+            pw.print("<div style = 'display: flex; justify-content: center;'>");
+            pw.print("<span class='location-name badge badge-pill badge-info' >Fetching Location...</span>");
+            pw.print("</div>");
+            pw.print("<h5 style = 'text-align: center' class='display-4'>Top Trending Tweets</h5>");
             pw.print("<br> <br>");
 		
 			String line=null;
@@ -46,9 +42,9 @@ public class DealMatchesUtilities extends HttpServlet {
                     line=reader.readLine().toLowerCase();	
                     if(line==null)
                     {
-                        pw.print("<div class='panel panel-default'>");
-                        pw.print("<div class='panel-body'>");
-                        pw.print("<h4 style = 'text-align: center'>No Offers Found</h4>");
+                        pw.print("<div class='card bg-light'>");
+                        pw.print("<div class='card-body'>");
+                        pw.print("<h5 style = 'text-align: center'>No Offers Found</h5>");
                         pw.print("</div>");
                         pw.print("</div>");
                         break;
@@ -59,11 +55,12 @@ public class DealMatchesUtilities extends HttpServlet {
                         {	
                             if(line.contains(entry.getKey()))
                             {
-                                pw.print("<div class='panel panel-default'>");
-                                pw.print("<div class='panel-body'>");
-                                pw.print("<h4 style = 'text-align: center'>"+line+"</h4>");
+                                pw.print("<div class='card bg-light'>");
+                                pw.print("<div class='card-body'>");
+                                pw.print("<p style = 'text-align: center' class = 'lead'>"+line+"</p>");
                                 pw.print("</div>");
                                 pw.print("</div>");
+                                pw.print("<br/>");
 
                                 selectedDoctors.put(entry.getKey(),entry.getValue());
                                 break;
@@ -76,8 +73,8 @@ public class DealMatchesUtilities extends HttpServlet {
         }
         catch(Exception e)
         {
-            pw.print("<div class='panel panel-default'>");
-            pw.print("<div class='panel-body'>");
+            pw.print("<div class='card bg-light'>");
+            pw.print("<div class='card-body'>");
             pw.print("<h4 style = 'text-align: center'>No Offers Found</h4>");
             pw.print("</div>");
             pw.print("</div>");
@@ -85,16 +82,15 @@ public class DealMatchesUtilities extends HttpServlet {
 		pw.print("</div>");
 		pw.print("</div>");
 		pw.print("<div class='post'>");
-		pw.print("<h2 class='title meta'>");
-		pw.print("<a style='font-size: 24px;'>Deal Matches</a>");
-		pw.print("</h2>");
+        pw.print("<h5 style = 'text-align: center' class='display-4'>Trending Doctors with HealthHub</h5>");
         pw.print("<div class='entry'>");
         
 		if(selectedDoctors.size()==0)
 		{
             pw.print("<br> <br>");
-		    pw.print("<div class='panel panel-default'>");
-            pw.print("<div class='panel-body'>");
+
+		    pw.print("<div class='card'>");
+            pw.print("<div class='card-body'>");
             pw.print("<h4 style = 'text-align: center'>No Deals Found</h4>");
             pw.print("</div>");
             pw.print("</div>");	
@@ -105,34 +101,30 @@ public class DealMatchesUtilities extends HttpServlet {
             pw.print("<tr>");
             for(Map.Entry<String, DoctorType> entry : selectedDoctors.entrySet())
             {
-                pw.print("<td><div id='shop_item'><h3>"+entry.getValue().getName()+"</h3>");
-                pw.print("<strong>"+entry.getValue().getPrice()+"$</strong>");
-                pw.print("<ul>");
-                pw.print("<li id='item'><img src='images/"+entry.getValue().getCategory()+"s/"+entry.getValue().getImage()+"' alt='' />");
-                pw.print("</li><li>");
+                pw.print("<td>");
 
-                pw.print("<form action='Cart' method='post'>");
-                pw.print("<input type='submit' class='btnbuy' value='Buy Now'>");
-                pw.print("<input type='hidden' name='name' value='"+entry.getValue().getName()+"'>");
-                pw.print("<input type='hidden' name='type' value='"+entry.getValue().getCategory()+"s'>");
-                //pw.print("<input type='hidden' name='maker' value='"+entry.getValue().getproductManufacturer()+"'>");
-                pw.print("<input type='hidden' name='access' value=''>");
-                pw.print("</form></li><li>");
-
-                pw.print("<form action='WriteReview' method='post'><input type='submit' class='btnreview' value='WriteReview'>");
-                pw.print("<input type='hidden' name='name' value='"+entry.getKey()+"'>");
-                pw.print("<input type='hidden' name='type' value='"+entry.getValue().getCategory()+"s'>");
-                //pw.print("<input type='hidden' name='maker' value='"+entry.getValue().getproductManufacturer()+"'>");
-                pw.print("<input type='hidden' name='price' value='"+entry.getValue().getPrice()+"'>");
-                pw.print("</form></li>");
-
-                pw.print("<li>");
-                pw.print("<form action='ViewReview' method='post'><input type='submit' class='btnreview' value='ViewReview'>");
-                pw.print("<input type='hidden' name='name' value='"+entry.getKey()+"'>");
-                pw.print("<input type='hidden' name='type' value='"+entry.getValue().getCategory()+"s'>");
-                //pw.print("<input type='hidden' name='maker' value='"+entry.getValue().getproductManufacturer()+"'>");
-                pw.print("<input type='hidden' name='price' value='"+entry.getValue().getPrice()+"'>");
-                pw.print("</form></li></ul></div></td>");
+                pw.print("<div class='card  bg-light' style=' margin-left: auto; margin-right:auto;'>");
+                pw.print("<img src='images/doctors/"+entry.getValue().getImage()+"' class='card-img-top' alt='...'>");
+                pw.print("<div class='card-body'>");
+                pw.print("<h5 class='card-title'>"+entry.getValue().getName()+"</h5>");
+                pw.print("<h6 class='card-subtitle mb-2 text-muted'>"+entry.getValue().getCategory()+"</h6>");
+                pw.print("<p class='card-text'>"+entry.getValue().getCity()+"</p>");
+                
+                pw.print("<form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='" +entry.getValue().getName() + "'>"+
+                        "<input type='hidden' name='type' value='doctors'>"+
+                        "<input type='hidden' name='maker' value='"+entry.getValue().getCategory()+"'>"+
+                        "<input type='hidden' name='price' value='"+entry.getValue().getPrice()+"'>"+
+                        "<input type='submit' value='WriteReview' class='btn btn-info' style = 'display: block; margin-left: auto; margin-right:auto;'></form><br/>");
+                        
+                pw.print("<form method='post' action='ViewReview'>"+"<input type='hidden' name='name' value='"+entry.getValue().getName() +"'>"+
+                        "<input type='hidden' name='type' value='doctors'>"+
+                        "<input type='hidden' name='maker' value='"+entry.getValue().getCategory()+"'>"+
+                        "<input type='hidden' name='price' value='"+entry.getValue().getPrice()+"'>"+
+                        "<input type='submit' value='ViewReview' class='btn btn-info' style = 'display: block; margin-left: auto; margin-right:auto;'></form><br/>");
+                pw.print("</div>");
+                pw.print("</div>");
+            
+                pw.print("</td>");
             }
             pw.print("</tr></table>");
 		}
