@@ -83,7 +83,7 @@ public class Login extends HttpServlet {
 		pw.print("<div class='form-group'>");
 		pw.print("<label for='exampleInputEmail1'>Username</label>");
 		pw.print("<input type='text' name='username' class='form-control' id='exampleInputEmail1' aria-describedby='emailHelp' required>");
-		pw.print("<small id='emailHelp' class='form-text text-muted'>We'll never share your email with anyone else.</small>");
+		pw.print("<small id='emailHelp' class='form-text text-muted'>We'll never share your Username with anyone else.</small>");
 		pw.print("</div>");
 		pw.print("<div class='form-group'>");
 		pw.print("<label for='exampleInputPassword1'>Password</label>");
