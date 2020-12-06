@@ -97,25 +97,36 @@ public class Registration extends HttpServlet {
 	{
 		Utilities utility = new Utilities(request, pw);
 		utility.printHtml("Header.html");
+
 		pw.print("<div class='post' style='float: none; width: 100%'>");
 		pw.print("<h2 class='title meta'><a style='font-size: 24px;'>Sign Up</a></h2>"
 				+ "<div class='entry'>"
 				+ "<div style='width:400px; margin:25px; margin-left: auto;margin-right: auto;'>");
 		if (error)
-			pw.print("<h4 style='color:red'>"+error_msg+"</h4>");
-		pw.print("<form method='post' action='Registration'>"
-				+ "<table style='width:100%'><tr><td>"
-				+ "<h3>Username</h3></td><td><input type='text' name='username' value='' class='input' required></input>"
-				+ "</td></tr><tr><td>"
-				+ "<h3>Password</h3></td><td><input type='password' name='password' value='' class='input' required></input>"
-				+ "</td></tr><tr><td>"
-				+ "<h3>Re-Password</h3></td><td><input type='password' name='repassword' value='' class='input' required></input>"
-				+ "</td></tr><tr><td>"
-				+ "<h3>User Type</h3></td><td><select name='usertype' class='input'><option value='customer' selected>Customer</option><option value='retailer'>Store Manager</option><option value='manager'>Salesman</option></select>"
-				+ "</td></tr>"
-				+ "<tr><td colspan = '2' ><input type='submit' class='btnbuy' name='ByUser' value='Create User' style='width:100%; margin-top: 2rem;'></input></td></tr>"
-				+ "</table>"
-				+ "</form>" + "</div></div></div>");
+			pw.print("<span class='badge badge-pill badge-danger'>"+error_msg+"</span>");
+
+		pw.print("<form method='post' action='Registration'>");
+		pw.print("<div class='form-group'>");
+		pw.print("<label for='exampleInputEmail1'>Username</label>");
+		pw.print("<input type='text' name='username' class='form-control' id='exampleInputEmail1' aria-describedby='emailHelp' required>");
+		pw.print("<small id='emailHelp' class='form-text text-muted'>We'll never share your Username with anyone else.</small>");
+		pw.print("</div>");
+		pw.print("<div class='form-group'>");
+		pw.print("<label for='exampleInputPassword1'>Password</label>");
+		pw.print("<input type='password' name='password' class='form-control' id='exampleInputPassword1' required>");
+		pw.print("</div>");
+		pw.print("<div class='form-group'>");
+		pw.print("<label for='exampleInputPassword2'>Confirm Password</label>");
+		pw.print("<input type='password' name='repassword' class='form-control' id='exampleInputPassword2' required>");
+		pw.print("<input type='hidden' name='usertype' value='customer' class='form-control' required>");
+		pw.print("</div>");
+		pw.print("<button type='submit' name='ByUser' class='btn btn-primary' value='Create User'>Create User</button>");
+		pw.print("</form>");
+
+		pw.print("</div></div></div>");
+
 		utility.printHtml("Footer.html");
 	}
+
+
 }

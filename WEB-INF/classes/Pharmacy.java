@@ -78,35 +78,42 @@ public class Pharmacy extends HttpServlet {
 			PharmacyType pharmacy = entry.getValue();
 			//System.out.println(pharmacy.getName() + " | " + pharmacy.getCity() + " | " + pharmacy.getZip());
 			if(i%3==1) pw.print("<tr>");
-			pw.print("<td><div id='shop_item'>");
-			pw.print("<h3>"+pharmacy.getName()+"</h3>");
-			pw.print("<strong>"+pharmacy.getCategory()+"</strong><ul>");
-			pw.print("<li id='item'><img src='images/pharmacies/"+pharmacy.getImage()+"' alt='' /></li>");
-			pw.print("<strong>"+pharmacy.getCity()+"</strong><ul>");
+			pw.print("<td>");
+
+			pw.print("<div class='card  bg-light' style=' margin-left: auto; margin-right:auto;'>");
+			pw.print("<img src='images/pharmacies/"+pharmacy.getImage()+"' class='card-img-top' alt='...'>");
+			pw.print("<div class='card-body'>");
+			pw.print("<h5 class='card-title'>"+pharmacy.getName()+"</h5>");
+			pw.print("<h6 class='card-subtitle mb-2 text-muted'>"+pharmacy.getCategory()+"</h6>");
+			pw.print("<p class='card-text'>"+pharmacy.getCity()+"</p>");
 			pw.print("<form name ='ViewItem' action='ViewItem' method='post'>");
-			pw.print("<li><input type='hidden' name='name' value='"+pharmacy.getName()+"'>"+
+			pw.print("<input type='hidden' name='name' value='"+pharmacy.getName()+"'>"+
 					"<input type='hidden' name='type' value='Pharmacy'>"+
 					"<input type='hidden' name='maker' value='"+pharmacy.getCategory()+"'>"+
 					"<input type='hidden' name='access' value=''>"+
-					"<input type='submit' class='btnbuy' value='View Item'></form></li>");
+					"<input type='submit' class='btn btn-primary' style = 'display: block; margin-left: auto; margin-right:auto;' value='View Pharmacy'></form><br/>");
 			
-			pw.print("<li><form method='post' action='Cart'>" +
+			pw.print("<form method='post' action='Cart'>" +
 					"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
 					"<input type='hidden' name='type' value='Pharmacy'>"+
 					"<input type='hidden' name='maker' value='"+CategoryName+"'>"+
 					"<input type='hidden' name='access' value=''>"+
-					"<input type='submit' class='btnbuy' value='Book Appointment'></form></li>");
-			
-			pw.print("<li><form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='" + pharmacy.getName() + "'>"+
+					"<input type='submit' class='btn btn-success' style = 'display: block; margin-left: auto; margin-right:auto;' value='Book Appointment'></form><br/>");
+
+			pw.print("<form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='" + pharmacy.getName() + "'>"+
 					"<input type='hidden' name='type' value='Pharmacy'>"+
 					"<input type='hidden' name='maker' value='"+pharmacy.getCategory()+"'>"+
-					"<input type='submit' value='WriteReview' class='btnreview'></form></li>");
+					"<input type='submit' value='WriteReview' class='btn btn-info' style = 'display: block; margin-left: auto; margin-right:auto;'></form><br/>");
 					
-			pw.print("<li><form method='post' action='ViewReview'>"+"<input type='hidden' name='name' value='"+ pharmacy.getName() +"'>"+
+			pw.print("<form method='post' action='ViewReview'>"+"<input type='hidden' name='name' value='"+ pharmacy.getName() +"'>"+
 					"<input type='hidden' name='type' value='Pharmacy'>"+
 					"<input type='hidden' name='maker' value='"+pharmacy.getCategory()+"'>"+
-				    "<input type='submit' value='ViewReview' class='btnreview'></form></li>");
-			pw.print("</ul></div></td>");
+				    "<input type='submit' value='ViewReview' class='btn btn-info' style = 'display: block; margin-left: auto; margin-right:auto;'></form><br/>");
+			pw.print("</div>");
+			pw.print("</div>");
+
+			pw.print("</td>");
+
 			if(i%3==0 || i == size) pw.print("</tr>");
 			i++;
 		}	
