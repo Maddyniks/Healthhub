@@ -22,8 +22,10 @@ public class DealMatchesUtilities extends HttpServlet {
 		{
             pw.print("<div id='content'>");
             pw.print("<div class='post'>");
-          
             pw.print("<div class='entry'>");
+            pw.print("<div style = 'display: flex; justify-content: center;'>");
+            pw.print("<span class='location-name badge badge-pill badge-info' >Fetching Location...</span>");
+            pw.print("</div>");
             pw.print("<h5 style = 'text-align: center' class='display-4'>Top Trending Tweets</h5>");
             pw.print("<br> <br>");
 		
