@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
-@WebServlet("/Trending")
+@WebServlet("/BestRatings")
 
-public class Trending extends HttpServlet {
+public class BestRatings extends HttpServlet {
 
     ArrayList<Mostsold> mostsold = new ArrayList<Mostsold>();
     ArrayList<Mostsoldzip> mostsoldzip = new ArrayList<Mostsoldzip>();
@@ -54,49 +54,12 @@ public class Trending extends HttpServlet {
         }
         pw.print("</table></div></div></div>");
 
-        pw.print("<div id='content'><div class='post'>");
-        pw.print("<h5 style = 'text-align: center' class='display-4'>Popular Locations</h5>");
-        pw.print("<div class='entry'><table id='bestseller'>");
-        Iterator itr1 = mostsoldzip.iterator();
-        while (itr1.hasNext()) {
-            Mostsoldzip mostzip = (Mostsoldzip) itr1.next();
-            pw.print("<tr>");
-            pw.println("<td border: 1px >");
-            System.out.println(mostzip.getZipcode());
-            pw.println(mostzip.getZipcode());
-            pw.println("</td>");
-            pw.println("<td border: 1px >");
-            pw.println(mostzip.getCount());
-            pw.println("</td>");
-            pw.println("</tr>");
-        }
-        pw.print("</table></div></div></div>");
-
-        pw.print("<div id='content'><div class='post'>");
-        pw.print("<h5 style = 'text-align: center' class='display-4'>Popular on HealthHub</h5>");
-        pw.print("<div class='entry'><table id='bestseller'>");
-
-        Iterator itr = mostsold.iterator();
-        while (itr.hasNext()) {
-            Mostsold most = (Mostsold) itr.next();
-            pw.println("<tr>");
-            pw.println("<td border: 1px >");
-            pw.println(most.getProductname().replace("_"," "));
-            pw.println("</td>");
-            pw.println("<td border: 1px >");
-            pw.println(most.getCount());
-            pw.println("</td>");
-            pw.println("</tr>");
-        }
-        pw.print("</table></div></div></div>");
-
-        //	pw.print("</table></div></div></div>");
         utility.printHtml("Footer.html");
     }
 
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
-        
+
     }
 
 }

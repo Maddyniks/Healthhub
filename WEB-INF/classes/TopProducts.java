@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
-@WebServlet("/Trending")
+@WebServlet("/TopProducts")
 
-public class Trending extends HttpServlet {
+public class TopProducts extends HttpServlet {
 
     ArrayList<Mostsold> mostsold = new ArrayList<Mostsold>();
     ArrayList<Mostsoldzip> mostsoldzip = new ArrayList<Mostsoldzip>();
@@ -38,41 +38,6 @@ public class Trending extends HttpServlet {
         utility.printHtml("Header.html");
         utility.printHtml("LeftNavigationBar.html");
         pw.print("<div id='content'><div class='post'>");
-        pw.print("<h5 style = 'text-align: center' class='display-4'>User's Favorite</h5>");
-        pw.print("<div class='entry'><table id='bestseller'>");
-        Iterator itr2 = bestrated.iterator();
-        while (itr2.hasNext()) {
-            BestRating best = (BestRating) itr2.next();
-            pw.print("<tr>");
-            pw.print("<td>");
-            pw.print(best.getProductname().replace("_"," "));
-            pw.print("</td>");
-            pw.print("<td>");
-            pw.print(best.getRating());
-            pw.print("</td>");
-            pw.print("</tr>");
-        }
-        pw.print("</table></div></div></div>");
-
-        pw.print("<div id='content'><div class='post'>");
-        pw.print("<h5 style = 'text-align: center' class='display-4'>Popular Locations</h5>");
-        pw.print("<div class='entry'><table id='bestseller'>");
-        Iterator itr1 = mostsoldzip.iterator();
-        while (itr1.hasNext()) {
-            Mostsoldzip mostzip = (Mostsoldzip) itr1.next();
-            pw.print("<tr>");
-            pw.println("<td border: 1px >");
-            System.out.println(mostzip.getZipcode());
-            pw.println(mostzip.getZipcode());
-            pw.println("</td>");
-            pw.println("<td border: 1px >");
-            pw.println(mostzip.getCount());
-            pw.println("</td>");
-            pw.println("</tr>");
-        }
-        pw.print("</table></div></div></div>");
-
-        pw.print("<div id='content'><div class='post'>");
         pw.print("<h5 style = 'text-align: center' class='display-4'>Popular on HealthHub</h5>");
         pw.print("<div class='entry'><table id='bestseller'>");
 
@@ -96,7 +61,7 @@ public class Trending extends HttpServlet {
 
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
-        
+
     }
 
 }
