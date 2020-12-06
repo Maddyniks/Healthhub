@@ -5,6 +5,11 @@ public class MySqlDataStoreUtilities
 {
     static Connection conn = null;
 
+    MySqlDataStoreUtilities()
+    {
+        getConnection();
+    }
+
     public static void getConnection()
     {
         try
@@ -18,17 +23,31 @@ public class MySqlDataStoreUtilities
         catch(Exception e)
         {
             System.out.println("----------------------------------------");
-            System.out.println("SQL Connection Failed");	
+            System.out.println("SQL Connection Failed: " + e);	
             System.out.println("----------------------------------------");	
         }
+    }
+
+    public static void stopConnection()
+    {
+        try{
+            conn.close();
+            System.out.println("SQL Connection Closed Successfully ");	
+            System.out.println("----------------------------------------");	
+        }
+        catch(Exception e)
+        {
+            System.out.println("----------------------------------------");
+            System.out.println("Error while closing the connection: " + e);	
+            System.out.println("----------------------------------------");	
+        }
+        
     }
 
     public static void deleteOrder(int orderId,String orderName)
     {
         try
         {
-            
-            getConnection();
             String deleteOrderQuery ="Delete from CustomerOrder where OrderId=? and orderName=?";
             PreparedStatement pst = conn.prepareStatement(deleteOrderQuery);
             pst.setInt(1,orderId);
@@ -45,7 +64,6 @@ public class MySqlDataStoreUtilities
     {
         try
         {
-            getConnection();
             String deleteUserQuery ="Delete from Registration where username=?";
             PreparedStatement pst = conn.prepareStatement(deleteUserQuery);
             pst.setString(1,name);
@@ -60,8 +78,8 @@ public class MySqlDataStoreUtilities
     {
         // System.out.println(type + " | " + ID + " | " + name + " | " + price + " | " + image + " | " + manufactorer + " | " + condition + " | " + discount + " | " + description);
         try
-        {        
-            getConnection();
+        { 
+            //getConnection();       
             String insertIntoCustomerOrderQuery = "INSERT INTO doctors(id, name, price, image, description, category, phoneNumber, city, zip, latitude, longitude )"
             + "VALUES (?,?,?,?,?,?,?,?,?,?,?);";	
                 
@@ -78,6 +96,7 @@ public class MySqlDataStoreUtilities
             pst.setString(10,latitude);
             pst.setString(11,longitude);
             pst.execute();
+            //stopConnection();
         }
         catch(Exception e)
         {
@@ -89,8 +108,8 @@ public class MySqlDataStoreUtilities
     {
         // System.out.println(type + " | " + ID + " | " + name + " | " + image + " | " + manufactorer + " | " + condition + " | " + discount + " | " + description);
         try
-        {        
-            getConnection();
+        {    
+            //getConnection();    
             String insertIntoCustomerOrderQuery = "INSERT INTO pharmacy(id, name, image, description, category, phoneNumber, emailId, city, zip, latitude, longitude )"
             + "VALUES (?,?,?,?,?,?,?,?,?,?,?);";	
                 
@@ -107,6 +126,7 @@ public class MySqlDataStoreUtilities
             pst.setString(10,latitude);
             pst.setString(11,longitude);
             pst.execute();
+            //stopConnection();
         }
         catch(Exception e)
         {
@@ -118,8 +138,8 @@ public class MySqlDataStoreUtilities
     {
         // System.out.println(type + " | " + ID + " | " + name + " | " + image + " | " + manufactorer + " | " + condition + " | " + discount + " | " + description);
         try
-        {        
-            getConnection();
+        {  
+            //getConnection();      
             String insertIntoCustomerOrderQuery = "INSERT INTO insurance(id, name, category, subcategory, price, image, description, duration, emailId, deductables, totalcoverage )"
             + "VALUES (?,?,?,?,?,?,?,?,?,?,?);";	
                 
@@ -136,6 +156,7 @@ public class MySqlDataStoreUtilities
             pst.setDouble(10,deductables);
             pst.setDouble(11,totalcoverage);
             pst.execute();
+            //stopConnection();
         }
         catch(Exception e)
         {
@@ -149,7 +170,6 @@ public class MySqlDataStoreUtilities
         // System.out.println(type + " | " + ID + " | " + name + " | " + price + " | " + image + " | " + manufactorer + " | " + condition + " | " + discount + " | " + description);
         try
         {        
-            getConnection();
             String insertIntoCustomerOrderQuery = "INSERT INTO productDetails(productType, ID, productName, productPrice, productImage, productManufacturer, productCondition, productDiscount, description)"
             + "VALUES (?,?,?,?,?,?,?,?,?);";	
                 
@@ -198,7 +218,6 @@ public class MySqlDataStoreUtilities
 
         try
         {        
-            getConnection();
 
             
                 int nameIndex = (int)(Math.random()*(indexMax-indexMin+1)+indexMin);  
@@ -247,7 +266,6 @@ public class MySqlDataStoreUtilities
         HashMap<String,DoctorType> doctors = new HashMap<String,DoctorType>();            
         try
         {			
-            getConnection();
             String selectOrderQuery ="select * from productDetails where productType = 'doctor'";			
             PreparedStatement pst = conn.prepareStatement(selectOrderQuery);
             ResultSet rs = pst.executeQuery();	
@@ -270,7 +288,6 @@ public class MySqlDataStoreUtilities
     {
         try
         {        
-            getConnection();
             String insertIntoCustomerOrderQuery = "INSERT INTO CustomerOrder(OrderId, userID, userName, orderName, productID, category, quantity, discount, shippingCost, netTotal, orderPrice, userAddress, creditCardNo, mode, storeID, location, orderDate, shipDate)"
             + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";	
                 
@@ -307,7 +324,6 @@ public class MySqlDataStoreUtilities
         int stock = 0; 
         try
         {
-            getConnection();
             String getStockQuery = "SELECT Stock FROM productDetails WHERE ID = ?";	
                     
             PreparedStatement pst = conn.prepareStatement(getStockQuery);
@@ -331,7 +347,6 @@ public class MySqlDataStoreUtilities
     {
         try
         {
-            getConnection();
             int stock = getStock(ID);
             int newStock = stock - quantity;
             if(stock > newStock || flag == 1)
@@ -362,7 +377,6 @@ public class MySqlDataStoreUtilities
        ArrayList<PharmacyType> productList = new ArrayList<PharmacyType>();
        try
         {			
-            getConnection();
             String selectInventoryQuery ="select * from pharmacy";			
             PreparedStatement pst = conn.prepareStatement(selectInventoryQuery);
             ResultSet rs = pst.executeQuery();	
@@ -387,7 +401,6 @@ public class MySqlDataStoreUtilities
        ArrayList<Product> productList = new ArrayList<Product>();
        try
         {			
-            getConnection();
             String selectInventoryQuery ="select * from productDetails WHERE productDiscount > 0";			
             PreparedStatement pst = conn.prepareStatement(selectInventoryQuery);
             ResultSet rs = pst.executeQuery();	
@@ -409,7 +422,6 @@ public class MySqlDataStoreUtilities
        ArrayList<Product> productList = new ArrayList<Product>();
        try
         {			
-            getConnection();
             String selectInventoryQuery ="SELECT orderName, productID, netTotal, COUNT(OrderId) AS ItemSold FROM  customerOrder GROUP BY orderName";			
             PreparedStatement pst = conn.prepareStatement(selectInventoryQuery);
             ResultSet rs = pst.executeQuery();	
@@ -431,7 +443,6 @@ public class MySqlDataStoreUtilities
        ArrayList<Product> productList = new ArrayList<Product>();
        try
         {			
-            getConnection();
             String selectInventoryQuery ="SELECT orderDate, SUM(netTotal) AS Revenue, COUNT(OrderId) AS ItemSold FROM  customerOrder GROUP BY orderDate";			
             PreparedStatement pst = conn.prepareStatement(selectInventoryQuery);
             ResultSet rs = pst.executeQuery();	
@@ -453,7 +464,6 @@ public class MySqlDataStoreUtilities
        ArrayList<StoreLocation> locations = new ArrayList<StoreLocation>();            
         try
         {			
-            getConnection();
             String selectOrderQuery ="select * from locations";			
             PreparedStatement pst = conn.prepareStatement(selectOrderQuery);
             ResultSet rs = pst.executeQuery();	
@@ -477,7 +487,6 @@ public class MySqlDataStoreUtilities
             
         try
         {			
-            getConnection();
             //select the table 
             String selectOrderQuery ="select * from CustomerOrder";			
             PreparedStatement pst = conn.prepareStatement(selectOrderQuery);
@@ -509,7 +518,6 @@ public class MySqlDataStoreUtilities
     {
         try
         {	
-            getConnection();
             String insertIntoCustomerRegisterQuery = "INSERT INTO registration(userID, username, password, usertype) "
             + "VALUES (?,?,?,?);";	
                     
@@ -531,7 +539,6 @@ public class MySqlDataStoreUtilities
         HashMap<String,User> hm=new HashMap<String,User>();
         try 
         {
-            getConnection();
             Statement stmt=conn.createStatement();
             String selectCustomerQuery="select * from  Registration";
             ResultSet rs = stmt.executeQuery(selectCustomerQuery);
@@ -567,6 +574,61 @@ public class MySqlDataStoreUtilities
 		e.printStackTrace();	
 		}
 		return hm;			
-	}
+    }
+    
+    public static DoctorType getDoctor(String id)
+    {
+        DoctorType doctor = new DoctorType();
+        try
+        {
+            Statement stmt=conn.createStatement();
+            String selectCustomerQuery="select * from  doctors where id = \"" + id + "\"";
+			ResultSet rs = stmt.executeQuery(selectCustomerQuery);
+			while(rs.next())
+            {	
+				doctor = new DoctorType(rs.getString("id"),rs.getString("name"), rs.getDouble("price"), rs.getString("image"),rs.getString("description"),rs.getString("category"),rs.getString("phoneNumber"),rs.getString("city"),rs.getString("zip"),rs.getString("latitude"),rs.getString("longitude"));
+                break;
+			}
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error in function in getDoctor() in MySqlDataStoreUtilities");
+        }
+
+        return doctor;
+    }
+
+    public static void storeDoctorAppointment(String transactionID, String userID, String userName, String doctorID, String doctorName, double doctorPrice, String doctorCategory, String doctorCity, String doctorZip, String doctorLat, String doctorLon, String appointmentDate, String appointmentTime, String appointmentDesc, String currentStatus)
+    {
+        try
+        {        
+            String addDocAppointmentQuery = "INSERT INTO doctorAppointments(transactionID, userID, userName, doctorID, doctorName, doctorPrice, doctorCategory, doctorCity, doctorZip, doctorLat, doctorLon, appointmentDate, appointmentTime, appointmentDesc, currentStatus)"
+            + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";	
+                
+            PreparedStatement pst = conn.prepareStatement(addDocAppointmentQuery);
+            //set the parameter for each column and execute the prepared statement
+            pst.setString(1,transactionID);
+            pst.setString(2,userID);
+            pst.setString(3,userName);
+            pst.setString(4,doctorID);
+            pst.setString(5,doctorName);
+            pst.setDouble(6,doctorPrice);
+            pst.setString(7,doctorCategory);
+            pst.setString(8,doctorCity);
+            pst.setString(9,doctorZip);
+            pst.setString(10,doctorLat);
+            pst.setString(11,doctorLon);
+            pst.setString(12,appointmentDate);
+            pst.setString(13,appointmentTime);
+            pst.setString(14,appointmentDesc);
+            pst.setString(15,currentStatus);
+            pst.execute();
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error in function in storeDoctorAppointment() in MySqlDataStoreUtilities");
+        }		
+
+    }
 
 }	

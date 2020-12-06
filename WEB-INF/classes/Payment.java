@@ -38,16 +38,16 @@ public class Payment extends HttpServlet {
 		String creditCardNo=request.getParameter("creditCardNo");
 		String mode = request.getParameter("mode");
 		String locationDetails = request.getParameter("locationDetails");
-		String[] temp = locationDetails.split("&");
-		String storeID = temp[0];
-		String location = temp[1];
+		// String[] temp = locationDetails.split("&");
+		// String storeID = temp[0];
+		// String location = temp[1];
 		double shippingCost = 0;
 
-		if(mode.equals("delivery"))
-		{
-			location = "";
-			shippingCost = 3;
-		}
+		// if(mode.equals("delivery"))
+		// {
+		// 	location = "";
+		// 	shippingCost = 3;
+		// }
 
 
 		if(!userAddress.isEmpty() && !creditCardNo.isEmpty() )
@@ -55,8 +55,8 @@ public class Payment extends HttpServlet {
 			int min = 100000;
 			int max = 999999;
 			
-			int orderId =  (int)(Math.random()*(max-min+1)+min);  
-			//int orderId=utility.getOrderPaymentSize()+1; 
+			int transactionID =  (int)(Math.random()*(max-min+1)+min);  
+			//int transactionID=utility.getOrderPaymentSize()+1; 
 
 			String orderDate = LocalDate.now().toString();
 			String shipDate = LocalDate.now().plusDays(14).toString();
@@ -64,7 +64,14 @@ public class Payment extends HttpServlet {
 			//iterate through each order
 			for (OrderItem oi : utility.getCustomerOrders())
 			{
-				utility.storePayment(user.getId(), user.getName(), userAddress, creditCardNo, orderId, oi.getId(), oi.getName(), oi.getCategory(),  orderDate, shipDate, oi.getPrice(), 0, 0.0, shippingCost, 0.0, mode, storeID, location);
+				if(oi.getCategory().equals("doctors"))
+				{
+					DoctorType doctor = MySqlDataStoreUtilities.getDoctor(oi.getId());
+					String appointmentDate = request.getParameter("docDate"+oi.getId());
+					String appointmentTime = request.getParameter("docTime"+oi.getId());
+					String appointmentDesc = request.getParameter("docDesc"+oi.getId());
+					MySqlDataStoreUtilities.storeDoctorAppointment(transactionID + "", user.getId(), user.getName(), doctor.getId(), doctor.getName(), doctor.getPrice(), doctor.getCategory(), doctor.getCity(), doctor.getZip(), doctor.getLat(), doctor.getLongi(), appointmentDate, appointmentTime, appointmentDesc, "Pending"  );
+				}
 			}
 
 			//remove the order details from cart after processing			
@@ -76,15 +83,9 @@ public class Payment extends HttpServlet {
 			pw.print("<a style='font-size: 24px;'>Order Confirmation</a>");
 			pw.print("</h2><div class='entry'>");
 		
-			pw.print("<h2>Your order is placed! </h2><br>");
-			pw.print("<h3>Your tracking id is <span style = 'font-weight:bold;'>&nbsp;"+(orderId) + "</span></h3><br>");
+			pw.print("<h2>Success! </h2><br>");
+			pw.print("<h3>Your transaction id is <span style = 'font-weight:bold;'>&nbsp;"+(transactionID) + "</span></h3><br>");
 			pw.print("<h4 style = 'text-align: center;'> Use this ID to manage your orders.");
-			if(mode.equals("delivery"))
-			{
-				pw.print("<h4 style = 'text-align: center;'>You have been charged for delivery.</h4>");
-				pw.print("<h3>Your order would be delivered on "+shipDate+"</h3>");}
-			else
-				pw.print("<h3>Your order would be ready for pickup on "+shipDate+"</h3>");
 			pw.print("</div></div></div>");		
 			utility.printHtml("Footer.html");
 		}else
