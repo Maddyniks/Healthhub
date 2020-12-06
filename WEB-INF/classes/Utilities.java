@@ -50,14 +50,14 @@ public class Utilities extends HttpServlet{
 				{
 					result = result + inventoryMarkup + salesMarkup;
 				}
-				result = result + "<li><a href='ViewOrder'>ViewOrder</a></li>"
-						+ "<li><a>Hello, "+username+"</a></li>"
-						+ "<li><a href='Account'>Account</a></li>"
-						+ "<li><a href='Logout'>Logout</a></li>";
+				result = result + "<li><a href='ViewOrder' href='Cart' style='color: black'>ViewOrder</a></li>"
+						+ "<li><a href='Cart' style='color: black'>Hello, "+username+"</a></li>"
+						+ "<li><a href='Account'href='Cart' style='color: black'>Account</a></li>"
+						+ "<li><a href='Logout'href='Cart' style='color: black'>Logout</a></li>";
 			}
 			else
-				result = result +"<li><a href='ViewOrder'>View Order</a></li>"+ "<li><a href='Login'>Login</a></li>";
-				result = result +"<li><a href='Cart'>Cart("+CartCount()+")</a></li></ul></div></div><div id='page'>";
+				result = result +"<li><a href='ViewOrder' href='Cart' style='color: black'>View Order</a></li>"+ "<li><a href='Login' href='Cart' style='color: black'>Login</a></li>";
+				result = result +"<li><a href='Cart' style='color: black'>Cart("+CartCount()+")</a></li></ul></div></div><div id='page'>";
 				pw.print(result);
 		} else
 				pw.print(result);
