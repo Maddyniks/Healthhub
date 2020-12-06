@@ -148,6 +148,41 @@ INSERT INTO `pharmacy` VALUES ('p1','Walgreens pharmacy','0001.png',' This is a 
 UNLOCK TABLES;
 
 --
+-- Table structure for table `pharmacyappointments`
+--
+
+DROP TABLE IF EXISTS `pharmacyappointments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pharmacyappointments` (
+  `transactionID` varchar(11) DEFAULT NULL,
+  `userID` varchar(20) NOT NULL,
+  `userName` varchar(40) NOT NULL,
+  `pharmacyID` varchar(5) NOT NULL,
+  `pharmacyName` varchar(40) NOT NULL,
+  `pharmacyCategory` varchar(30) NOT NULL,
+  `pharmacyCity` varchar(30) NOT NULL,
+  `pharmacyZip` varchar(10) NOT NULL,
+  `pharmacyLat` varchar(25) NOT NULL,
+  `pharmacyLon` varchar(25) NOT NULL,
+  `appointmentDate` varchar(15) NOT NULL,
+  `appointmentTime` varchar(15) NOT NULL,
+  `appointmentDesc` varchar(100) NOT NULL,
+  `currentStatus` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pharmacyappointments`
+--
+
+LOCK TABLES `pharmacyappointments` WRITE;
+/*!40000 ALTER TABLE `pharmacyappointments` DISABLE KEYS */;
+INSERT INTO `pharmacyappointments` VALUES ('628637','1602341465','chirag','p3','CVS pharmacy','CVS-Health','Big Sioux','57949','42.505818','-96.499259','2020-12-15','07:12','timepass','Pending');
+/*!40000 ALTER TABLE `pharmacyappointments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `registration`
 --
 
@@ -181,4 +216,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-05 20:54:55
+-- Dump completed on 2020-12-06  1:09:46

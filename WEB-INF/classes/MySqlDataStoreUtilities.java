@@ -598,6 +598,28 @@ public class MySqlDataStoreUtilities
         return doctor;
     }
 
+    public static PharmacyType getPharmacy(String id)
+    {
+        PharmacyType pharmacy = new PharmacyType();
+        try
+        {
+            Statement stmt=conn.createStatement();
+            String selectCustomerQuery="select * from  pharmacy where id = \"" + id + "\"";
+			ResultSet rs = stmt.executeQuery(selectCustomerQuery);
+			while(rs.next())
+            {	
+				pharmacy = new PharmacyType(rs.getString("id"),rs.getString("name"), rs.getString("image"),rs.getString("description"),rs.getString("category"),rs.getString("phoneNumber"),rs.getString("emailId"), rs.getString("city"),rs.getString("zip"),rs.getString("latitude"),rs.getString("longitude"));
+                break;
+			}
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error in function in getPharmacy() in MySqlDataStoreUtilities");
+        }
+
+        return pharmacy;
+    }
+
     public static void storeDoctorAppointment(String transactionID, String userID, String userName, String doctorID, String doctorName, double doctorPrice, String doctorCategory, String doctorCity, String doctorZip, String doctorLat, String doctorLon, String appointmentDate, String appointmentTime, String appointmentDesc, String currentStatus)
     {
         try
@@ -627,6 +649,38 @@ public class MySqlDataStoreUtilities
         catch(Exception e)
         {
             System.out.println("Error in function in storeDoctorAppointment() in MySqlDataStoreUtilities");
+        }		
+
+    }
+
+    public static void storePharmacyAppointment(String transactionID, String userID, String userName, String pharmacyID, String pharmacyName, String pharmacyCategory, String pharmacyCity, String pharmacyZip, String pharmacyLat, String pharmacyLon, String appointmentDate, String appointmentTime, String appointmentDesc, String currentStatus)
+    {
+        try
+        {        
+            String addPharmaAppointmentQuery = "INSERT INTO pharmacyAppointments(transactionID, userID, userName, pharmacyID, pharmacyName, pharmacyCategory, pharmacyCity, pharmacyZip, pharmacyLat, pharmacyLon, appointmentDate, appointmentTime, appointmentDesc, currentStatus)"
+            + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);";	
+                
+            PreparedStatement pst = conn.prepareStatement(addPharmaAppointmentQuery);
+            //set the parameter for each column and execute the prepared statement
+            pst.setString(1,transactionID);
+            pst.setString(2,userID);
+            pst.setString(3,userName);
+            pst.setString(4,pharmacyID);
+            pst.setString(5,pharmacyName);
+            pst.setString(6,pharmacyCategory);
+            pst.setString(7,pharmacyCity);
+            pst.setString(8,pharmacyZip);
+            pst.setString(9,pharmacyLat);
+            pst.setString(10,pharmacyLon);
+            pst.setString(11,appointmentDate);
+            pst.setString(12,appointmentTime);
+            pst.setString(13,appointmentDesc);
+            pst.setString(14,currentStatus);
+            pst.execute();
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error in function in storePharmacyAppointment() in MySqlDataStoreUtilities: " + e);
         }		
 
     }

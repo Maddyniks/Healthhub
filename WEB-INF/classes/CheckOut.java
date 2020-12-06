@@ -195,7 +195,7 @@ public class CheckOut extends HttpServlet
 			pw.print("<div class='card mb-3'>");
 			pw.print("<div class='row no-gutters'>");
 			pw.print("<div class='col-md-4'>");
-			pw.print("<img src='images/"+oi.getCategory()+"/"+doctor.getImage()+"' class='card-img' alt='...'>");
+			pw.print("<img src='images/doctors/"+doctor.getImage()+"' class='card-img' alt='...'>");
 			pw.print("</div>");
 			pw.print("<div class='col-md-8'>");
 			pw.print("<div class='card-body'>");
@@ -216,20 +216,40 @@ public class CheckOut extends HttpServlet
 			pw.print("</div>");
 			pw.print("</div>");
 			pw.print("</div>");
-
-
-
-	
-	
 		}
 
 		void renderPharmacyView(OrderItem oi, PrintWriter pw)
 		{
-			pw.print("<div class='panel panel-default'>");
-			pw.print("<div class='panel-body'>");
-			pw.print("<h4>"+oi.getName()+"</h4>");
+			String pharDesc = "'pharDesc" + oi.getId() + "'";
+			String pharDate = "'pharDate" + oi.getId() + "'";
+			String pharTime = "'pharTime" + oi.getId() + "'";
+
+			PharmacyType pharmacy = MySqlDataStoreUtilities.getPharmacy(oi.getId());
+
+			pw.print("<div class='card mb-3'>");
+			pw.print("<div class='row no-gutters'>");
+			pw.print("<div class='col-md-4'>");
+			pw.print("<img src='images/pharmacies/"+pharmacy.getImage()+"' class='card-img' alt='...'>");
+			pw.print("</div>");
+			pw.print("<div class='col-md-8'>");
+			pw.print("<div class='card-body'>");
+			pw.print("<h5 class='card-title'>"+oi.getName()+"</h5>");
+			pw.print("<h6 class='card-subtitle mb-2 text-muted'>"+pharmacy.getCategory()+", "+pharmacy.getCity()+", "+ pharmacy.getZip() +" </h6>");
+			
+			pw.print("<label for = " + pharDesc + "'>Please Describe your purpose</label><br/>");
+			pw.print("<input type='text' id = " + pharDesc + "name=" + pharDesc + " required = 'true' class='form-control form-control-sm'><br/>");
+
+			pw.print("<label for = " + pharDesc + "'>Appointment Date</label><br/>");
+			pw.print("<input type='date' id = " + pharDate + "name=" + pharDate + " required = 'true' class='form-control form-control-sm'><br/>");
+
+			pw.print("<label for = " + pharTime + "'>Appointment Time</label><br/>");
+			pw.print("<input type='time' id = " + pharTime + "name=" + pharTime + " required = 'true' class='form-control form-control-sm'><br/>");
+
 			pw.print("</div>");
 			pw.print("</div>");
+			pw.print("</div>");
+			pw.print("</div>");
+
 		}
 
 		void renderInsuranceView(OrderItem oi, PrintWriter pw)
