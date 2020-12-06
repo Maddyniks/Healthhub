@@ -14,7 +14,10 @@ import java.sql.*;
 
 //once the user clicks buy now button page is redirected to checkout page where user has to give checkout information
 
-public class CheckOut extends HttpServlet {
+public class CheckOut extends HttpServlet 
+{
+	String []  descriptions;
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		response.setContentType("text/html");
@@ -23,7 +26,8 @@ public class CheckOut extends HttpServlet {
 		storeOrders(request, response);
 	}
 	
-	protected void storeOrders(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void storeOrders(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 	    try
         {
 			response.setContentType("text/html");
@@ -57,9 +61,87 @@ public class CheckOut extends HttpServlet {
 			pw.print("</table>");
 
 			pw.print("<br>");
+
+
+
+
+			for (OrderItem oi : utility.getCustomerOrders()) 
+			{
+				if(oi.getCategory().equals("doctors"))
+				{
+					renderDoctorView(oi, pw);
+				}
+				else if(oi.getCategory().equals("Pharmacy"))
+				{
+					renderPharmacyView(oi, pw);
+				}
+				else
+				{
+					renderInsuranceView(oi, pw);
+				}
+			}
+
+
+
+
+
+
+			
+
+			// pw.print("<h3>Shipping Details</h3><br>");
+			// pw.print("<table>");
+
+			// pw.print("<tr>");
+			// pw.print("<th>Street Address</th>");
+			// pw.print("<td><input type='text' name='street' required = 'true' style = 'margin-left: 1rem;'></td></tr>");
+
+			// pw.print("<tr>");
+			// pw.print("<th>Apt/Suit</th>");
+			// pw.print("<td><input type='text' name='apt' required = 'true' style = 'margin-left: 1rem;'></td></tr>");
+		
+			// pw.print("<tr>");
+			// pw.print("<th>City</th>");
+			// pw.print("<td><input type='text' name='city' required = 'true' style = 'margin-left: 1rem;'></td></tr>");
+
+			// pw.print("<tr>");
+			// pw.print("<th>State</th>");
+			// pw.print("<td><input type='text' name='state' required = 'true' style = 'margin-left: 1rem;'></td></tr>");
+
+			// pw.print("<tr>");
+			// pw.print("<th>Zip</th>");
+			// pw.print("<td><input type='text' name='zip' required = 'true' style = 'margin-left: 1rem;'></td></tr>");
+
+			// pw.print("<tr>");
+			// pw.print("<th>Shipping Mode</th>");
+			// pw.print("<td><input type='radio' id = 'delivery' name ='mode' value = 'delivery' required = 'true' style = 'margin-left: 1rem;'> <label for='delivery'>Delivery</label><br></td>");
+			// pw.print("<td><input type='radio' id = 'pickup' name ='mode' value = 'pickup' required = 'true' > <label for='pickup'>Pickup</label><br></td>");
+			// pw.print("</tr>");
+
+			// try{
+			// 	locations = MySqlDataStoreUtilities.getLocations();
+			// }
+			// catch(Exception e){
+
+			// }
+			
+			// pw.print("<tr>");
+			// pw.print("<td colspan='2'>");
+			// pw.print("<label>Select Pickup location(if pickup is selected): </label> ");
+			// pw.print("<select name = 'locationDetails' class='input' >");
+			// for(StoreLocation location : locations)
+			// {
+			// 	String storeID = location.getStoreID();
+			// 	String temp = location.getStreet() + ", " + location.getCity() + ", " + location.getState() + ", " + location.getZip();
+			// 	pw.print("<option value = '" + storeID + "&" +  temp + "'>" + temp + "</option>");
+			// }
+			// pw.print("</td>");
+			// pw.print("</tr>");
+			// pw.print("<tr><label>Note: Additional $3 per item would be charged if shipping mode is <b>Delivery</b> </label> </tr>");
+			// pw.print("</table>");
+
 			pw.print("<table  class='gridtable' style = 'width: 100%'>");
 			pw.print("<tr><th style = 'text-align: center;'>Item</th><th style = 'text-align: center;'> Price</th></tr>");
-			// for each order iterate and display the order name price
+			pw.print("<h3>Summary</h3><br>");
 			for (OrderItem oi : utility.getCustomerOrders()) 
 			{
 				pw.print("<tr><td>" + oi.getName()+"</td><td>" + oi.getPrice() + "</td></tr>");
@@ -68,67 +150,19 @@ public class CheckOut extends HttpServlet {
 			}
 
 			pw.print("<tr><th style = 'text-align: center;'>Total Amount</th><td>$ " + orderTotal + "</td></tr>");
-			pw.print("<input type='hidden' name='orderTotal' value='"+orderTotal+"'>");
 			pw.print("</table><br>");
-
-			pw.print("<h3>Shipping Details</h3><br>");
-			pw.print("<table>");
-
-			pw.print("<tr>");
-			pw.print("<th>Street Address</th>");
-			pw.print("<td><input type='text' name='street' required = 'true' style = 'margin-left: 1rem;'></td></tr>");
-
-			pw.print("<tr>");
-			pw.print("<th>Apt/Suit</th>");
-			pw.print("<td><input type='text' name='apt' required = 'true' style = 'margin-left: 1rem;'></td></tr>");
 		
-			pw.print("<tr>");
-			pw.print("<th>City</th>");
-			pw.print("<td><input type='text' name='city' required = 'true' style = 'margin-left: 1rem;'></td></tr>");
 
-			pw.print("<tr>");
-			pw.print("<th>State</th>");
-			pw.print("<td><input type='text' name='state' required = 'true' style = 'margin-left: 1rem;'></td></tr>");
-
-			pw.print("<tr>");
-			pw.print("<th>Zip</th>");
-			pw.print("<td><input type='text' name='zip' required = 'true' style = 'margin-left: 1rem;'></td></tr>");
-
-			pw.print("<tr>");
-			pw.print("<th>Shipping Mode</th>");
-			pw.print("<td><input type='radio' id = 'delivery' name ='mode' value = 'delivery' required = 'true' style = 'margin-left: 1rem;'> <label for='delivery'>Delivery</label><br></td>");
-			pw.print("<td><input type='radio' id = 'pickup' name ='mode' value = 'pickup' required = 'true' > <label for='pickup'>Pickup</label><br></td>");
-			pw.print("</tr>");
-
-			try{
-				locations = MySqlDataStoreUtilities.getLocations();
-			}
-			catch(Exception e){
-
+			pw.print("<table>");
+			if(Double.parseDouble(orderTotal) > 0.0)
+			{
+				pw.print("<h3>Payment Details</h3><br>");
+				
+				pw.print("<tr>");
+				pw.print("<th>Credit/Debit Card</th>");
+				pw.print("<td><input type='text' name='creditCardNo' required = 'true' style = 'margin-left: 1rem;'> </td></tr>");
 			}
 			
-			pw.print("<tr>");
-			pw.print("<td colspan='2'>");
-			pw.print("<label>Select Pickup location(if pickup is selected): </label> ");
-			pw.print("<select name = 'locationDetails' class='input' >");
-			for(StoreLocation location : locations)
-			{
-				String storeID = location.getStoreID();
-				String temp = location.getStreet() + ", " + location.getCity() + ", " + location.getState() + ", " + location.getZip();
-				pw.print("<option value = '" + storeID + "&" +  temp + "'>" + temp + "</option>");
-			}
-			pw.print("</td>");
-			pw.print("</tr>");
-			pw.print("<tr><label>Note: Additional $3 per item would be charged if shipping mode is <b>Delivery</b> </label> </tr>");
-			pw.print("</table>");
-		
-
-			pw.print("<h3>Payment Details</h3><br>");
-			pw.print("<table>");
-			pw.print("<tr>");
-			pw.print("<th>Credit/Debit Card</th>");
-			pw.print("<td><input type='text' name='creditCardNo' required = 'true' style = 'margin-left: 1rem;'> </td></tr>");
-
 			pw.print("<tr'><td colspan='2'>");
 			pw.print("<input type='submit' name='submit' class='btnbuy' value = 'Place Order' style = 'width: 100%; margin-top: 1rem;'>");
 			pw.print("</td></tr></table>");
@@ -146,5 +180,51 @@ public class CheckOut extends HttpServlet {
 	    {
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
-	    }
+		response.sendRedirect("Cart");
+				return;
+		}
+		
+		void renderDoctorView(OrderItem oi, PrintWriter pw)
+		{
+			String docDesc = "'docDesc" + oi.getId() + "'";
+			String docDate = "'docDate" + oi.getId() + "'";
+			String docTime = "'docTime" + oi.getId() + "'";
+
+			DoctorType doctor = MySqlDataStoreUtilities.getDoctor(oi.getId());
+			pw.print("<div class='panel panel-default'>");
+			pw.print("<div class='panel-body'>");
+			pw.print("<h4>"+oi.getName()+"</h4>");
+			pw.print("<h5>"+doctor.getCategory()+"</h5>");
+			pw.print("<h5> Appointment Fee: $ "+doctor.getPrice()+"</h5>");
+			pw.print("<h5>"+doctor.getCity()+", "+ doctor.getZip() +"</h5>");
+
+			pw.print("<label for = " + docDesc + "'>Please Describe your issue</label><br/>");
+			pw.print("<input type='text' id = " + docDesc + "name=" + docDesc + " required = 'true' ><br/>");
+
+			pw.print("<label for = " + docDesc + "'>Appointment Date</label><br/>");
+			pw.print("<input type='date' id = " + docDate + "name=" + docDate + " required = 'true' ><br/>");
+
+			pw.print("<label for = " + docTime + "'>Appointment Time</label><br/>");
+			pw.print("<input type='time' id = " + docTime + "name=" + docTime + " required = 'true' ><br/>");
+			pw.print("</div>");
+			pw.print("</div>");
+		}
+
+		void renderPharmacyView(OrderItem oi, PrintWriter pw)
+		{
+			pw.print("<div class='panel panel-default'>");
+			pw.print("<div class='panel-body'>");
+			pw.print("<h4>"+oi.getName()+"</h4>");
+			pw.print("</div>");
+			pw.print("</div>");
+		}
+
+		void renderInsuranceView(OrderItem oi, PrintWriter pw)
+		{
+			pw.print("<div class='panel panel-default'>");
+			pw.print("<div class='panel-body'>");
+			pw.print("<h4>"+oi.getName()+"</h4>");
+			pw.print("</div>");
+			pw.print("</div>");
+		}
 }
