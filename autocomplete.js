@@ -58,7 +58,7 @@ function appendProduct (productName,productId, productType) {
     cell.className = "popupCell";
     linkElement = document.createElement("a");
     linkElement.className = "popupItem";
-    linkElement.setAttribute("href", `ViewItem?name=${productName}&type=${productType}`);
+    linkElement.setAttribute("href", `ViewItem?id=${productId}&type=${productType}`);
     linkElement.appendChild(document.createTextNode(productName));
     cell.appendChild(linkElement);
 }

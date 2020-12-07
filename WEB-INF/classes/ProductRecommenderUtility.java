@@ -13,7 +13,7 @@ public class ProductRecommenderUtility
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthhub","root","1234");							
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthhub","root","IllinoisTech2021@");							
 			message="Successfull";
 			return message;
 		}
