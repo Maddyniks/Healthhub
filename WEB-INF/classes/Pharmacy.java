@@ -87,10 +87,8 @@ public class Pharmacy extends HttpServlet {
 			pw.print("<h6 class='card-subtitle mb-2 text-muted'>"+pharmacy.getCategory()+"</h6>");
 			pw.print("<p class='card-text'>"+pharmacy.getCity()+"</p>");
 			pw.print("<form name ='ViewItem' action='ViewItem' method='post'>");
-			pw.print("<input type='hidden' name='name' value='"+pharmacy.getName()+"'>"+
-					"<input type='hidden' name='type' value='Pharmacy'>"+
-					"<input type='hidden' name='maker' value='"+pharmacy.getCategory()+"'>"+
-					"<input type='hidden' name='access' value=''>"+
+			pw.print("<input type='hidden' name='type' value='Pharmacy'>"+
+					"<input type='hidden' name='id' value='"+pharmacy.getId()+"'>"+
 					"<input type='submit' class='btn btn-primary' style = 'display: block; margin-left: auto; margin-right:auto;' value='View Pharmacy'></form><br/>");
 			
 			pw.print("<form method='post' action='Cart'>" +
