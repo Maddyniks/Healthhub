@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/ViewItem")
 public class ViewItem extends HttpServlet 
 {
+  String currentLocation = "400 E 33rd St, Chicago";
+
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
   {
     response.setContentType("text/html");
@@ -32,112 +34,35 @@ public class ViewItem extends HttpServlet
   {
     response.setContentType("text/html");
     PrintWriter pw = response.getWriter();
-    Utilities utility = new Utilities(request, pw);
-    DoctorType doctor = new DoctorType();
-    PharmacyType pharmacy = new PharmacyType();
-    InsuranceType insurance = new InsuranceType ();
-
-    String name = request.getParameter("name");
+    Utilities utility = new Utilities(request,pw);
+  
     String type = request.getParameter("type");
-    String maker = request.getParameter("maker");
-    String image = "";
-    String description = "";
-    String retailer = "";
-    String key = "";
-
-    double price = 0, discount = 0;
-    
-
-    switch (type) 
-    {
-      case "doctors":
-        for (Map.Entry<String, DoctorType> entry : SaxParserDataStore.doctors.entrySet()) {
-          if (entry.getValue().getName().equals(name)) 
-          {
-            doctor = entry.getValue();
-            price = doctor.getPrice();
-            discount = 0;
-            image = doctor.getImage();
-            description = doctor.getDescription();
-            retailer = doctor.getCategory();
-            key = entry.getKey();
-            break;
-          }
-        }
-        break;
-
-     case "pharmacies":
-      for (Map.Entry<String, PharmacyType> entry : SaxParserDataStore.pharmacies.entrySet()) {
-        if (entry.getValue().getCategory().equals(maker) && entry.getValue().getName().equals(name)) 
-		{
-          pharmacy = entry.getValue();
-          image = pharmacy.getImage();
-          description = pharmacy.getDescription();
-          retailer = pharmacy.getCategory();
-          break;
-        }
-      }
-      break;
-
-      case "insurances":
-        for (Map.Entry<String, InsuranceType > entry : SaxParserDataStore.insurances.entrySet()) {
-          if (entry.getValue().getCategory().equals(maker) && entry.getValue().getName().equals(name)) 
-          {
-            insurance = entry.getValue();
-            price = insurance.getPrice();
-            image = insurance.getImage();
-            description = insurance.getDescription();
-            retailer = insurance.getCategory();
-            key = entry.getKey();
-            break;
-          }
-        }
-        break;
-
-      
-    }
+    String id = request.getParameter("id");
+   
 
     utility.printHtml("Header.html");
     utility.printHtml("LeftNavigationBar.html");
 
-    pw.print("<div id='content'><div class='post'>");
-    pw.print("<h2 class='title meta'><a style='font-size: 24px; text-align: center'>" + name + "</a></h2>");
-    pw.print("<div class='entry'><table id='bestseller'>");
+    pw.print("<div id = 'content'><div class='post' style = 'padding:1rem;'>");
+    switch (type) 
+    {
+      case "doctors":
+        renderDoctorView(id, pw);
+        break;
 
-    pw.print("<td><div id='shop_item'>");
+     case "Pharmacy":
+        renderPharmacyView(id,pw); 
+      break;
 
-    pw.print("<h3><span style = 'font-size: 3rem;font-weight: bold;'>$ " + getNewPrice(price, discount) + "</span></h3>");
-    //pw.print("<strong>Discount: " + discount + " %</strong>");
-    pw.print("<h3><span  style = 'color: #a6a6a6;'>Old Price: $ " + price + "</span></h3><ul>");
-    pw.print("<li id='item'><img src='images/" + type +"/" + image +"' alt='' /></li>");
-    pw.print("<li><p style = 'text-align: center;'>" + description + "</p></li>");
+      case "Insurance":
+       
+        break;
+    }
+    pw.print("</div></div>");
 
-    pw.print(
-      "<li><form method='post' action='Cart'>" +
-      "<input type='hidden' name='name' value='" + key +"'>" +
-      "<input type='hidden' name='type' value='" + type +"'>" +
-      "<input type='hidden' name='maker' value='" + retailer +"'>" +
-      "<input type='hidden' name='access' value=''>" +
-      "<input type='submit' class='btnbuy' value='Add to Cart'></form></li>");
+ 
 
-    pw.print(
-      "<li><form method='post' action='WriteReview'>" +
-      "<input type='hidden' name='name' value='" + name +"'>" +
-      "<input type='hidden' name='type' value='laptops'>" +
-      "<input type='hidden' name='maker' value='" + retailer +"'>" +
-      "<input type='hidden' name='access' value=''>" +
-	  "<input type='submit' value='WriteReview' class='btnreview'></form></li>");
-	  
-    pw.print(
-      "<li><form method='post' action='ViewReview'>" +
-      "<input type='hidden' name='name' value='" + name +"'>" +
-      "<input type='hidden' name='type' value='laptops'>" +
-      "<input type='hidden' name='maker' value='" + retailer +"'>" +
-      "<input type='hidden' name='access' value=''>" +
-	  "<input type='submit' value='ViewReview' class='btnreview'></form></li>");
-	  
-    pw.print("</ul></div></td>");
-    pw.print("</table></div></div></div>");
+ 
     utility.printHtml("Footer.html");
   }
 
@@ -152,4 +77,81 @@ public class ViewItem extends HttpServlet
   protected double getNewPrice(double original, double discount) {
     return  Math.round((original * (100 - discount)) / 100);
   }
+
+  void renderDoctorView(String doctorID, PrintWriter pw)
+	{
+		DoctorType doctor = MySqlDataStoreUtilities.getDoctor(doctorID);
+
+		pw.print("<div class='card mb-3'>");
+		pw.print("<div class='row no-gutters'>");
+		pw.print("<div class='col-md-4'>");
+		pw.print("<img src='images/doctors/"+doctor.getImage()+"' class='card-img' alt='...'>");
+		pw.print("</div>");
+		pw.print("<div class='col-md-8'>");
+		pw.print("<div class='card-body'>");
+		pw.print("<h5 class='card-title'>"+doctor.getName()+"</h5>");
+		pw.print("<h6 class='card-subtitle mb-2 text-muted'>"+doctor.getCategory()+", "+doctor.getCity()+", "+ doctor.getZip() +" </h6>");
+    pw.print("<h5><span class='badge badge-primary'>Appointment fee $"+doctor.getPrice()+"</span></h5>");
+    pw.print("<p style = 'text-align: left' class = 'lead'>"+doctor.getDescription()+"</p>");
+    pw.print("<p style = 'text-align: left' class = 'lead'> Contact: "+doctor.getPhone()+"</p>");
+
+    pw.print("<div style = 'display:flex; flex-direction: row; justify-content: space-between;'>");
+    pw.print("<form method='post' action='Cart'>" +
+					"<input type='hidden' name='name' value='"+doctor.getId()+"'>"+
+					"<input type='hidden' name='type' value='doctors'>"+
+					"<input type='hidden' name='maker' value='"+doctor.getCategory()+"'>"+
+					"<input type='hidden' name='access' value=''>"+
+					"<input type='submit' class='btn btn-success' value='Book Appointment'></form><br/>");
+          
+    pw.print("<form action='http://maps.google.com/maps' method='get' target='_blank'>");
+    pw.print("<input type='hidden' name='saddr' value = '"+currentLocation+"' />");
+    pw.print("<input type='hidden' name='daddr' value='"+doctor.getCity()+"' />");
+    pw.print("<input type='submit' value='Get directions' class = 'btn btn-primary'/>");
+    pw.print("</form>");
+    pw.print("</div>");
+
+		pw.print("</div>");
+		pw.print("</div>");
+		pw.print("</div>");
+		pw.print("</div>");
+  }
+  
+  void renderPharmacyView(String id, PrintWriter pw)
+	{
+    PharmacyType pharmacy = MySqlDataStoreUtilities.getPharmacy(id);
+    
+		pw.print("<div class='card mb-3'>");
+		pw.print("<div class='row no-gutters'>");
+		pw.print("<div class='col-md-4'>");
+		pw.print("<img src='images/pharmacies/"+pharmacy.getImage()+"' class='card-img' alt='...'>");
+		pw.print("</div>");
+		pw.print("<div class='col-md-8'>");
+		pw.print("<div class='card-body'>");
+		pw.print("<h5 class='card-title'>"+pharmacy.getName()+"</h5>");
+		pw.print("<h6 class='card-subtitle mb-2 text-muted'>"+pharmacy.getCategory()+", "+pharmacy.getCity()+", "+ pharmacy.getZip() +" </h6>");
+    pw.print("<p style = 'text-align: left' class = 'lead'>"+pharmacy.getDescription()+"</p>");
+    pw.print("<p style = 'text-align: left' class = 'lead'> Contact: "+pharmacy.getPhone()+"</p>");
+    pw.print("<p style = 'text-align: left' class = 'lead'> Email: "+pharmacy.getEmailId()+"</p>");
+
+    pw.print("<div style = 'display:flex; flex-direction: row; justify-content: space-between;'>");
+    pw.print("<form method='post' action='Cart'>" +
+					"<input type='hidden' name='name' value='"+pharmacy.getId()+"'>"+
+					"<input type='hidden' name='type' value='Pharmacy'>"+
+					"<input type='hidden' name='maker' value='"+pharmacy.getCategory()+"'>"+
+					"<input type='hidden' name='access' value=''>"+
+          "<input type='submit' class='btn btn-success' value='Book Appointment'></form><br/>");
+          
+    pw.print("<form action='http://maps.google.com/maps' method='get' target='_blank'>");
+    pw.print("<input type='hidden' name='saddr' value = '"+currentLocation+"' />");
+    pw.print("<input type='hidden' name='daddr' value='"+pharmacy.getCity()+"' />");
+    pw.print("<input type='submit' value='Get directions' class = 'btn btn-primary'/>");
+    pw.print("</form>");
+    pw.print("</div>");
+
+		pw.print("</div>");
+		pw.print("</div>");
+		pw.print("</div>");
+		pw.print("</div>");
+
+	}
 }
