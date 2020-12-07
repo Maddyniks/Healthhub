@@ -56,7 +56,7 @@ public class Utilities extends HttpServlet{
 						+ "<li><a href='Logout'href='Cart' style='color: black'>Logout</a></li>";
 			}
 			else
-				result = result +"<li><a href='ViewOrder' href='Cart' style='color: black'>View Order</a></li>"+ "<li><a href='Login' href='Cart' style='color: black'>Login</a></li>";
+				result = result + "<li><a href='Login' href='Cart' style='color: black'>Login</a></li>";
 				result = result +"<li><a href='Cart' style='color: black'>Cart("+CartCount()+")</a></li></ul></div></div><div id='page'>";
 				pw.print(result);
 		} else
