@@ -651,36 +651,79 @@ public class MySqlDataStoreUtilities
         return doctors;
     }
 
-    public static ArrayList<String> getRegistered()
-    {
-        ArrayList<String> register = new ArrayList<>(); 
+    public static String getRegistered()
+    {   
+        String doctorregistered ="";
         try
         {
             Statement stmt=conn.createStatement();
-            String selectCustomerQuery="Select COUNT(*) from doctors as doctorregistered;";
+            String selectCustomerQuery="Select COUNT(*) as doctorregistered from doctors";
             ResultSet rs = stmt.executeQuery(selectCustomerQuery);
 
-            register.add(rs.getString("doctorregistered"));
-
-            Statement stmt1=conn.createStatement();
-            String selectCustomerQuery1="Select COUNT(*) from pharmacy as pharmacyregistered;";
-            ResultSet rs1 = stmt1.executeQuery(selectCustomerQuery1);
-
-            register.add(rs1.getString("pharmacyregistered"));
-
-            Statement stmt2=conn.createStatement();
-            String selectCustomerQuery2="Select COUNT(*) from insurance as insuranceregistered;";
-            ResultSet rs2 = stmt2.executeQuery(selectCustomerQuery2);
-
-            register.add(rs2.getString("insuranceregistered"));
+            while(rs.next())
+            {
+                doctorregistered = rs.getString("doctorregistered");
+                break;
+            }
+            
 
         }
         catch(Exception e)
         {
-            System.out.println("Error in function in getPharmacy() in MySqlDataStoreUtilities");
+            System.out.println("Error in function in getRegistered() in MySqlDataStoreUtilities");
         }
 
-        return register;
+        return doctorregistered;
+    }
+
+    public static String getRegisteredPharma()
+    {
+        String pharmacyregistered ="";
+        try
+        {
+            Statement stmt1=conn.createStatement();
+            String selectCustomerQuery1="Select COUNT(*) as pharmacyregistered from pharmacy";
+            ResultSet rs1 = stmt1.executeQuery(selectCustomerQuery1);
+
+            while(rs1.next())
+            {
+                pharmacyregistered = rs1.getString("pharmacyregistered");
+                break;
+            }
+
+
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error in function in getRegisteredPharma() in MySqlDataStoreUtilities");
+        }
+
+        return pharmacyregistered;
+    }
+
+    public static String getRegisteredInsurance()
+    {
+        String insuranceregistered ="";
+        try
+        {
+
+            Statement stmt2=conn.createStatement();
+            String selectCustomerQuery2="Select COUNT(*) as insuranceregistered from insurance";
+            ResultSet rs2 = stmt2.executeQuery(selectCustomerQuery2);
+
+            while(rs2.next())
+            {
+                insuranceregistered = rs2.getString("insuranceregistered");
+                break;
+            }
+
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error in function in getRegisteredInsurance() in MySqlDataStoreUtilities");
+        }
+
+        return insuranceregistered;
     }
 
 
