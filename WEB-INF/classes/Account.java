@@ -103,6 +103,8 @@ public class Account extends HttpServlet {
 
 		dSize = ( doctors != null ) ? doctors.size(): 0;
 		pSize =( pharmacies != null) ? pharmacies.size(): 0;
+
+		System.out.println("DSize = " + dSize);
 				
 		if(dSize > 0 || pSize > 0)
 		{	
@@ -118,6 +120,7 @@ public class Account extends HttpServlet {
 
 			if(dSize > 0)
 			{
+				
 				for(DoctorTransactionType dTrxn : doctors)
 				{
 					pw.print("<form method='get' action='ViewOrder'>");

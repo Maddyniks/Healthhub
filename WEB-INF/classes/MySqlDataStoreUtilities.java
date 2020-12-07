@@ -15,7 +15,7 @@ public class MySqlDataStoreUtilities
         try
         {
         Class.forName("com.mysql.jdbc.Driver").newInstance();
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthhub","root","1234");	
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthhub","root","IllinoisTech2021@");	
         System.out.println("----------------------------------------");
         System.out.println("SQL Connection Established");	
         System.out.println("----------------------------------------");					
@@ -633,6 +633,7 @@ public class MySqlDataStoreUtilities
         DoctorTransactionType doctor;
         try
         {
+            getConnection();
             Statement stmt=conn.createStatement();
             String selectCustomerQuery="select * from  doctorappointments where userID = \"" + userID + "\"";
 			ResultSet rs = stmt.executeQuery(selectCustomerQuery);
@@ -647,7 +648,7 @@ public class MySqlDataStoreUtilities
         {
             System.out.println("Error in function in getDoctors() in MySqlDataStoreUtilities");
         }
-
+        System.out.println("doctrs.size = " + doctors.size());
         return doctors;
     }
 
@@ -681,6 +682,7 @@ public class MySqlDataStoreUtilities
         String pharmacyregistered ="";
         try
         {
+            getConnection();
             Statement stmt1=conn.createStatement();
             String selectCustomerQuery1="Select COUNT(*) as pharmacyregistered from pharmacy";
             ResultSet rs1 = stmt1.executeQuery(selectCustomerQuery1);
@@ -755,6 +757,7 @@ public class MySqlDataStoreUtilities
         PharmacyTransactionType pharmacy;
         try
         {
+            getConnection();
             Statement stmt=conn.createStatement();
             String selectCustomerQuery="select * from  pharmacyAppointments where userID = \"" + userID + "\"";
 			ResultSet rs = stmt.executeQuery(selectCustomerQuery);
@@ -769,7 +772,7 @@ public class MySqlDataStoreUtilities
         {
             System.out.println("Error in function in getPharmacies() in MySqlDataStoreUtilities");
         }
-
+        System.out.println("pharmacies.size = " + pharmacies.size());
         return pharmacies;
     }
 
