@@ -33,33 +33,37 @@ public class Analytics extends HttpServlet {
         utility.printHtml("Header.html");
         utility.printHtml("LeftNavigationBar.html");
         pw.print("<div id='content'><div class='post'>");
-        pw.print("<h5 style = 'text-align: center' class='display-4'>Registration's on Healthhub</h5>");
-        pw.print("<div class='entry'><table id='registered'>");
-        pw.print("<tr>");
-        pw.print("<td>");
-        pw.print("Doctors Registered on Healthhub");
-        pw.print("</td>");
-        pw.print("<td>");
-        pw.print(doctorregister);
-        pw.print("</td>");
-        pw.print("</tr>");
-        pw.print("<tr>");
-        pw.print("<td>");
-        pw.print("Pharmacy Registered on Healthhub");
-        pw.print("</td>");
-        pw.print("<td>");
-        pw.print(pharmacyregister);
-        pw.print("</td>");
-        pw.print("</tr>");
-        pw.print("<tr>");
-        pw.print("<td>");
-        pw.print("Insurance Sold on Healthhub");
-        pw.print("</td>");
-        pw.print("<td>");
-        pw.print(insuranceregister);
-        pw.print("</td>");
-        pw.print("</tr>");
-        pw.print("</table></div></div></div>");
+        pw.print("<h5 style = 'text-align: center' class='display-4'>Healthhub Statistics</h5>");
+
+
+        pw.print("<div style = 'display:flex; flex-direction: row; justify-content:center; '>");
+
+        pw.print("<div class='card bg-light' style = 'margin: 0.5rem; padding:0.5rem;'>");
+        pw.print("<h6 class='card-title' style = 'text-align: center'>Doctors Registered on Healthhub</h6>");
+        pw.print("<div class='card-body'>");
+        pw.print("<h5 style = 'text-align: center' class='display-4'>"+doctorregister+"</h5>");
+        pw.print("</div>");
+        pw.print("</div>");
+
+        pw.print("<div class='card bg-light' style = 'margin: 0.5rem; padding:0.5rem;'>");
+        pw.print("<h6 class='card-title' style = 'text-align: center'>Pharmacy Registered on Healthhub</h6>");
+        pw.print("<div class='card-body'>");
+        pw.print("<h5 style = 'text-align: center' class='display-4'>"+pharmacyregister+"</h5>");
+        pw.print("</div>");
+        pw.print("</div>");
+
+        pw.print("<div class='card bg-light' style = 'margin: 0.5rem; padding:0.5rem;'>");
+        pw.print("<h6 class='card-title' style = 'text-align: center'>Insurance Sold on Healthhub</h6>");
+        pw.print("<div class='card-body'>");
+        pw.print("<h5 style = 'text-align: center' class='display-4'>"+insuranceregister+"</h5>");
+        pw.print("</div>");
+        pw.print("</div>");
+       
+        pw.print("</div>");
+
+        pw.print("</div>");
+
+        pw.print("</div>");
 
         utility.printHtml("Footer.html");
     }
