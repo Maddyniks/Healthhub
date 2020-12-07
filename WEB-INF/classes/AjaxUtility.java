@@ -18,7 +18,7 @@ public class AjaxUtility
 		try
 		{
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthhub","root","IllinoisTech2021@");							
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthhub","root","1234");							
 			message="Successfull";
 			return message;
 		}
