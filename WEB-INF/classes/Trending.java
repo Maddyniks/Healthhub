@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
+import com.google.gson.Gson;
 
 @WebServlet("/Trending")
 
@@ -32,6 +33,21 @@ public class Trending extends HttpServlet {
             System.out.println(mostsoldzip1.getCount());
         }
 
+
+        ArrayList<DoctorTransactionType> doctors = new ArrayList<DoctorTransactionType>();
+
+        try{
+            doctors = MySqlDataStoreUtilities.getDoctorTransactions();
+            System.out.println("SIZE:"+doctors.size());
+            for (DoctorTransactionType doctort: doctors){
+                System.out.println(doctort.getDoctorID());
+            }
+    
+
+        }
+        catch(Exception e){
+
+        }
 
         String name = "Trending";
         Utilities utility = new Utilities(request, pw);
@@ -90,13 +106,66 @@ public class Trending extends HttpServlet {
         }
         pw.print("</table></div></div></div>");
 
+        pw.println("<section id='content' style=\"width:100%;background-color:white;\">");
+		pw.println("<article> <h1 align=\"center\"><span style='color:red;'>"+"Sales Chart</span></h1> ");
+		pw.println("<div id=\"sales_barchart\" ></div>");
+		pw.println("</article></section>");
+		
+        //displaySalesTable(doctors, pw);
+
         //	pw.print("</table></div></div></div>");
         utility.printHtml("Footer.html");
     }
 
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
-        
+                
+                          
+                                        
     }
+
+    // void displaySalesTable(ArrayList<DoctorTransactionType> productList, PrintWriter pw)
+	// {
+	// 	int size = productList.size();
+
+				
+	// 	if(size>0)
+	// 	{	
+	// 		//pw.print("<br><h3 style = 'text-align: center;'> Sales Table</h3><br>");
+	// 		pw.print("<button id='btnGetChartData2' class='btnbuy'>View Chart</button>");
+	// 		pw.println("<div id='chart_div'></div><br/>");
+	// 		pw.println("<script type='text/javascript' src=\"https://www.gstatic.com/charts/loader.js\"></script>");
+	// 		pw.println("<script type='text/javascript' src='DataVisualization.js'></script>");
+			
+	// 		// pw.print("<table class='gridtable' style = \"width: 100%;\"><tr>");
+	// 		// pw.print("<th style = 'text-align: center;'>No.</th>");
+	// 		// pw.print("<th style = 'text-align: center;'>Product Name</th>");
+	// 		// pw.print("<th style = 'text-align: center;'>Sale Price </th>");
+	// 		// pw.print("<th style = 'text-align: center;'>No. of items sold</th>");
+	// 		// pw.print("<th style = 'text-align: center;'>Net Revenue</th></tr>");
+        
+    //         // int count = 1;
+    //         // for(Product temp : productList)	
+    //         // {
+               
+    //         //     pw.print("<tr>");					
+    //         //     pw.print("<td>"+count+"</td>");
+    //         //     pw.print("<td >"+temp.getproductName()+"</td>");
+    //         //     pw.print("<td> $ "+getNewPrice(temp.getproductPrice(), temp.getproductDiscount())+"</td>");
+	// 		// 	pw.print("<td> "+temp.getstock()+"</td>");
+    //         //     pw.print("<td >$ "+getRevenue(temp.getstock(), getNewPrice(temp.getproductPrice(), temp.getproductDiscount()))+"</td>");
+    //         //     pw.print("</tr>"); 
+    //         //     count++;
+    //         // }
+	// 		// pw.print("</table>");
+	// 	}
+	// 	else
+	// 	{
+	// 		pw.print("<h4 style='color:red; text-align:center;'>There are no product to display.</h4>");
+	// 	}
+
+	// 	pw.print("</table>");		
+    // }
+    
 
 }
