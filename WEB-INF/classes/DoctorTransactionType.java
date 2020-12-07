@@ -21,6 +21,7 @@ public class DoctorTransactionType extends HttpServlet{
     String appointmentTime;
     String appointmentDesc;
     String currentStatus;
+    int quantity;
 
 
     public DoctorTransactionType(String transactionID, String userID, String userName, String doctorID, String doctorName, double doctorPrice, String doctorCategory, String doctorCity, String doctorZip, String doctorLat, String doctorLon, String appointmentDate, String appointmentTime, String appointmentDesc, String currentStatus) {
@@ -39,6 +40,25 @@ public class DoctorTransactionType extends HttpServlet{
         this.appointmentTime = appointmentTime;
         this.appointmentDesc = appointmentDesc;
         this.currentStatus = currentStatus;
+    }
+
+    public DoctorTransactionType(String transactionID, String userID, String userName, String doctorID, String doctorName, double doctorPrice, String doctorCategory, String doctorCity, String doctorZip, String doctorLat, String doctorLon, String appointmentDate, String appointmentTime, String appointmentDesc, String currentStatus, int quantity) {
+        this.transactionID = transactionID;
+        this.userID = userID;
+        this.userName = userName;
+        this.doctorID = doctorID;
+        this.doctorName = doctorName;
+        this.doctorPrice = doctorPrice;
+        this.doctorCategory = doctorCategory;
+        this.doctorCity = doctorCity;
+        this.doctorZip = doctorZip;
+        this.doctorLat = doctorLat;
+        this.doctorLon = doctorLon;
+        this.appointmentDate = appointmentDate;
+        this.appointmentTime = appointmentTime;
+        this.appointmentDesc = appointmentDesc;
+        this.currentStatus = currentStatus;
+        this.quantity = quantity;
     }
 
     public DoctorTransactionType(){
@@ -94,6 +114,15 @@ public class DoctorTransactionType extends HttpServlet{
     public void setDoctorPrice(double doctorPrice) {
         this.doctorPrice = doctorPrice;
     }
+
+    public double getQuantity() {
+        return this.quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
 
     public String getDoctorCategory() {
         return this.doctorCategory;
