@@ -85,10 +85,8 @@ public class Insurances extends HttpServlet {
 			pw.print("<p class='card-text'>"+insurance.getPrice()+"</p>");
 
 			pw.print("<form name ='ViewItem' action='ViewItem' method='post'>");
-			pw.print("<input type='hidden' name='name' value='"+insurance.getName()+"'>"+
-					"<input type='hidden' name='type' value='Insurance'>"+
-					"<input type='hidden' name='maker' value='"+insurance.getCategory()+"'>"+
-					"<input type='hidden' name='access' value=''>"+
+			pw.print("<input type='hidden' name='type' value='Insurance'>"+
+					"<input type='hidden' name='id' value='"+insurance.getId()+"'>"+
 					"<input type='submit' class='btn btn-primary' style = 'display: block; margin-left: auto; margin-right:auto;' value='View Insurance'></form><br/>");
 			
 			pw.print("<form method='post' action='Cart'>" +

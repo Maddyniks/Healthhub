@@ -55,7 +55,7 @@ public class ViewItem extends HttpServlet
       break;
 
       case "Insurance":
-       
+        renderInsuranceView(id, pw);
         break;
     }
     pw.print("</div></div>");
@@ -148,6 +148,42 @@ public class ViewItem extends HttpServlet
     pw.print("</form>");
     pw.print("</div>");
 
+		pw.print("</div>");
+		pw.print("</div>");
+		pw.print("</div>");
+		pw.print("</div>");
+
+  }
+  
+  void renderInsuranceView(String id, PrintWriter pw)
+	{
+    InsuranceType insurance = MySqlDataStoreUtilities.getInsurance(id);
+    
+		pw.print("<div class='card mb-3'>");
+		pw.print("<div class='row no-gutters'>");
+		pw.print("<div class='col-md-4'>");
+		pw.print("<img src='images/pharmacies/"+insurance.getImage()+"' class='card-img' alt='...'>");
+		pw.print("</div>");
+		pw.print("<div class='col-md-8'>");
+		pw.print("<div class='card-body'>");
+		pw.print("<h5 class='card-title'>"+insurance.getName()+"</h5>");
+		pw.print("<h6 class='card-subtitle mb-2 text-muted'>"+insurance.getCategory()+"| "+insurance.getSubCategory()+" </h6>");
+		pw.print("<h5 style = 'margin-left: auto; margin-right: auto;'>");
+		pw.print("<span class='badge badge-primary'>Price $ "+insurance.getPrice()+"</span>&nbsp;");
+		pw.print("<span class='badge badge-secondary'>Duration "+insurance.getDuration()+"</span>&nbsp;");
+		pw.print("<span class='badge badge-danger'>Deductibles $ "+insurance.getDeductables()+"</span>&nbsp;");
+		pw.print("<span class='badge badge-success'>Total Coverage $ "+insurance.getTotalCov()+"</span>&nbsp;");
+    pw.print("</h5>");
+    pw.print("<p style = 'text-align: left' class = 'lead'>"+insurance.getDescription()+"</p>");
+    pw.print("<p style = 'text-align: left' class = 'lead'> Email: "+insurance.getEmailId()+"</p>");
+    
+    pw.print("<form method='post' action='Cart'>" +
+					"<input type='hidden' name='name' value='"+insurance.getId()+"'>"+
+					"<input type='hidden' name='type' value='Insurance'>"+
+					"<input type='hidden' name='maker' value='"+insurance.getCategory()+"'>"+
+					"<input type='hidden' name='access' value=''>"+
+          "<input type='submit' class='btn btn-success' value='Buy Now'></form><br/>");
+          
 		pw.print("</div>");
 		pw.print("</div>");
 		pw.print("</div>");
