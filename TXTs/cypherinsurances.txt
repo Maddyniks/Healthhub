@@ -13,7 +13,7 @@ SET insurance.name = line.insuranceName,
 	insurance.category = line.insuranceCategory,
 	insurance.subcategory = line.insuranceSubCategory,
 	insurance.price = line.insurancePrice,
-	insurance.duration = line.Duration,
+	insurance.duration = line.insuranceDuration,
 	insurance.deductables = line.deductables,
 	insurance.totalcover = line.totalcoverage
 
@@ -27,10 +27,4 @@ SET r.transaction_id  = line.transactionID,
 	r.phCity = line.phCity,
 	r.email = line.email,
 	r.phphone = line.phPhone,
-	r.phZip = line.phZip
-
-// delete existing graph
-match (n) detach delete n;
-
-// verify you have no nodes/relationships in your graph
-match (n) return n;
+	r.phZip = line.phZIP

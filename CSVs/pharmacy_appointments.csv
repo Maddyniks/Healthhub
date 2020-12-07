@@ -1,0 +1,24 @@
+transactionID,userID,userName,pharmacyID,pharmacyName,pharmacyCategory,pharmacyCity,pharmacyZip,pharmacyLat,pharmacyLon,appointmentDate,appointmentTime,appointmentDesc,currentStatus
+764823,1602465977,harsh,p3,CVS pharmacy,CVS-Health,Big Sioux,57949,42.505818,-96.499259,12/17/2020,15:14,Buying Medicines,Pending
+545675,1602465977,harsh,p6,CVS pharmacy,CVS-Health,Atlanta,30378,33.844371,-84.47405,12/15/2020,18:00,Medicine Purchase,Pending
+245951,1602465977,harsh,p1,Walgreens pharmacy,Walgreens,Sidney Center,13839,42.236762,-75.25901,12/14/2020,16:00,Inquiry,Pending
+770486,1602465977,harsh,p5,Costco pharmacy,Costco-Wholesale-Corp,Whitefield,74472,35.259201,-95.24701,1/4/2021,18:00,Medicine Purchase,Pending
+395408,1602341465,chirag,p4,Walgreens pharmacy,Walgreens,Lawai,96765,21.930922,-159.499342,12/15/2020,16:55,Inquiry,Pending
+464741,1602341465,chirag,p10,Walgreens pharmacy,Walgreens,Stedman,28391,35.016373,-78.6941,12/15/2020,17:55,Medicine Purchase,Pending
+190980,1602466011,shloka,p4,Walgreens pharmacy,Walgreens,Lawai,96765,21.930922,-159.499342,12/30/2020,18:05,Medicine Inquiry,Pending
+742996,1602465967,ninad,p2,Costco pharmacy,Costco-Wholesale-Corp,Caguas,626,18.235003,-66.037318,12/14/2020,17:00,Medicine,Pending
+694151,1602465967,ninad,p5,Costco pharmacy,Costco-Wholesale-Corp,Whitefield,74472,35.259201,-95.24701,12/8/2020,16:10,Inquiry,Pending
+642313,1602465951,satyaveer,p2,Costco pharmacy,Costco-Wholesale-Corp,Caguas,626,18.235003,-66.037318,12/22/2020,17:10,Prescription Medicine,Pending
+747111,1602465951,satyaveer,p4,Walgreens pharmacy,Walgreens,Lawai,96765,21.930922,-159.499342,1/11/2021,17:10,Inquiry,Pending
+300718,1602465989,mounin,p5,Costco pharmacy,Costco-Wholesale-Corp,Whitefield,74472,35.259201,-95.24701,12/29/2020,12:00,Medicine Purchase,Pending
+550141,1602465931,dhiraj,p4,Walgreens pharmacy,Walgreens,Lawai,96765,21.930922,-159.499342,12/22/2020,18:15,Inquiry,Pending
+349363,1602465920,akash,p4,Walgreens pharmacy,Walgreens,Lawai,96765,21.930922,-159.499342,12/28/2020,8:00,Medicine Inquiry,Pending
+683862,1602466022,kevin,p4,Walgreens pharmacy,Walgreens,Lawai,96765,21.930922,-159.499342,12/15/2020,12:30,Inquiry,Pending
+491464,1602466022,kevin,p6,CVS pharmacy,CVS-Health,Atlanta,30378,33.844371,-84.47405,1/18/2021,13:00,Medicine Purchase,Pending
+263946,1602466033,omar,p2,Costco pharmacy,Costco-Wholesale-Corp,Caguas,626,18.235003,-66.037318,12/15/2020,19:05,Prescription Medicine,Pending
+746509,1602466033,omar,p6,CVS pharmacy,CVS-Health,Atlanta,30378,33.844371,-84.47405,2/24/2021,8:00,Medicine Purchase,Pending
+285382,1602466043,nadeen,p1,Walgreens pharmacy,Walgreens,Sidney Center,13839,42.236762,-75.25901,12/31/2020,11:07,Inquiry,Pending
+174974,1602466072,chris,p4,Walgreens pharmacy,Walgreens,Lawai,96765,21.930922,-159.499342,1/5/2021,9:10,Medicine Inquiry,Pending
+310553,1602466072,chris,p5,Costco pharmacy,Costco-Wholesale-Corp,Whitefield,74472,35.259201,-95.24701,1/13/2021,19:10,Medicine Purchase,Pending
+203650,1602466090,jean,p3,CVS pharmacy,CVS-Health,Big Sioux,57949,42.505818,-96.499259,1/1/2021,19:08,Buying Medicines,Pending
+221461,1602465977,harsh,p50,Costco pharmacy,Costco-Wholesale-Corp,Hawaii National Park,96718,19.435739,-155.26648,12/14/2020,12:00,Medicine Purchase,Pending

@@ -1,151 +1,257 @@
 [{
   "_id": {
-    "$oid": "5f839ba199e64b1f9cdd731e"
+    "$oid": "5fcd203592414a5dc89c1a3c"
   },
-  "title": "myReviews",
-  "userName": "chirag",
-  "productName": "Samsung QLED",
-  "productType": "tvs",
-  "productMaker": "Samsung",
-  "reviewRating": 1,
-  "reviewDate": "2020-10-11",
-  "reviewText": " scscs",
-  "retailerpin": "60616",
-  "retailercity": "chicago",
-  "price": 549
-},{
-  "_id": {
-    "$oid": "5f839cd199e64b1f9cdd7321"
-  },
-  "title": "myReviews",
-  "userName": "chirag",
-  "productName": "LG UHD",
-  "productType": "tvs",
-  "productMaker": "LG",
-  "reviewRating": 5,
-  "reviewDate": "2020-10-11",
-  "reviewText": " Very nice product",
-  "retailerpin": "60616",
-  "retailercity": "Chicago",
-  "price": 699
-},{
-  "_id": {
-    "$oid": "5f839d6d99e64b1f9cdd7324"
-  },
-  "title": "myReviews",
-  "userName": "chirag",
-  "productName": "Yamaha Turbi 2500",
-  "productType": "soundsystems",
-  "productMaker": "Yamaha",
-  "reviewRating": 4,
-  "reviewDate": "2020-10-11",
-  "reviewText": " Nice product.",
-  "retailerpin": "60616",
-  "retailercity": "Chicago",
-  "price": 349
-},{
-  "_id": {
-    "$oid": "5f839e3a99e64b1f9cdd7327"
-  },
-  "title": "myReviews",
-  "userName": "chirag",
-  "productName": "Apple iPhone 11 Pro",
-  "productType": "phones",
-  "productMaker": "Apple",
-  "reviewRating": 5,
-  "reviewDate": "2020-10-08",
-  "reviewText": " Awesome!",
-  "retailerpin": "60616",
-  "retailercity": "Chicago",
-  "price": 999
-},{
-  "_id": {
-    "$oid": "5f839eae99e64b1f9cdd732a"
-  },
-  "title": "myReviews",
-  "userName": "chirag",
-  "productName": "Dell Inspiron 6546",
-  "productType": "laptops",
-  "productMaker": "Dell",
-  "reviewRating": 3,
-  "reviewDate": "2020-10-05",
-  "reviewText": " Ok ok.",
-  "retailerpin": "60616",
-  "retailercity": "Chicago",
-  "price": 699
-},{
-  "_id": {
-    "$oid": "5f839ece99e64b1f9cdd732d"
-  },
-  "title": "myReviews",
-  "userName": "chirag",
-  "productName": "Amazon - Echo Dot Kids Edition Smart Speaker with Alexa - Rainbow",
-  "productType": "vas",
-  "productMaker": "Amazon",
+  "title": "myReviews1",
+  "userName": "harsh",
+  "productName": "Kali Morado",
+  "productType": "doctors",
+  "productMaker": "Surgeon",
   "reviewRating": 2,
-  "reviewDate": "2020-10-11",
-  "reviewText": " very bad product",
+  "reviewDate": "2020-12-06",
+  "reviewText": " Very Nice Doctor",
+  "address": "2740 S Prairie Avenue",
   "retailerpin": "60616",
   "retailercity": "Chicago",
-  "price": 69
+  "price": 673
 },{
   "_id": {
-    "$oid": "5f83a24599e64b1f9cdd7332"
+    "$oid": "5fcd255392414a5dc89c1a59"
   },
-  "title": "myReviews",
-  "userName": "nishant",
-  "productName": "LG UHD",
-  "productType": "tvs",
-  "productMaker": "LG",
+  "title": "myReviews1",
+  "userName": "harsh",
+  "productName": "Leonora Choiniere",
+  "productType": "doctors",
+  "productMaker": "Physician",
   "reviewRating": 4,
-  "reviewDate": "2020-09-30",
-  "reviewText": " Nice product",
-  "retailerpin": "60616",
+  "reviewDate": "2020-12-14",
+  "reviewText": " Very Good Service",
+  "address": "nice doctor",
+  "retailerpin": "60626",
   "retailercity": "Chicago",
-  "price": 699
+  "price": 622
 },{
   "_id": {
-    "$oid": "5f83b27e99e64b1f9cdd734d"
+    "$oid": "5fcd25d892414a5dc89c1a60"
   },
-  "title": "myReviews",
-  "userName": "akash",
-  "productName": "LG UHD",
-  "productType": "tvs",
-  "productMaker": "LG",
+  "title": "myReviews1",
+  "userName": "chirag",
+  "productName": "Leonora Choiniere",
+  "productType": "doctors",
+  "productMaker": "Physician",
   "reviewRating": 3,
-  "reviewDate": "2020-09-28",
-  "reviewText": " I like the product. But the built quality is not nice.",
-  "retailerpin": "60616",
+  "reviewDate": "2020-12-06",
+  "reviewText": " Very good Service",
+  "address": "2760 S prairie Avenue",
+  "retailerpin": "60625",
   "retailercity": "Chicago",
-  "price": 699
+  "price": 622
 },{
   "_id": {
-    "$oid": "5f83b6df99e64b1f9cdd7352"
+    "$oid": "5fcd266492414a5dc89c1a67"
   },
-  "title": "myReviews",
-  "userName": "chris",
-  "productName": "LG UHD",
-  "productType": "tvs",
-  "productMaker": "LG",
-  "reviewRating": 1,
-  "reviewDate": "2020-10-07",
-  "reviewText": " This is a demo.",
+  "title": "myReviews1",
+  "userName": "chirag",
+  "productName": "Aetna Health Vision Insurance Plan 2",
+  "productType": "Insurance",
+  "productMaker": "Aetna Health",
+  "reviewRating": 2,
+  "reviewDate": "2020-12-06",
+  "reviewText": " Very Nice Policy",
+  "address": "2740 S Prairie Avenue",
   "retailerpin": "60616",
   "retailercity": "Chicago",
-  "price": 699
+  "price": 4780
 },{
   "_id": {
-    "$oid": "5f83bcaf99e64b1f9cdd7357"
+    "$oid": "5fcd26b592414a5dc89c1a6a"
   },
-  "title": "myReviews",
-  "userName": "omar",
-  "productName": "LG UHD",
-  "productType": "tvs",
-  "productMaker": "LG",
-  "reviewRating": 1,
-  "reviewDate": "2020-10-11",
-  "reviewText": " Hey, I'm Omar and this is a demo",
+  "title": "myReviews1",
+  "userName": "chirag",
+  "productName": "Kaiser Foundation Dental Insurance Plan 1",
+  "productType": "Insurance",
+  "productMaker": "Kaiser Foundation",
+  "reviewRating": 4,
+  "reviewDate": "2020-12-05",
+  "reviewText": " Affordable Policy",
+  "address": "2740 S Prairie Avenue",
   "retailerpin": "60616",
   "retailercity": "Chicago",
-  "price": 699
+  "price": 5460
+},{
+  "_id": {
+    "$oid": "5fcd273492414a5dc89c1a70"
+  },
+  "title": "myReviews1",
+  "userName": "shloka",
+  "productName": "Costco pharmacy",
+  "productType": "Pharmacy",
+  "productMaker": "Costco-Wholesale-Corp",
+  "reviewRating": 3,
+  "reviewDate": "2020-12-06",
+  "reviewText": " Very Nice Pharmacy",
+  "address": "al karama",
+  "retailerpin": "62566",
+  "retailercity": "abu dhabi",
+  "price": 0
+},{
+  "_id": {
+    "$oid": "5fcd276392414a5dc89c1a73"
+  },
+  "title": "myReviews1",
+  "userName": "shloka",
+  "productName": "Aetna Health Crtical-Illness Insurance Plan 5",
+  "productType": "Insurance",
+  "productMaker": "Aetna Health",
+  "reviewRating": 5,
+  "reviewDate": "2020-12-05",
+  "reviewText": " Very nice and Affordable Policy",
+  "address": "2740 S Prairie Avenue",
+  "retailerpin": "60616",
+  "retailercity": "Chicago",
+  "price": 5310
+},{
+  "_id": {
+    "$oid": "5fcd27ca92414a5dc89c1a7c"
+  },
+  "title": "myReviews1",
+  "userName": "akash",
+  "productName": "Leonora Choiniere",
+  "productType": "doctors",
+  "productMaker": "Physician",
+  "reviewRating": 3,
+  "reviewDate": "2020-12-05",
+  "reviewText": " Good Service by Doctor",
+  "address": "501 E 32nd Street",
+  "retailerpin": "60616",
+  "retailercity": "Chicago",
+  "price": 622
+},{
+  "_id": {
+    "$oid": "5fcd28cd92414a5dc89c1a7f"
+  },
+  "title": "myReviews1",
+  "userName": "akash",
+  "productName": "United Health Crtical-Illness Insurance Plan 5",
+  "productType": "Insurance",
+  "productMaker": "United Health",
+  "reviewRating": 4,
+  "reviewDate": "2020-12-07",
+  "reviewText": " Very Nice Policy",
+  "address": "500 E 33rd Street",
+  "retailerpin": "60607",
+  "retailercity": "Chicago",
+  "price": 3009
+},{
+  "_id": {
+    "$oid": "5fcd298692414a5dc89c1a8b"
+  },
+  "title": "myReviews1",
+  "userName": "dhiraj",
+  "productName": "Monet Tietjen",
+  "productType": "doctors",
+  "productMaker": "Dermatologist",
+  "reviewRating": 4,
+  "reviewDate": "2020-12-06",
+  "reviewText": " Good Doctor",
+  "address": "401 E 33rd Street",
+  "retailerpin": "62605",
+  "retailercity": "Chicago",
+  "price": 678
+},{
+  "_id": {
+    "$oid": "5fcd29cc92414a5dc89c1a8e"
+  },
+  "title": "myReviews1",
+  "userName": "dhiraj",
+  "productName": "Walgreens pharmacy",
+  "productType": "Pharmacy",
+  "productMaker": "Walgreens",
+  "reviewRating": 3,
+  "reviewDate": "2020-12-13",
+  "reviewText": " Pharmacy is very good",
+  "address": "500 E 33rd Street",
+  "retailerpin": "60616",
+  "retailercity": "Chiacgo",
+  "price": 0
+},{
+  "_id": {
+    "$oid": "5fcd894592414a79c06d54d1"
+  },
+  "title": "myReviews1",
+  "userName": "harsh",
+  "productName": "Audra Niver",
+  "productType": "doctors",
+  "productMaker": "Allergist",
+  "reviewRating": 3,
+  "reviewDate": "2020-12-07",
+  "reviewText": " Very Nice Allergist",
+  "address": "2740 S Prairie Avenue",
+  "retailerpin": "60616",
+  "retailercity": "Chicago",
+  "price": 686
+},{
+  "_id": {
+    "$oid": "5fcd895f92414a79c06d54d4"
+  },
+  "title": "myReviews1",
+  "userName": "harsh",
+  "productName": "Garrett Rolen",
+  "productType": "doctors",
+  "productMaker": "Allergist",
+  "reviewRating": 4,
+  "reviewDate": "2020-12-02",
+  "reviewText": " Gives Good Advice",
+  "address": "2740 S Prairie Avenue",
+  "retailerpin": "60616",
+  "retailercity": "Chicago",
+  "price": 613
+},{
+  "_id": {
+    "$oid": "5fcd899e92414a79c06d54d8"
+  },
+  "title": "myReviews1",
+  "userName": "ninad",
+  "productName": "Audra Niver",
+  "productType": "doctors",
+  "productMaker": "Allergist",
+  "reviewRating": 3,
+  "reviewDate": "2020-12-05",
+  "reviewText": " Good Allergist",
+  "address": "al karama",
+  "retailerpin": "25755",
+  "retailercity": "abu dhabi",
+  "price": 686
+},{
+  "_id": {
+    "$oid": "5fcd89c392414a79c06d54db"
+  },
+  "title": "myReviews1",
+  "userName": "ninad",
+  "productName": "Garrett Rolen",
+  "productType": "doctors",
+  "productMaker": "Allergist",
+  "reviewRating": 4,
+  "reviewDate": "2020-12-06",
+  "reviewText": " Good Allergist",
+  "address": "500 E 33rd Street",
+  "retailerpin": "60616",
+  "retailercity": "Chicago",
+  "price": 613
+},{
+  "_id": {
+    "$oid": "5fcd89f992414a79c06d54de"
+  },
+  "title": "myReviews1",
+  "userName": "satyaveer",
+  "productName": "Audra Niver",
+  "productType": "doctors",
+  "productMaker": "Allergist",
+  "reviewRating": 4,
+  "reviewDate": "2020-12-04",
+  "reviewText": " Good Allergist",
+  "address": "401 E 33rd Street",
+  "retailerpin": "60625",
+  "retailercity": "Chicago",
+  "price": 686
 }]

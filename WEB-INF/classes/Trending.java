@@ -106,11 +106,6 @@ public class Trending extends HttpServlet {
         }
         pw.print("</table></div></div></div>");
 
-        pw.println("<section id='content' style=\"width:100%;background-color:white;\">");
-		pw.println("<article> <h1 align=\"center\"><span style='color:red;'>"+"Sales Chart</span></h1> ");
-		pw.println("<div id=\"sales_barchart\" ></div>");
-		pw.println("</article></section>");
-		
         //displaySalesTable(doctors, pw);
 
         //	pw.print("</table></div></div></div>");
