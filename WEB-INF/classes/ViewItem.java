@@ -162,7 +162,7 @@ public class ViewItem extends HttpServlet
 		pw.print("<div class='card mb-3'>");
 		pw.print("<div class='row no-gutters'>");
 		pw.print("<div class='col-md-4'>");
-		pw.print("<img src='images/pharmacies/"+insurance.getImage()+"' class='card-img' alt='...'>");
+		pw.print("<img src='images/insurances/"+insurance.getImage()+"' class='card-img' alt='...'>");
 		pw.print("</div>");
 		pw.print("<div class='col-md-8'>");
 		pw.print("<div class='card-body'>");
